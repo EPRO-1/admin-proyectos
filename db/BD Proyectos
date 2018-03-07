@@ -1,0 +1,179 @@
+USE [master]
+GO
+
+CREATE DATABASE [BDProyectos]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'BDProyectos', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\BDProyectos.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'BDProyectos_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\BDProyectos_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [BDProyectos] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [BDProyectos].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+
+EXEC sys.sp_db_vardecimal_storage_format N'BDProyectos', N'ON'
+GO
+USE [BDProyectos]
+GO
+/****** Table [dbo].[actividades]    ******/
+
+CREATE TABLE [dbo].[actividades](
+	[id_act] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+	[detalle] [varchar](1000) NULL,
+	[fecha_ejecucion] [date] NULL,
+	[tiempo_ejecucion] [varchar](45) NULL,
+	[fecha_finalizacion] [date] NULL,
+	[id_proyecto] [int] NULL,
+	[proyecto_id_proyecto] [int] NULL,
+	[proyecto_departamentos_id_depto] [int] NULL,
+ CONSTRAINT [PK_actividades] PRIMARY KEY CLUSTERED 
+(
+	[id_act] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Table [dbo].[departamentos]    ******/
+
+CREATE TABLE [dbo].[departamentos](
+	[id_depto] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+ CONSTRAINT [PK_departamentos] PRIMARY KEY CLUSTERED 
+(
+	[id_depto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Table [dbo].[detalle_presupuesto]  ******/
+
+CREATE TABLE [dbo].[detalle_presupuesto](
+	[id_detalle_presupuesto] [int] IDENTITY(1,1) NOT NULL,
+	[id_proyecto] [int] NULL,
+	[nombre] [varchar](45) NULL,
+	[descripcion] [varchar](500) NULL,
+	[costo] [money] NULL,
+	[proyecto_id_proyecto] [int] NULL,
+	[proyecto_departamentos_id_depto] [int] NULL,
+ CONSTRAINT [PK_detalle_presupuesto] PRIMARY KEY CLUSTERED 
+(
+	[id_detalle_presupuesto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Table [dbo].[documento] ******/
+
+CREATE TABLE [dbo].[documento](
+	[id_doc] [int] IDENTITY(1,1) NOT NULL,
+	[id_proyecto] [int] NULL,
+	[nombre] [varchar](100) NULL,
+	[tipo] [varchar](45) NULL,
+	[fecha_creacion] [date] NULL,
+	[proyecto_id_proyecto] [int] NULL,
+	[proyecto_departamentos_id_depto] [int] NULL
+) ON [PRIMARY]
+
+
+/****** Table [dbo].[imprevistos]  ******/
+
+CREATE TABLE [dbo].[imprevistos](
+	[id_imprevisto] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+	[detalle] [varchar](500) NULL,
+	[costo] [money] NULL,
+	[id_proyecto] [int] NULL,
+	[id_documento] [int] NULL,
+	[imprevistocol] [varchar](45) NULL,
+	[proyecto_id_proyecto] [int] NULL,
+	[proyecto_departamentos_id_depto] [int] NULL,
+	[proyecto_usuario_id_user] [int] NULL,
+	[proyecto_tipo_proyecto_id_tipo] [int] NULL,
+	[documento_proyecto_id_proyecto] [int] NULL,
+	[documento_proyecto_departamentos_id_depto] [int] NULL,
+ CONSTRAINT [PK_imprevistos] PRIMARY KEY CLUSTERED 
+(
+	[id_imprevisto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Table [dbo].[notas]   ******/
+
+CREATE TABLE [dbo].[notas](
+	[id_nota] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NOT NULL,
+	[id_proyecto] [int] NOT NULL,
+	[nota] [varchar](500) NOT NULL,
+	[fecha_creacion] [date] NOT NULL,
+	[proyecto_id_proyecto] [int] NOT NULL,
+	[proyecto_departamentos_id_depto] [int] NOT NULL,
+	[proyecto_usuario_id_user] [int] NOT NULL,
+ CONSTRAINT [PK_notas] PRIMARY KEY CLUSTERED 
+(
+	[id_nota] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Table [dbo].[proyecto]  ******/
+
+CREATE TABLE [dbo].[proyecto](
+	[id_proyecto] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](45) NULL,
+	[tipo_proyecto] [int] NULL,
+	[encargado] [int] NULL,
+	[descripcion] [varchar](200) NULL,
+	[id_depto] [int] NULL,
+	[presupuesto_inicial] [money] NULL,
+	[presupuesto_final] [money] NULL,
+	[estado] [char](1) NULL,
+	[fecha_inicio_1] [date] NULL,
+	[fecha_inicio_2] [date] NULL,
+	[fecha_final_1] [date] NULL,
+	[fecha_final_2] [date] NULL,
+	[departamentos_id_depto] [int] NULL,
+	[usuario_id_user] [int] NULL,
+	[tipo_proyecto_id_tipo] [int] NULL,
+ CONSTRAINT [PK_proyecto] PRIMARY KEY CLUSTERED 
+(
+	[id_proyecto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[tipo_proyecto]    Script Date: 06/03/2018 15:44:24 ******/
+
+CREATE TABLE [dbo].[tipo_proyecto](
+	[id_tipo] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NULL,
+ CONSTRAINT [PK_tipo_proyecto] PRIMARY KEY CLUSTERED 
+(
+	[id_tipo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+/****** Table [dbo].[usuario]  ******/
+
+CREATE TABLE [dbo].[usuario](
+	[id_user] [int] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NULL,
+	[passcode] [varchar](50) NULL,
+	[mail] [varchar](50) NULL,
+ CONSTRAINT [PK_usuario] PRIMARY KEY CLUSTERED 
+(
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+USE [master]
+GO
+ALTER DATABASE [BDProyectos] SET  READ_WRITE 
+GO
