@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Roboto Medium', sans-serif;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.form_login,
+.form_register {
+	display: flex;
+	justify-content: center;
+	/*align-items: center;*/
+	flex-wrap: wrap;
+	width: 400px;
+	/*height: 500px;*/
+	margin-top: 50px;
+	padding: 10px 0;
+	border-radius: 5px;
+	background: #222A53;
+	color: #fff;
+	box-shadow: 0px 5px 10px #000;
+}
+
+.form_login form,
+.form_register form {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 90%;
+	height: 90%;
+}
+
+.form_login form span,
+.form_register form span {
+	font-size: 1.2em;
+}
+
+.form_login form hr,
+.form_register form hr {
+	width: 100%;
+	height: 2px;
+	background: #fff;
+	border: none;
+	margin: 10px 0;
+}
+
+.form_login form label,
+.form_register form label {
+	width: 100%;
+	height: 20px;
+	text-align: left;
+	margin-top: 10px;
+}
+
+.form_login form input,
+.form_register form input {
+	width: 100%;
+	height: 40px;
+	margin: 5px 0;
+	padding: 0 15px;
+	border-radius: 10px;
+	border: none;
+}
+
+.form_login form .login_options,
+.form_register form .register_options {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.form_login form .register,
+.form_register form .login {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	width: 40%;
+}
+
+.form_login .register span,
+.form_register .login span {
+	font-size: 0.9em;
+	width: 100%;
+}
+
+.form_login .register a,
+.form_register .login a {
+	font-size: 0.8em;
+	text-decoration: none;
+	font-style: italic;
+	color: #97BBE7;
+}
+
+.form_login .register a:hover,
+.form_register .login a:hover {
+	color: #fff;
+}
+
+.form_login form input[type="submit"],
+.form_register form input[type="submit"] {
+	width: 40%;
+	cursor: pointer;
+	transition: background ease 0.3s;
+}
+
+.form_login form input[type="submit"]:hover,
+.form_register form input[type="submit"]:hover {
+	background: #97BBE7;
+}
+
+.form_register form .nombre_completo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.form_register form .inputs_name {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.form_register form .inputs_name input {
+	width: 48%;
+}
+
+aside {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	align-self: flex-start;
+	flex-wrap: wrap;
+	position: fixed;
+	left: 0;
+
+	width: 20%;
+	min-width: 250px;
+	height: 100%;
+	background: #085394;
+}
+
+aside .userInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	height: 100px;
+	padding: 10px;
+	/* background: #ccc; */
+	color: #fff;
+}
+
+.userInfo .userInfoDet {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: wrap;
+
+	width: 100%;
+	height: 100%;
+}
+
+aside hr {
+	border: none;
+	width: 90%;
+	height: 2px;
+	background: #fff;
+}
+
+aside .options {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	width: 100%;
+	/* height: calc(100% - 105px); */
+	padding: 10px;
+	/* background: #ccc; */
+}
+
+.options button {
+	width: 100%;
+	height: 40px;
+	margin-bottom: 10px;
+	border: none;
+	background: #9fc5f8;
+	cursor: pointer;
+}
+
+.options button:hover {
+	background: #4073b6;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	width: 80%;
+	height: 100%;
+	margin-left: 20%;
+}
+
+header {
+	display: flex;
+	justify-content: flex-end;
+	align-self: flex-start;
+	width: 100%;
+}
+
+header bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 80%;
+	height: 60px;
+	background: #073763;
+	color: #fff;
+}
+
+section.proyectos {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	width: 100%;
+	/* height: calc(100% - 60px); */
+	padding-top: 50px;
+	background: rgb(203, 220, 240);
+	margin-top: 60px;
+}
+
+article.noProjects {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	width: 150px;
+}
+
+article.project {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 90%;
+	height: 220px;
+	padding: 20px;
+	box-shadow: 5px 5px 5px rgb(95, 95, 95);
+	background: #ccc;
+	margin-bottom: 40px;
+}
+
+article.project .projectImg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 150px;
+	width: 150px;
+	font-size: 0.8em;
+	background: rgb(124, 187, 216);
+}
+
+article.project .projectInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	height: 160px;
+	/* background: #000; */
+}
+
+article.project .projectInfo .infoAtt {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	width: 15%;
+	height: 100%;
+	background: #ccc;
+}
+
+article.project .projectInfo .infoAtt span,
+article.project .projectInfo .infoValue span {
+	margin-bottom: 5px;
+	color: rgb(5, 18, 88);
+}
+
+article.project .projectInfo .infoValue span {
+	color: rgb(12, 94, 170);
+}
+
+article.project .projectInfo .infoValue {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	width: 80%;
+	height: 100%;
+	background: #ccc;
+}
+
+.projectDetails_btn {
+	width: 100px;
+	padding: 5px;
+	margin-left: calc(100% - 100px);
+	background: rgb(5, 18, 88);
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+
+.projectDetails_btn:hover {
+	background: rgb(2, 8, 41);
+}
+
+div.addFirstProject {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 150px;
+	height: 150px;
+	margin-top: 10px;
+	/* font-size: 5em; */
+	background: rgb(54, 117, 158);
+	color: rgb(21, 30, 77);
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	right: 0;
+	align-self: flex-end;
+	width: 100%;
+	padding: 10px;
+	text-align: right;
+	color: #787777;
+}
