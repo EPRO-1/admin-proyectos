@@ -9,6 +9,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+    <aside class="back"></aside>
     <aside >
         <div class="userInfo">
             <div class="userImg">
@@ -38,7 +39,7 @@
         <section class="equipo">
             <!-- No hay equipo registrado -->
 
-            <!-- <article class="noTeam">
+            <article class="noTeam">
                     <span id="headerEquipo">No hay equipo registrado</span>
                     <div id="addUserCard" class="addFirstMember">
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
@@ -70,12 +71,12 @@
                             </form>
                         </div>
                     </div>
-            </article> -->
+            </article>
 
 
             <!-- Hay equipo registrado -->
 
-            <article class="teamMember">
+            <!-- <article class="teamMember">
                 <div class="options">
                     <div class="imgCode">
                         <i class="fas fa-user-circle fa-4x"></i>
@@ -362,7 +363,7 @@
                         <a href="#">Asignar a proyecto</a>
                     </div>
                 </div>
-            </article>
+            </article> -->
         </section>
     </main>
 
