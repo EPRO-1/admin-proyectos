@@ -78,6 +78,33 @@ body {
 	border: none;
 }
 
+.form_login form .login_error.hidden,
+.form_register form .register_error.hidden {
+	display: none;
+}
+
+.form_login form .login_error,
+.form_register form .register_error {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	/* height: 30px; */
+	padding: 5px;
+	margin-top: 10px;
+	border-radius: 10px;
+	font-size: 0.8em;
+	background: rgb(235, 168, 168);
+	color: rgb(241, 43, 43);
+}
+
+.form_login form .login_error span,
+.form_register form .register_error span {
+	width: 100%;
+	/* text-align: center;	 */
+}
+
 .form_login form .login_options,
 .form_register form .register_options {
 	display: flex;
@@ -212,13 +239,14 @@ aside .options {
 	margin-bottom: 10px;
 	border: none;
 	background: #9fc5f8;
+	color: #051258;
 	text-align: center;
 	line-height: 40px;
 	text-decoration: none;
 	cursor: pointer;
 }
 
-.options button:hover {
+.options a:hover {
 	background: #4073b6;
 }
 
@@ -363,6 +391,12 @@ div.addFirstProject {
 	/* font-size: 5em; */
 	background: rgb(54, 117, 158);
 	color: rgb(21, 30, 77);
+	cursor: pointer;
+}
+
+div.addFirstProject:hover {
+	background: rgb(18, 85, 129);
+	color: rgb(106, 153, 207);
 }
 
 .equipo {
@@ -518,6 +552,8 @@ div.addFirstProject {
 	width: 40%;
 	padding: 20px 0;
 	margin: 20px;	
+	border-radius: 10px;
+
 	box-shadow: 5px 5px 10px #000;
 	background: rgb(174, 217, 236);
 }
@@ -621,6 +657,128 @@ div.addFirstProject {
 	color: #fff;
 	font-size: 0.8em;
 	text-decoration: none;
+}
+
+.registrarProyecto {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 100%;
+	padding-top: 60px;
+	/* background: #000; */
+}
+
+.registrarProyecto form {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	width: 80%;
+	color: #051258;
+	/* height: 400px; */
+	/* background: rgb(189, 230, 189); */
+}
+
+.registrarProyecto form hr {
+	width: 100%;
+	border: none;
+	height: 2px;
+	margin: 30px 0;
+	background: #051258;
+}
+
+.registrarProyecto form .field {
+	display: flex;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.registrarProyecto form .field label {
+	min-width: 20%;
+	/* background: #000; */
+}
+
+.registrarProyecto form .field input,
+.registrarProyecto form .field select {
+	border-radius: 10px;
+	padding: 0 10px;
+	border: none;
+	height: 30px;
+	width: 300px;
+}
+
+.registrarProyecto form .field .plazo {
+	min-width: 140px;
+	max-width: 140px;
+	margin-right: 20px;
+}
+
+.registrarProyecto form .field input:focus,
+.registrarProyecto form .field select:focus {
+	border: 2px solid #5195ec;
+}
+
+.registrarProyecto form .field select:focus {
+	border-radius: 10px 0 0 0;
+}
+
+.registrarProyecto form .registrar {
+	width: 100%;
+	text-align: right;
+	margin-top: 30px;
+}
+
+.registrarProyecto form .registrar input {
+	border: none;
+	background: #2336a0;
+	color: #fff;
+	padding: 10px 30px;
+	cursor: pointer;
+}
+
+.registrarProyecto form .registrar input:hover {
+	background: #081457;
+}
+
+.registrarProyecto form .field select,
+.registrarProyecto form .field input[type="number"] {
+	border-radius: 10px 0 0 10px;
+}
+
+.registrarProyecto form .field input[type="number"] {
+	padding-right: 0;
+}
+
+.proyectoRegistrado {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.proyectoRegistrado .options {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.proyectoRegistrado .options a {
+	padding: 10px;
+	background: #051258;
+	color: #fff;
+}
+
+.proyectoRegistrado .options a:hover {
+	background: #2639a1;
+}
+
+.proyectoRegistrado span {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: #051258
 }
 
 footer {

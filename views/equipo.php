@@ -85,11 +85,11 @@
                         <a href="#">Detalles</a>
                     </div>
                     <div class="eraseEdit_btns">
-                        <form action="" methos="POST">
+                        <form action="" methos="GET">
                             <input type="hidden" value="[id_member]">
                             <i class="fas fa-edit fa-lg"></i>
                             <input type="submit" name="delete_member" id="deleteMember">
-                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                            <label for="deleteMember" class="deleteMemberSubmit"><i class="fas fa-user-times fa-lg"></i></label>
                         </form>
                     </div>
                 </div>

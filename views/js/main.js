@@ -12,7 +12,3 @@ addUserCard.addEventListener("click", () => {
     addingMember.setAttribute('class', 'addMember');
 
 });
-
-cancelAddUser.addEventListener("click", () => {
-    location.reload();
-});

@@ -11,9 +11,12 @@
 			<span>Iniciar Sesi&oacute;n</span>
 			<hr>
 			<label for="user">Usuario / email:</label>
-			<input type="text" name="user" id="user_login" placeholder="username / user@example.com">
+			<input type="text" name="user" id="user_login" placeholder="username / user@example.com" required>
 			<label for="pass">Contrase&ntilde;a:</label>
-			<input type="password" name="pass" id="pass_login" placeholder="**********">
+			<input type="password" name="pass" id="pass_login" placeholder="**********" required>
+			<div class="login_error hidden">
+				<span>Datos incorrectos</span>
+			</div>
 			<div class="login_options">
 				<div class="register">
 					<span>No tengo cuenta.</span>
