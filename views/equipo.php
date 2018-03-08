@@ -33,9 +33,12 @@
             <bar>
                 Equipo de trabajo
             </bar>
+            <div class="barHidden"></div>
         </header>
         <section class="equipo">
-            <article class="noTeam">
+            <!-- No hay equipo registrado -->
+
+            <!-- <article class="noTeam">
                     <span id="headerEquipo">No hay equipo registrado</span>
                     <div id="addUserCard" class="addFirstMember">
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
@@ -67,31 +70,299 @@
                             </form>
                         </div>
                     </div>
-            </article>
-            <!-- <article class="project">
-                <div class="projectImg">
-                    <span>{{ Nombre del proyecto }}</span>
-                </div>
-                <div class="projectInfo">
-                    <div class="infoAtt">
-                        <span>Encargado:</span>
-                        <span>&Aacute;rea:</span>
-                        <span>Tipo:</span>
-                        <span>Presupuesto:</span>
-                        <span>Descripci&oacute;n:</span>
-                        <span>Plazo:</span>
-                    </div>
-                    <div class="infoValue">
-                        <span>{{ Nombres Apellidos }}</span>
-                        <span>{{ &Aacute;rea de la empresa }}</span>
-                        <span>{{ Tipo de proyecto }}</span>
-                        <span>{{ $000.00 }}</span>
-                        <span>{{ Descripci&oacute;n del proyecto }}</span>
-                        <span>{{ 00 d&iacute;as / meses / a&ntilde;os }}</span>
-                        <button class="projectDetails_btn">Detalles</button>
-                    </div>
-                </div>
             </article> -->
+
+
+            <!-- Hay equipo registrado -->
+
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
+            <article class="teamMember">
+                <div class="options">
+                    <div class="imgCode">
+                        <i class="fas fa-user-circle fa-4x"></i>
+                        <span>{{COD000}}</span>
+                    </div>
+                    <div class="details_btn">
+                        <a href="#">Detalles</a>
+                    </div>
+                    <div class="eraseEdit_btns">
+                        <form action="" methos="POST">
+                            <input type="hidden" value="[id_member]">
+                            <i class="fas fa-edit fa-lg"></i>
+                            <input type="submit" name="delete_member" id="deleteMember">
+                            <label for="deleteMember"><i class="fas fa-user-times fa-lg"></i></label>
+                        </form>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="atts">
+                        <span>Nombre:</span>
+                        <span>Habilidad:</span>
+                        <span>Proyectos:</span>
+                        <span>Ingreso:</span>
+                    </div>
+                    <div class="values">
+                        <span>{{Nombres Apellidos}}</span>
+                        <span>{{Habilidad}}</span>
+                        <span>{{Proyectos}}</span>
+                        <span>{{00/00/0000}}</span>
+                    </div>
+                    <div class="asignProject_btn">
+                        <a href="#">Asignar a proyecto</a>
+                    </div>
+                </div>
+            </article>
         </section>
     </main>
 

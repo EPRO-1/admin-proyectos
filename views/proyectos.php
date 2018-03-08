@@ -23,7 +23,7 @@
         </div>
         <hr>
         <div class="options">
-            <a href="#">Proyectos</a>
+            <a href="proyectos.php">Proyectos</a>
             <a href="equipo.php">Equipo</a>
             <a href="#">Presupuesto</a>
             <a href="#">Contacto</a>

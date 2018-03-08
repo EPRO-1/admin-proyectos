@@ -152,6 +152,7 @@ aside {
 	flex-wrap: wrap;
 	position: fixed;
 	left: 0;
+	z-index: 10;
 
 	width: 20%;
 	min-width: 250px;
@@ -248,6 +249,12 @@ header bar {
 	height: 60px;
 	background: #073763;
 	color: #fff;
+	z-index: 9;
+}
+
+header .barHidden {
+	display: inline-block;
+	height: 60px;
 }
 
 section.proyectos {
@@ -360,14 +367,21 @@ div.addFirstProject {
 
 .equipo {
 	display: flex;
-	justify-content: center;align-items: center;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	/* margin-top: 60px; */
+	padding: 20px 60px;
 	width: 100%;
+	/* height: calc(100% - 60px); */
+	overflow: auto;
 }
 
 .equipo .noTeam {
-	width: 30%;
+	width: 40%;
 	min-width: 330px;
 	/* height: 200px; */
+	margin: 0 auto;
 	text-align: center;	
 	color: #222A53;
 	font-weight: bold;
@@ -487,10 +501,126 @@ div.addFirstProject {
 
 .addUser_form input {
 	width: 90%;
+	border: none;
+	height: 30px;
+	padding-left: 5px;
+	font-size: 0.7em;
 }
 
 .addUser_form .nombre input {
 	width: 45%;
+}
+
+.equipo .teamMember {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 40%;
+	padding: 20px 0;
+	margin: 20px;	
+	box-shadow: 5px 5px 10px #000;
+	background: rgb(174, 217, 236);
+}
+
+.equipo .teamMember .options {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 20%;
+	height: 200px;
+	border-right: 2px solid #222A53;
+	/* background: #fff; */
+}
+
+.equipo .teamMember .options .imgCode {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+	font-size: 0.8em;	
+}
+
+.equipo .teamMember .options .imgCode span {
+	width: 100%;
+}
+
+.equipo .teamMember .options .details_btn a {
+	padding: 5px 10px;
+	color: #fff;
+	font-size: 0.8em;
+	background: #051258;
+}
+
+.equipo .teamMember .options .eraseEdit_btns {
+	width: 80%;
+}
+
+.equipo .teamMember .options .eraseEdit_btns form {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.equipo .teamMember .options .eraseEdit_btns input[type="submit"] {
+	display: none;
+}
+
+.equipo .teamMember .options .eraseEdit_btns label {
+	cursor: pointer;
+	color: #f11a1a;
+}
+
+.equipo .teamMember .info {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	width: 80%;
+	height: 150px;
+	padding-left: 10px;
+	padding-right: 10px;
+	/* background: #fff; */
+}
+
+.equipo .teamMember .info .atts {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	width: 35%;
+	height: 100%;
+	color: #051258;
+	/* background: #ccc; */
+}
+
+.equipo .teamMember .info .values {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	width: 60%;
+	height: 100%;
+	color: rgb(12, 94, 170);
+	/* background: #000; */
+}
+
+.equipo .teamMember .info .asignProject_btn {
+	width: 100%;
+	margin-top: 25px;
+	/* background: #ccc; */
+	text-align: center;
+}
+
+.equipo .teamMember .info .asignProject_btn a {
+	padding: 5px 10px;
+	background: #051258;
+	color: #fff;
+	font-size: 0.8em;
+	text-decoration: none;
 }
 
 footer {
