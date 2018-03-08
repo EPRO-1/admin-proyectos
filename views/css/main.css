@@ -156,7 +156,7 @@ aside {
 	width: 20%;
 	min-width: 250px;
 	height: 100%;
-	background: #085394;
+	background: #084479;
 }
 
 aside .userInfo {
@@ -181,6 +181,11 @@ aside .userInfo {
 	height: 100%;
 }
 
+.userInfo .userInfoDet span {
+	width: 100%;
+	text-align: right;
+}
+
 aside hr {
 	border: none;
 	width: 90%;
@@ -200,12 +205,15 @@ aside .options {
 	/* background: #ccc; */
 }
 
-.options button {
+.options a {
 	width: 100%;
 	height: 40px;
 	margin-bottom: 10px;
 	border: none;
 	background: #9fc5f8;
+	text-align: center;
+	line-height: 40px;
+	text-decoration: none;
 	cursor: pointer;
 }
 
@@ -251,7 +259,7 @@ section.proyectos {
 	width: 100%;
 	/* height: calc(100% - 60px); */
 	padding-top: 50px;
-	background: rgb(203, 220, 240);
+	/* background: rgb(203, 220, 240); */
 	margin-top: 60px;
 }
 
@@ -272,7 +280,7 @@ article.project {
 	height: 220px;
 	padding: 20px;
 	box-shadow: 5px 5px 5px rgb(95, 95, 95);
-	background: #ccc;
+	background: #fff;
 	margin-bottom: 40px;
 }
 
@@ -301,7 +309,7 @@ article.project .projectInfo .infoAtt {
 	justify-content: flex-start;
 	width: 15%;
 	height: 100%;
-	background: #ccc;
+	background: #fff;
 }
 
 article.project .projectInfo .infoAtt span,
@@ -320,7 +328,7 @@ article.project .projectInfo .infoValue {
 	justify-content: flex-start;
 	width: 80%;
 	height: 100%;
-	background: #ccc;
+	background: #fff;
 }
 
 .projectDetails_btn {
@@ -348,6 +356,141 @@ div.addFirstProject {
 	/* font-size: 5em; */
 	background: rgb(54, 117, 158);
 	color: rgb(21, 30, 77);
+}
+
+.equipo {
+	display: flex;
+	justify-content: center;align-items: center;
+	width: 100%;
+}
+
+.equipo .noTeam {
+	width: 30%;
+	min-width: 330px;
+	/* height: 200px; */
+	text-align: center;	
+	color: #222A53;
+	font-weight: bold;
+}
+
+.equipo .noTeam .addFirstMember {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 250px;
+	border-radius: 20px;
+	border-style: dashed;
+	background: #adccf5;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.addUserIcon.hidden {
+	display: none;
+}
+
+.equipo .noTeam .addFirstMember.active {
+	border: 4px solid #222A53;
+	cursor: default;
+}
+
+.equipo .noTeam .addFirstMember.active:hover {
+	background: #adccf5;
+}
+
+.equipo .noTeam .addFirstMember:hover {
+	background: #5195ec;
+}
+
+.addFirstMember .addMember.hidden {
+	display: none;
+}
+
+.addFirstMember .addMember {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+}
+
+.addFirstMember .addMember .options {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 90%;
+	width: 20%;
+	/* background: #ccc; */
+	margin-right: 10px;
+	padding: 0 10px;
+	border-right: 2px solid #222A53;
+}
+
+.addFirstMember .addMember .options input[type="submit"] {
+	/* visibility: hidden; */
+	display: none;
+}
+
+.addFirstMember .addMember .options .fa-check-circle {
+	color: rgb(89, 177, 92);
+	cursor: pointer;
+}
+
+.addFirstMember .addMember .options .fa-check-circle:hover {
+	color: rgb(34, 119, 36);
+}
+
+.addFirstMember .addMember .options .fa-times-circle {
+	color: rgb(212, 59, 48);
+	cursor: pointer;
+}
+
+.addFirstMember .addMember .options .fa-times-circle:hover {
+	color: rgb(109, 23, 16);
+}
+
+.addFirstMember .addMember .addUser_form {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	/* flex-wrap: wrap; */
+
+	height: 90%;
+	width: 100%;
+	/* background: #ccc; */
+}
+
+.addUser_form .labels {
+	display: flex;
+	justify-content: space-between;
+	align-content: flex-start;
+	flex-flow: column wrap;
+	height: 100%;
+	/* width: 10%; */
+	/* background: #fff; */
+	text-align-last: left;
+	padding-left: 10px;
+}
+
+.addUser_form .inputs {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-flow: column wrap;
+
+	height: 100%;
+	width: 100%;
+	/* background: #ccc; */
+}
+
+.addUser_form input {
+	width: 90%;
+}
+
+.addUser_form .nombre input {
+	width: 45%;
 }
 
 footer {

@@ -23,10 +23,10 @@
         </div>
         <hr>
         <div class="options">
-            <button>Proyectos</button>
-            <button>Equipo</button>
-            <button>Presupuesto</button>
-            <button>Contacto</button>
+            <a href="#">Proyectos</a>
+            <a href="equipo.php">Equipo</a>
+            <a href="#">Presupuesto</a>
+            <a href="#">Contacto</a>
         </div>
     </aside>
     <main>
