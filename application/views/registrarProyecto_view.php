@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Proyectos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="js/main.js"></script>
 </head>
@@ -23,8 +23,8 @@
         </div>
         <hr>
         <div class="options">
-            <a href="proyectos.php">Proyectos</a>
-            <a href="equipo.php">Equipo</a>
+            <a href="../proyectos">Proyectos</a>
+            <a href="../equipo">Equipo</a>
             <a href="#">Presupuesto</a>
             <a href="#">Contacto</a>
         </div>
@@ -36,7 +36,7 @@
             </bar>
         </header>
         <section class="registrarProyecto">
-            <form action="proyectoRegistrado.php" method="POST">
+            <form action="../proyectos/registrado" method="POST">
                 <span>Datos del proyecto</span>
                 <hr>
                 <div class="field">

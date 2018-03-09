@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Registro</title>
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 	<div class="form_register">
@@ -34,7 +34,7 @@
 			<div class="register_options">
 				<div class="login">
 					<span>Ya tengo cuenta.</span>
-					<a href="login.php">Iniciar Sesi&oacute;n</a>
+					<a href="login">Iniciar Sesi&oacute;n</a>
 				</div>
 				<input type="submit" name="register" value="Registro">
 			</div>

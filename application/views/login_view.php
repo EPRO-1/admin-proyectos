@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Iniciar Sesi&oacute;n</title>
-	<link rel="stylesheet" href="<?php echo base_url() ?>css/main.css">
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
 	<div class="form_login">
@@ -20,7 +20,7 @@
 			<div class="login_options">
 				<div class="register">
 					<span>No tengo cuenta.</span>
-					<a href="register.php">Registrarse</a>
+					<a href="register">Registrarse</a>
 				</div>
 				<input type="submit" name="acces" value="Acceder">
 			</div>

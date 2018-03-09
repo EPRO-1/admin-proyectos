@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Equipo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
@@ -23,8 +23,8 @@
         </div>
         <hr>
         <div class="options">
-            <a href="proyectos">Proyectos</a>
-            <a href="equipo">Equipo</a>
+            <a href="../proyectos">Proyectos</a>
+            <a href="../equipo/listado">Equipo</a>
             <a href="#">Presupuesto</a>
             <a href="#">Contacto</a>
         </div>
@@ -39,7 +39,7 @@
         <section class="equipo">
             <!-- No hay equipo registrado -->
 
-            <article class="noTeam">
+            <!-- <article class="noTeam">
                     <span id="headerEquipo">No hay equipo registrado</span>
                     <div id="addUserCard" class="addFirstMember">
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
@@ -71,12 +71,12 @@
                             </form>
                         </div>
                     </div>
-            </article>
+            </article> -->
 
 
             <!-- Hay equipo registrado -->
 
-            <!-- <article class="teamMember">
+            <article class="teamMember">
                 <div class="options">
                     <div class="imgCode">
                         <i class="fas fa-user-circle fa-4x"></i>
@@ -363,7 +363,7 @@
                         <a href="#">Asignar a proyecto</a>
                     </div>
                 </div>
-            </article> -->
+            </article>
         </section>
     </main>
 
