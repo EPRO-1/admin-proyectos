@@ -8,18 +8,9 @@ CREATE DATABASE [BDProyectos]
  LOG ON 
 ( NAME = N'BDProyectos_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\BDProyectos_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
-ALTER DATABASE [BDProyectos] SET COMPATIBILITY_LEVEL = 120
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [BDProyectos].[dbo].[sp_fulltext_database] @action = 'enable'
-end
 
-EXEC sys.sp_db_vardecimal_storage_format N'BDProyectos', N'ON'
-GO
 USE [BDProyectos]
 GO
-/****** Table [dbo].[actividades]    ******/
 
 CREATE TABLE [dbo].[actividades](
 	[id_act] [int] IDENTITY(1,1) NOT NULL,
@@ -29,8 +20,6 @@ CREATE TABLE [dbo].[actividades](
 	[tiempo_ejecucion] [varchar](45) NULL,
 	[fecha_finalizacion] [date] NULL,
 	[id_proyecto] [int] NULL,
-	[proyecto_id_proyecto] [int] NULL,
-	[proyecto_departamentos_id_depto] [int] NULL,
  CONSTRAINT [PK_actividades] PRIMARY KEY CLUSTERED 
 (
 	[id_act] ASC
@@ -38,9 +27,6 @@ CREATE TABLE [dbo].[actividades](
 ) ON [PRIMARY]
 
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Table [dbo].[departamentos]    ******/
 
 CREATE TABLE [dbo].[departamentos](
 	[id_depto] [int] IDENTITY(1,1) NOT NULL,
@@ -51,8 +37,7 @@ CREATE TABLE [dbo].[departamentos](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Table [dbo].[detalle_presupuesto]  ******/
+GO
 
 CREATE TABLE [dbo].[detalle_presupuesto](
 	[id_detalle_presupuesto] [int] IDENTITY(1,1) NOT NULL,
@@ -60,16 +45,13 @@ CREATE TABLE [dbo].[detalle_presupuesto](
 	[nombre] [varchar](45) NULL,
 	[descripcion] [varchar](500) NULL,
 	[costo] [money] NULL,
-	[proyecto_id_proyecto] [int] NULL,
-	[proyecto_departamentos_id_depto] [int] NULL,
  CONSTRAINT [PK_detalle_presupuesto] PRIMARY KEY CLUSTERED 
 (
 	[id_detalle_presupuesto] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Table [dbo].[documento] ******/
+GO
 
 CREATE TABLE [dbo].[documento](
 	[id_doc] [int] IDENTITY(1,1) NOT NULL,
@@ -77,12 +59,13 @@ CREATE TABLE [dbo].[documento](
 	[nombre] [varchar](100) NULL,
 	[tipo] [varchar](45) NULL,
 	[fecha_creacion] [date] NULL,
-	[proyecto_id_proyecto] [int] NULL,
-	[proyecto_departamentos_id_depto] [int] NULL
+ CONSTRAINT [PK_documento] PRIMARY KEY CLUSTERED 
+(
+	[id_doc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Table [dbo].[imprevistos]  ******/
+GO
 
 CREATE TABLE [dbo].[imprevistos](
 	[id_imprevisto] [int] IDENTITY(1,1) NOT NULL,
@@ -92,20 +75,13 @@ CREATE TABLE [dbo].[imprevistos](
 	[id_proyecto] [int] NULL,
 	[id_documento] [int] NULL,
 	[imprevistocol] [varchar](45) NULL,
-	[proyecto_id_proyecto] [int] NULL,
-	[proyecto_departamentos_id_depto] [int] NULL,
-	[proyecto_usuario_id_user] [int] NULL,
-	[proyecto_tipo_proyecto_id_tipo] [int] NULL,
-	[documento_proyecto_id_proyecto] [int] NULL,
-	[documento_proyecto_departamentos_id_depto] [int] NULL,
  CONSTRAINT [PK_imprevistos] PRIMARY KEY CLUSTERED 
 (
 	[id_imprevisto] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Table [dbo].[notas]   ******/
+GO
 
 CREATE TABLE [dbo].[notas](
 	[id_nota] [int] IDENTITY(1,1) NOT NULL,
@@ -113,16 +89,13 @@ CREATE TABLE [dbo].[notas](
 	[id_proyecto] [int] NOT NULL,
 	[nota] [varchar](500) NOT NULL,
 	[fecha_creacion] [date] NOT NULL,
-	[proyecto_id_proyecto] [int] NOT NULL,
-	[proyecto_departamentos_id_depto] [int] NOT NULL,
-	[proyecto_usuario_id_user] [int] NOT NULL,
  CONSTRAINT [PK_notas] PRIMARY KEY CLUSTERED 
 (
 	[id_nota] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Table [dbo].[proyecto]  ******/
+GO
 
 CREATE TABLE [dbo].[proyecto](
 	[id_proyecto] [int] IDENTITY(1,1) NOT NULL,
@@ -138,17 +111,13 @@ CREATE TABLE [dbo].[proyecto](
 	[fecha_inicio_2] [date] NULL,
 	[fecha_final_1] [date] NULL,
 	[fecha_final_2] [date] NULL,
-	[departamentos_id_depto] [int] NULL,
-	[usuario_id_user] [int] NULL,
-	[tipo_proyecto_id_tipo] [int] NULL,
  CONSTRAINT [PK_proyecto] PRIMARY KEY CLUSTERED 
 (
 	[id_proyecto] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Object:  Table [dbo].[tipo_proyecto]    Script Date: 06/03/2018 15:44:24 ******/
+GO
 
 CREATE TABLE [dbo].[tipo_proyecto](
 	[id_tipo] [int] IDENTITY(1,1) NOT NULL,
@@ -159,8 +128,7 @@ CREATE TABLE [dbo].[tipo_proyecto](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-
-/****** Table [dbo].[usuario]  ******/
+GO
 
 CREATE TABLE [dbo].[usuario](
 	[id_user] [int] IDENTITY(1,1) NOT NULL,
@@ -173,6 +141,36 @@ CREATE TABLE [dbo].[usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[actividades]  WITH CHECK ADD FOREIGN KEY([id_proyecto])
+REFERENCES [dbo].[proyecto] ([id_proyecto])
+GO
+ALTER TABLE [dbo].[detalle_presupuesto]  WITH CHECK ADD FOREIGN KEY([id_proyecto])
+REFERENCES [dbo].[proyecto] ([id_proyecto])
+GO
+ALTER TABLE [dbo].[documento]  WITH CHECK ADD FOREIGN KEY([id_proyecto])
+REFERENCES [dbo].[proyecto] ([id_proyecto])
+GO
+ALTER TABLE [dbo].[imprevistos]  WITH CHECK ADD FOREIGN KEY([id_documento])
+REFERENCES [dbo].[documento] ([id_doc])
+GO
+ALTER TABLE [dbo].[imprevistos]  WITH CHECK ADD FOREIGN KEY([id_proyecto])
+REFERENCES [dbo].[proyecto] ([id_proyecto])
+GO
+ALTER TABLE [dbo].[notas]  WITH CHECK ADD FOREIGN KEY([id_proyecto])
+REFERENCES [dbo].[proyecto] ([id_proyecto])
+GO
+ALTER TABLE [dbo].[proyecto]  WITH CHECK ADD FOREIGN KEY([encargado])
+REFERENCES [dbo].[usuario] ([id_user])
+GO
+ALTER TABLE [dbo].[proyecto]  WITH CHECK ADD FOREIGN KEY([id_depto])
+REFERENCES [dbo].[departamentos] ([id_depto])
+GO
+ALTER TABLE [dbo].[proyecto]  WITH CHECK ADD FOREIGN KEY([tipo_proyecto])
+REFERENCES [dbo].[tipo_proyecto] ([id_tipo])
+GO
 USE [master]
 GO
 ALTER DATABASE [BDProyectos] SET  READ_WRITE 
