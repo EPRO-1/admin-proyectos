@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Iniciar Sesi&oacute;n</title>
-	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="<?= BASE_URL() ?>css/main.css">
 </head>
 <body>
 	<div class="form_login">

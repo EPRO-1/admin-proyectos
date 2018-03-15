@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Proyectos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL() ?>css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="main.js"></script>
 </head>
@@ -40,7 +40,7 @@
 
             <article class="noProjects">
                     <span>No hay proyectos</span>
-                    <a href="proyectos/registrar">
+                    <a href="<?= BASE_URL() ?>proyectos/registrar">
                         <div class="addFirstProject">
                             <i class="fas fa-plus-circle fa-7x"></i>
                         </div>
