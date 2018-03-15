@@ -33,9 +33,9 @@
 				<span id="emailTaken">El correo ya est&aacute; en uso</span>
 			</div>
 
-			<div class="register_error">
-				<span><?= validation_errors() ?></span>
-			</div>
+			
+			<?= validation_errors() ?>
+
 			
 			<div class="register_options">
 				<div class="login">
