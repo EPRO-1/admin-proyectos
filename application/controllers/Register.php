@@ -5,6 +5,37 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->helper('form_helper');
 		$this->load->view('register_view');
+	}
+
+	public function register_user () {
+		
+		$this->load->library('form_validation');
+
+		$config = array(
+			array(
+					'field' => 'pass',
+					'label' => 'Contrase&ntilde;a',
+					'rules' => 'required'
+			),
+			array(
+					'field' => 'pass_conf',
+					'label' => 'Repetir contrase&ntilde;a',
+					'rules' => 'required|matches[pass]',
+					'errors' => array(
+							'matches' => 'Las contrase&ntilde;as no coinciden.',
+					)
+			)
+		);
+		
+		$this->form_validation->set_rules($config);
+		
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('register_view');
+		} else {
+			$this->load->view('proyectoRegistrado_view');
+		}
 	}
 }

@@ -23,8 +23,8 @@
         </div>
         <hr>
         <div class="options">
-            <a href="../proyectos">Proyectos</a>
-            <a href="../equipo/listado">Equipo</a>
+            <a href="<?= BASE_URL() ?>proyectos">Proyectos</a>
+            <a href="<?= BASE_URL() ?>equipo/listado">Equipo</a>
             <a href="#">Presupuesto</a>
             <a href="#">Contacto</a>
         </div>
