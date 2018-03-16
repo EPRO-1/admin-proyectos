@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="form_login">
-		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+		<form action="" method="POST">
 			<span>Iniciar Sesi&oacute;n</span>
 			<hr>
 			<label for="user">Usuario / email:</label>
