@@ -15,7 +15,7 @@
                 <i class="fas fa-user-circle fa-4x"></i>
             </div>
             <div class="userInfoDet">
-                <span>{{ username }}</span>
+                <span><?= $this->session->userdata('usuario') ?></span>
                 <span>{{ Rol desempe&ntilde;ado }}</span>
                 <span>Cuenta</span>
             </div>
@@ -32,12 +32,13 @@
         <header>
             <bar>
                 Proyecto registrado
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
             </bar>
         </header>
         <section class="proyectoRegistrado">
-            <span>El proyecto {{ nombreDelProyecto }} ha sido registrado &nbsp;&nbsp;&nbsp; <i class="fas fa-check-circle fa-2x"></i></span>
+            <span>El proyecto ha sido registrado &nbsp;&nbsp;&nbsp; <i class="fas fa-check-circle fa-2x"></i></span>
             <div class="options">
-                <a href="#">Ver detalles</a>
+                <a href="<?= BASE_URL() ?>proyectos">Ver proyectos</a>
             </div>
         </section>
     </main>

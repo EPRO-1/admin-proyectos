@@ -33,6 +33,7 @@
         <header>
             <bar>
                 Equipo de trabajo
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
             </bar>
             <div class="barHidden"></div>
         </header>

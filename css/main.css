@@ -287,6 +287,16 @@ header bar {
 	color: #fff;
 	z-index: 9;
 }
+header bar .logout {
+	position: absolute;
+	top: 10px;
+	right: 30px;
+	text-decoration: none;
+	padding: 10px 15px;
+	background: rgb(240, 174, 174);
+	color: #f11a1a;
+	border-radius: 10px;
+}
 
 header .barHidden {
 	display: inline-block;
@@ -711,12 +721,21 @@ div.addFirstProject:hover {
 }
 
 .registrarProyecto form .field input,
-.registrarProyecto form .field select {
+.registrarProyecto form .field select,
+.registrarProyecto form .field textarea {
 	border-radius: 10px;
 	padding: 0 10px;
 	border: none;
 	height: 30px;
 	width: 300px;
+}
+
+.registrarProyecto form .field textarea {
+	min-width: 300px;
+	max-width: 300px;
+	min-height: 50px;
+	max-height: 150px;
+	/* border: 0px solid #fff; */
 }
 
 .registrarProyecto form .field .plazo {
@@ -726,7 +745,8 @@ div.addFirstProject:hover {
 }
 
 .registrarProyecto form .field input:focus,
-.registrarProyecto form .field select:focus {
+.registrarProyecto form .field select:focus,
+.registrarProyecto form .field textarea {
 	border: 2px solid #5195ec;
 }
 

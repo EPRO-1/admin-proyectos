@@ -10,8 +10,8 @@
 		<?= form_open('login/user_validation') ?>
 			<span>Iniciar Sesi&oacute;n</span>
 			<hr>
-			<label for="user">Usuario / email:</label>
-			<input type="text" name="user" id="user_login" placeholder="username / user@example.com" required>
+			<label for="user">Usuario:</label>
+			<input type="text" name="user" id="user_login" placeholder="username" required>
 			<label for="pass">Contrase&ntilde;a:</label>
 			<input type="password" name="pass" id="pass_login" placeholder="**********" required>
 			<div class="login_error hidden">

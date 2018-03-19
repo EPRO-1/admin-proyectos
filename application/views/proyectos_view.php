@@ -32,119 +32,64 @@
         <header>
             <bar>
                 Proyectos
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
             </bar>
         </header>
         <section class="proyectos">
-            <!-- No hay proyectos -->
 
-            <article class="noProjects">
-                    <span>No hay proyectos</span>
-                    <a href="<?= BASE_URL() ?>proyectos/registrar">
-                        <div class="addFirstProject">
-                            <i class="fas fa-plus-circle fa-7x"></i>
+            <?php if($check_projects): ?>
+                <?php foreach ($proyectos as $proyecto): ?>
+                    <article class="project">
+                        <div class="projectImg">
+                            <span><?= $proyecto['nombre'] ?></span>
                         </div>
-                    </a>
-            </article>
+                        <div class="projectInfo">
+                            <div class="infoAtt">
+                                <span>Encargado:</span>
+                                <span>&Aacute;rea:</span>
+                                <span>Tipo:</span>
+                                <span>Presupuesto:</span>
+                                <span>Descripci&oacute;n:</span>
+                                <span>Fecha inicio:</span>
+                                <span>Fecha final:</span>
+                            </div>
+                            <div class="infoValue">
+                                <span><?= $proyecto['nombres'] . " " . $proyecto['apellidos'] ?></span>
+                                <span><?= $proyecto['nombreDpto'] ?></span>
+                                <span><?= $proyecto['nombreTipo'] ?></span>
+                                <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
+                                    <span>No asignado</span>
+                                <?php else: ?>
+                                <span><?= $proyecto['presupuesto_inicial'] ?></span>
+                                <?php endif ?>
+                                <span><?= $proyecto['descripcion'] ?></span>
+                                <span><?= $proyecto['fecha_inicio_1'] ?></span>
+                                <span><?= $proyecto['fecha_final_1'] ?></span>
+                                <!-- <button class="projectDetails_btn">Detalles</button> -->
+                            </div>
+                        </div>
+                    </article>
+                <?php endforeach ?>
 
-            
-            <!-- Hay proyectos -->
+                <article class="noProjects">
+                        <a href="<?= BASE_URL() ?>proyectos/registrar">
+                            <div class="addFirstProject">
+                                <i class="fas fa-plus-circle fa-7x"></i>
+                            </div>
+                        </a>
+                </article>    
+            <?php else: ?>            
+                <article class="noProjects">
+                        <span>No hay proyectos</span>
+                        <a href="<?= BASE_URL() ?>proyectos/registrar">
+                            <div class="addFirstProject">
+                                <i class="fas fa-plus-circle fa-7x"></i>
+                            </div>
+                        </a>
+                </article>
+            <?php endif ?>
 
-            <!-- <article class="project">
-                <div class="projectImg">
-                    <span>{{ Nombre del proyecto }}</span>
-                </div>
-                <div class="projectInfo">
-                    <div class="infoAtt">
-                        <span>Encargado:</span>
-                        <span>&Aacute;rea:</span>
-                        <span>Tipo:</span>
-                        <span>Presupuesto:</span>
-                        <span>Descripci&oacute;n:</span>
-                        <span>Plazo:</span>
-                    </div>
-                    <div class="infoValue">
-                        <span>{{ Nombres Apellidos }}</span>
-                        <span>{{ &Aacute;rea de la empresa }}</span>
-                        <span>{{ Tipo de proyecto }}</span>
-                        <span>{{ $000.00 }}</span>
-                        <span>{{ Descripci&oacute;n del proyecto }}</span>
-                        <span>{{ 00 d&iacute;as / meses / a&ntilde;os }}</span>
-                        <button class="projectDetails_btn">Detalles</button>
-                    </div>
-                </div>
-            </article>
-            <article class="project">
-                <div class="projectImg">
-                    <span>{{ Nombre del proyecto }}</span>
-                </div>
-                <div class="projectInfo">
-                    <div class="infoAtt">
-                        <span>Encargado:</span>
-                        <span>&Aacute;rea:</span>
-                        <span>Tipo:</span>
-                        <span>Presupuesto:</span>
-                        <span>Descripci&oacute;n:</span>
-                        <span>Plazo:</span>
-                    </div>
-                    <div class="infoValue">
-                        <span>{{ Nombres Apellidos }}</span>
-                        <span>{{ &Aacute;rea de la empresa }}</span>
-                        <span>{{ Tipo de proyecto }}</span>
-                        <span>{{ $000.00 }}</span>
-                        <span>{{ Descripci&oacute;n del proyecto }}</span>
-                        <span>{{ 00 d&iacute;as / meses / a&ntilde;os }}</span>
-                        <button class="projectDetails_btn">Detalles</button>
-                    </div>
-                </div>
-            </article>
-            <article class="project">
-                <div class="projectImg">
-                    <span>{{ Nombre del proyecto }}</span>
-                </div>
-                <div class="projectInfo">
-                    <div class="infoAtt">
-                        <span>Encargado:</span>
-                        <span>&Aacute;rea:</span>
-                        <span>Tipo:</span>
-                        <span>Presupuesto:</span>
-                        <span>Descripci&oacute;n:</span>
-                        <span>Plazo:</span>
-                    </div>
-                    <div class="infoValue">
-                        <span>{{ Nombres Apellidos }}</span>
-                        <span>{{ &Aacute;rea de la empresa }}</span>
-                        <span>{{ Tipo de proyecto }}</span>
-                        <span>{{ $000.00 }}</span>
-                        <span>{{ Descripci&oacute;n del proyecto }}</span>
-                        <span>{{ 00 d&iacute;as / meses / a&ntilde;os }}</span>
-                        <button class="projectDetails_btn">Detalles</button>
-                    </div>
-                </div>
-            </article>
-            <article class="project">
-                <div class="projectImg">
-                    <span>{{ Nombre del proyecto }}</span>
-                </div>
-                <div class="projectInfo">
-                    <div class="infoAtt">
-                        <span>Encargado:</span>
-                        <span>&Aacute;rea:</span>
-                        <span>Tipo:</span>
-                        <span>Presupuesto:</span>
-                        <span>Descripci&oacute;n:</span>
-                        <span>Plazo:</span>
-                    </div>
-                    <div class="infoValue">
-                        <span>{{ Nombres Apellidos }}</span>
-                        <span>{{ &Aacute;rea de la empresa }}</span>
-                        <span>{{ Tipo de proyecto }}</span>
-                        <span>{{ $000.00 }}</span>
-                        <span>{{ Descripci&oacute;n del proyecto }}</span>
-                        <span>{{ 00 d&iacute;as / meses / a&ntilde;os }}</span>
-                        <button class="projectDetails_btn">Detalles</button>
-                    </div>
-                </div>
-            </article> -->
+
         </section>
     </main>
 

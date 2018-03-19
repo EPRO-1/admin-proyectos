@@ -15,7 +15,7 @@
                 <i class="fas fa-user-circle fa-4x"></i>
             </div>
             <div class="userInfoDet">
-                <span>{{ username }}</span>
+                <span><?= $this->session->userdata('usuario') ?></span>
                 <span>{{ Rol desempe&ntilde;ado }}</span>
                 <span>Cuenta</span>
             </div>
@@ -32,38 +32,46 @@
         <header>
             <bar>
                 Registrar proyecto
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
             </bar>
         </header>
         <section class="registrarProyecto">
-            <form action="<?= BASE_URL() ?>proyectos/registrado" method="POST">
+            <?= form_open('proyectos/registrar_proyecto') ?>
                 <span>Datos del proyecto</span>
                 <hr>
                 <div class="field">
                     <label for="nombreProyecto">Nombre del proyecto:</label>
-                    <input type="text" name="nombre_proyecto" id="nombreProyecto" placeholder="Nombre del proyecto">
+                    <input type="text" name="nombre_proyecto" id="nombreProyecto" placeholder="Nombre del proyecto" required>
                 </div>
                 <div class="field">
-                    <label for="responsableProyecto">Responsable:</label>
-                    <input type="text" name="responsable_proyecto" id="responsableProyecto" value="{{Nombres Apellidos}}" disabled>
+                    <label for="encargado">Responsable:</label>
+                    <select name="encargado" id="areaEmpresa" required>
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <option value="<?= $usuario['id_user'] ?>"><?= $usuario['nombres'] . " " . $usuario['apellidos'] ?></option>
+                        <?php endforeach ?>
+                    </select>                   
                 </div>
                 <div class="field">
-                    <label for="areaEmpresa">&Aacute;rea de la empresa:</label>
-                    <select name="area_empresa" id="areaEmpresa">
-                        <option value="1">area1</option>
-                        <option value="2">area2</option>
-                        <option value="3">area3</option>
-                        <option value="4">area4</option>
-                        <option value="5">area5</option>
+                    <label for="departamento">Departamento:</label>
+                    <select name="departamento" id="departamento" required>
+                        <?php foreach ($departamentos as $departamento): ?>
+                            <option value="<?= $departamento['id_depto'] ?>"><?= $departamento['nombre'] ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="field">
                     <label for="tipoProyecto">Tipo de proyecto:</label>
-                    <select name="tipo_proyecto" id="tipoProyecto">
-                        <option value="nuevo">Nuevo</option>
-                        <option value="ext">Extensi&oacute;n</option>
+                    <select name="tipo_proyecto" id="tipoProyecto" required>
+                        <?php foreach ($tipos_proyecto as $tipo_proyecto): ?>
+                            <option value="<?= $tipo_proyecto['id_tipo'] ?>"><?= $tipo_proyecto['nombre'] ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="field">
+                    <label for="descripcion">Descripci&oacute;n:</label>
+                    <textarea name="descripcion" id="descripcion" placeholder="Descripci&oacute;n del proyecto" required></textarea>
+                </div>
+                <!-- <div class="field">
                     <label for="extProyecto">Extension de:</label>
                     <select name="ext_proyecto" id="extProyecto">
                         <option value="1">Proyecto1</option>
@@ -71,15 +79,20 @@
                         <option value="3">Proyecto3</option>
                         <option value="4">Proyecto4</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="field">
-                    <label for="unidadTiempo">Plazo:</label>
-                    <input type="number" name="plazo" min="1" max="10000" class="plazo" placeholder="34">
+                    <label for="fechaInicio">Fecha inicio:</label>
+                    <input name="fechaInicio" id="fechaInicio" type="date" required>
+                    <!-- <input type="number" name="plazo" min="1" max="10000" class="plazo" placeholder="34">
                     <select name="unidad_tiempo" id="unidadTiempo" class="plazo">
                         <option value="dias">D&iacute;as</option>
                         <option value="meses">Meses</option>
                         <option value="years">A&ntilde;os</option>
-                    </select>
+                    </select> -->
+                </div>
+                <div class="field">
+                    <label for="fechaFinal">Fecha final:</label>
+                    <input name="fechaFinal" id="fechaFinal" type="date" required>
                 </div>
                 <div class="registrar">
                     <input type="submit" value="Registrar">
