@@ -40,7 +40,7 @@
 			<div class="register_options">
 				<div class="login">
 					<span>Ya tengo cuenta.</span>
-					<a href="login">Iniciar Sesi&oacute;n</a>
+					<a href="<?= BASE_URL() ?>login">Iniciar Sesi&oacute;n</a>
 				</div>
 				<input type="submit" name="register" value="Registro">
 			</div>

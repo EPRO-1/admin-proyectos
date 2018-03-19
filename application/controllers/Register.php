@@ -19,6 +19,9 @@ class Register extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->helper('url');
 
+		$ruta_login = BASE_URL() . 'login';
+		// echo $ruta_login;
+
 		$config = array(
 			array(
 					'field' => 'pass',

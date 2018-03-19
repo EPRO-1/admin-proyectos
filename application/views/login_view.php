@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="form_login">
-		<form action="" method="POST">
+		<?= form_open('login/user_validation') ?>
 			<span>Iniciar Sesi&oacute;n</span>
 			<hr>
 			<label for="user">Usuario / email:</label>
@@ -20,7 +20,7 @@
 			<div class="login_options">
 				<div class="register">
 					<span>No tengo cuenta.</span>
-					<a href="register">Registrarse</a>
+					<a href="<?= BASE_URL() ?>register">Registrarse</a>
 				</div>
 				<input type="submit" name="acces" value="Acceder">
 			</div>

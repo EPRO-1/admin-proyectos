@@ -3,8 +3,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('login_model');
+		// $this->load->library('session');
+	}
+
 	public function index()
 	{
+		$this->load->helper('form_helper');
 		$this->load->view('login_view');
+	}
+
+	public function user_validation () {
+		$this->load->helper('form_helper');
+		$this->load->helper('url');
+		
+		$username = $this->input->post('user');
+        $password = $this->input->post('pass');
+		
+		if ($this->login_model->login_validation($username, $password) != false) {
+			$username = $this->login_model->login_validation($username, $password)->row('username');
+			$this->session->set_userdata('usuario', $username);
+			redirect(BASE_URL() . 'proyectos');
+		} else {
+			$this->load->view('login_view');
+		}
+
+		// echo $this->input->post('user');
 	}
 }
