@@ -713,16 +713,35 @@ div.addFirstProject:hover {
 	display: flex;
 	width: 100%;
 	margin-bottom: 10px;
+	z-index: 2;
+	transition: all ease 0.3s;
 }
 
-.registrarProyecto form .field label {
+.registrarProyecto form .field_hidden {
+	display: flex;
+	margin: 0;
+	margin-top: -40px;
+	transition: all ease 0.3s;
+	height: 30px;
+	width: 100%;
+	z-index: 1;
+}
+
+.registrarProyecto form .field label,
+.registrarProyecto form .field_hidden label {
 	min-width: 20%;
 	/* background: #000; */
 }
 
+.registrarProyecto form .field_hidden label {
+	color: #ccc;
+}
+
 .registrarProyecto form .field input,
 .registrarProyecto form .field select,
-.registrarProyecto form .field textarea {
+.registrarProyecto form .field textarea,
+.registrarProyecto form .field_hidden select
+{
 	border-radius: 10px;
 	padding: 0 10px;
 	border: none;
@@ -735,7 +754,7 @@ div.addFirstProject:hover {
 	max-width: 300px;
 	min-height: 50px;
 	max-height: 150px;
-	/* border: 0px solid #fff; */
+	border: 2px solid #ccc;
 }
 
 .registrarProyecto form .field .plazo {
@@ -746,7 +765,7 @@ div.addFirstProject:hover {
 
 .registrarProyecto form .field input:focus,
 .registrarProyecto form .field select:focus,
-.registrarProyecto form .field textarea {
+.registrarProyecto form .field textarea:focus {
 	border: 2px solid #5195ec;
 }
 

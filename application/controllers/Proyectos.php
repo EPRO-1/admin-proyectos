@@ -35,6 +35,7 @@ class Proyectos extends CI_Controller {
         $data['tipos_proyecto'] = $this->proyectos_model->get_tipos_proyecto();
         $data['usuarios'] = $this->proyectos_model->get_users();
         $data['departamentos'] = $this->proyectos_model->get_departamentos();
+        $data['proyectos'] = $this->proyectos_model->get_proyectos();
 
         $this->load->view('registrarProyecto_view', $data);
     }

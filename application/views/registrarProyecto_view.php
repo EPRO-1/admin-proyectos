@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Proyectos</title>
+    <title>Registrar proyecto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL() ?>css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -67,6 +67,14 @@
                         <?php endforeach ?>
                     </select>
                 </div>
+                <div class="field_hidden" id="extProyectoField">
+                    <label for="extProyecto">Extension de:</label>
+                    <select name="ext_proyecto" id="extProyecto" required>
+                        <?php foreach ($proyectos as $proyecto): ?>
+                            <option value="<?= $proyecto['id_proyecto'] ?>"><?= $proyecto['nombre'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
                 <div class="field">
                     <label for="descripcion">Descripci&oacute;n:</label>
                     <textarea name="descripcion" id="descripcion" placeholder="Descripci&oacute;n del proyecto" required></textarea>
@@ -101,5 +109,6 @@
         </section>
     </main>
 
+    <script src="<?= BASE_URL() ?>js/main.js"></script>
 </body>
 </html>
