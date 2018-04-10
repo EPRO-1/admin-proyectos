@@ -22,10 +22,13 @@ if (tituloPagigna == 'Equipo') {
         extProyectoField = document.getElementById('extProyectoField');
     
     tipoProyectoField.addEventListener('change', () => {
+        let extProyectoSelect = document.getElementById('extProyectoSelect');
         if (tipoProyectoField.value == 2) {
             extProyectoField.setAttribute('class', 'field');
+            extProyectoSelect.setAttribute('required', '');
         } else if (tipoProyectoField.value == 1) {
             extProyectoField.setAttribute('class', 'field_hidden');
+            extProyectoSelect.removeAttribute('required', '');
         }
     });
 }

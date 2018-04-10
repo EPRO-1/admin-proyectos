@@ -431,7 +431,7 @@ div.addFirstProject:hover {
 }
 
 .equipo .noTeam {
-	width: 40%;
+	width: 50%;
 	min-width: 330px;
 	/* height: 200px; */
 	margin: 0 auto;
@@ -717,6 +717,10 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
+.registrarProyecto form .field .defaultOption {
+	background: #000;
+}
+
 .registrarProyecto form .field_hidden {
 	display: flex;
 	margin: 0;
@@ -755,6 +759,8 @@ div.addFirstProject:hover {
 	min-height: 50px;
 	max-height: 150px;
 	border: 2px solid #ccc;
+	font-size: 0.9em;
+	padding-top: 5px;
 }
 
 .registrarProyecto form .field .plazo {

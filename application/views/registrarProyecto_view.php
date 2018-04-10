@@ -46,6 +46,7 @@
                 <div class="field">
                     <label for="encargado">Responsable:</label>
                     <select name="encargado" id="areaEmpresa" required>
+                        <option class="defaultOption" value="NULL" selected disabled>-- Seleccione un responsable --</option>
                         <?php foreach ($usuarios as $usuario): ?>
                             <option value="<?= $usuario['id_user'] ?>"><?= $usuario['nombres'] . " " . $usuario['apellidos'] ?></option>
                         <?php endforeach ?>
@@ -54,6 +55,7 @@
                 <div class="field">
                     <label for="departamento">Departamento:</label>
                     <select name="departamento" id="departamento" required>
+                        <option class="defaultOption" value="NULL" selected disabled>-- Seleccione un departamento --</option>
                         <?php foreach ($departamentos as $departamento): ?>
                             <option value="<?= $departamento['id_depto'] ?>"><?= $departamento['nombre'] ?></option>
                         <?php endforeach ?>
@@ -62,6 +64,7 @@
                 <div class="field">
                     <label for="tipoProyecto">Tipo de proyecto:</label>
                     <select name="tipo_proyecto" id="tipoProyecto" required>
+                        <option class="defaultOption" value="NULL" selected disabled>-- Seleccione el tipo de proyecto --</option>
                         <?php foreach ($tipos_proyecto as $tipo_proyecto): ?>
                             <option value="<?= $tipo_proyecto['id_tipo'] ?>"><?= $tipo_proyecto['nombre'] ?></option>
                         <?php endforeach ?>
@@ -69,9 +72,10 @@
                 </div>
                 <div class="field_hidden" id="extProyectoField">
                     <label for="extProyecto">Extension de:</label>
-                    <select name="ext_proyecto" id="extProyecto" required>
+                    <select name="ext_proyecto" id="extProyectoSelect">
+                        <option class="defaultOption" value="NULL" selected disabled>-- Seleccione un proyecto --</option>
                         <?php foreach ($proyectos as $proyecto): ?>
-                            <option value="<?= $proyecto['id_proyecto'] ?>"><?= $proyecto['nombre'] ?></option>
+                            <option value="<?= $proyecto['nombre'] ?>"><?= $proyecto['nombre'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
