@@ -6,6 +6,8 @@ class Equipo extends CI_Controller {
     public function __construct () {
         parent::__construct();
 
+        $this->load->helper('form');
+
         if ($this->session->userdata('usuario') !== NULL) {
             // la sesion exista, el acceso es permitido
         } else {

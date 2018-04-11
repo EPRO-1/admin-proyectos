@@ -45,7 +45,8 @@
                     <div id="addUserCard" class="addFirstMember">
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
                         <div id="addingMember" class="addMember hidden">
-                            <form id="addUserForm" class="addUser_form" action="equipo.php" method="POST">
+                            <!-- <form id="addUserForm" class="addUser_form" action="equipo.php" method="POST"> -->
+                            <?= form_open('equipo.php', 'class="addUser_form" id="addUserForm"') ?>
                                 <div class="options">
                                     <i class="fas fa-user-circle fa-4x"></i>
                                     <input  type="submit" id="send">
@@ -54,20 +55,26 @@
                                 </div>
                                 <div class="labels">
                                     <label for="memberName">Nombre: </label>
-                                    <label for="memberSkill">Habilidad:</label>
+                                    <label for="memberSkill">Usuario:</label>
                                     <label for="memberEmail">Email:</label>
-                                    <label for="memberPhone">Tel&eacute;fono:</label>
-                                    <label for="memberCode">C&oacute;digo:</label>
+                                    <label for="memberPhone">Nivel:</label>
+                                    <label for="memberPass">Contrase&ntilde;a:</label>
                                 </div>
                                 <div class="inputs">
                                     <div class="nombre">
                                         <input type="text" name="memberName" placeholder="Nombres" required/>
                                         <input type="text" name="memberLastName" placeholder="Apellidos" required/>
                                     </div>
-                                    <input type="text" name="memberSkill" placeholder="Habilidad" required/>
+                                    <input type="text" name="memberUser" placeholder="Nombre de usuario" required/>
                                     <input type="email" name="memberEmail" placeholder="alguien@ejemplo.com" required/>
-                                    <input type="text" name="memberPhone" placeholder="0000-0000" required/>
-                                    <input type="text" name="memberCode" placeholder="{{ codigo }} (autogenerado)" disabled="">
+                                    <select name="memberLevel" id="memberLevelSelect" required>
+                                        <option value="null" disabled selected>-- Seleccione un nivel de usuario --</option>
+                                        <option>Opcion</option>
+                                        <option>Opcion</option>
+                                        <option>Opcion</option>
+                                        <option>Opcion</option>
+                                    </select>
+                                    <input type="text" name="memberPass" placeholder="Contrase&ntilde;a">
                                 </div>
                             </form>
                         </div>

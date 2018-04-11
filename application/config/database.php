@@ -91,6 +91,26 @@ $db['default'] = array(
 	'encrypt' => FALSE,
 	'compress' => FALSE,
 	'stricton' => FALSE,
-	'failover' => array(),
+	'failover' => array(
+		// EDWANO-PC conn
+		array(
+			'hostname' => 'localhost\SQLEXPRESS01',
+			'username' => 'root',
+			'password' => '',
+			'database' => 'BDProyectos',
+			'dbdriver' => 'sqlsrv',
+			'dbprefix' => '',
+			'pconnect' => FALSE,
+			'db_debug' => (ENVIRONMENT !== 'production'),
+			'cache_on' => FALSE,
+			'cachedir' => '',
+			'char_set' => 'utf8',
+			'dbcollat' => 'utf8_general_ci',
+			'swap_pre' => '',
+			'encrypt' => FALSE,
+			'compress' => FALSE,
+			'stricton' => FALSE
+		)
+	),
 	'save_queries' => TRUE
 );
