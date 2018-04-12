@@ -51,7 +51,8 @@ class Proyectos_model extends CI_Model {
             'descripcion' => $this->input->post('descripcion'),
             'id_depto' => $this->input->post('departamento'),
             'fecha_inicio_1' => $this->input->post('fechaInicio'),
-            'fecha_final_1' => $this->input->post('fechaFinal')
+            'fecha_final_1' => $this->input->post('fechaFinal'),
+            'extension_de' => $this->input->post('ext_proyecto')
         );
 
         return $this->db->insert('proyecto', $data);

@@ -9,6 +9,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+    <aside class="back"></aside>
     <aside >
         <div class="userInfo">
             <div class="userImg">
@@ -48,6 +49,7 @@
                                 <span>Encargado:</span>
                                 <span>&Aacute;rea:</span>
                                 <span>Tipo:</span>
+                                <span>Extension de:</span>
                                 <span>Presupuesto:</span>
                                 <span>Descripci&oacute;n:</span>
                                 <span>Fecha inicio:</span>
@@ -57,6 +59,7 @@
                                 <span><?= $proyecto['nombres'] . " " . $proyecto['apellidos'] ?></span>
                                 <span><?= $proyecto['nombreDpto'] ?></span>
                                 <span><?= $proyecto['nombreTipo'] ?></span>
+                                <span>Nombre del proyecto</span>
                                 <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
                                     <span>No asignado</span>
                                 <?php else: ?>

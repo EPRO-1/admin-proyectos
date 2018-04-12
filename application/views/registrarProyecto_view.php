@@ -75,7 +75,7 @@
                     <select name="ext_proyecto" id="extProyectoSelect">
                         <option class="defaultOption" value="NULL" selected disabled>-- Seleccione un proyecto --</option>
                         <?php foreach ($proyectos as $proyecto): ?>
-                            <option value="<?= $proyecto['nombre'] ?>"><?= $proyecto['nombre'] ?></option>
+                            <option value="<?= $proyecto['id_proyecto'] ?>"><?= $proyecto['nombre'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
