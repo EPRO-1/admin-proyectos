@@ -21,9 +21,6 @@ class Proyectos_model extends CI_Model {
     }
 
     public function get_proyectos () {
-        // $query = $this->db->join('tipo_proyecto', 'tipo_proyecto.id_tipo = proyecto.tipo_proyecto');
-        // $query = $this->db->join('usuario', 'usuario.id_user = proyecto.encargado');
-        // $query = $this->db->get('proyecto', 'tipo_proyecto.nombre as nombre_tipo');
         $query = $this->db->query(
             'select proyecto.*, tipo_proyecto.nombre as nombreTipo, usuario.nombres, apellidos, departamentos.nombre as nombreDpto
             from proyecto, tipo_proyecto, usuario, departamentos

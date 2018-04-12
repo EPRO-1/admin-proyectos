@@ -9,14 +9,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+    <aside class="back"></aside>
     <aside >
         <div class="userInfo">
             <div class="userImg">
                 <i class="fas fa-user-circle fa-4x"></i>
             </div>
             <div class="userInfoDet">
-                <span>{{ username }}</span>
-                <span>{{ Rol desempe&ntilde;ado }}</span>
+                <span><?= $this->session->userdata('usuario')[0] ?></span>
+                <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
         </div>

@@ -24,7 +24,9 @@ class Login extends CI_Controller {
 		
 		if ($this->login_model->login_validation($username, $password) != false) {
 			$username = $this->login_model->login_validation($username, $password)->row('username');
-			$this->session->set_userdata('usuario', $username);
+			$rol_user = $this->login_model->login_validation($username, $password)->row('nivel_usuario');
+			$user = array($username, $rol_user);
+			$this->session->set_userdata('usuario', $user);
 			redirect(BASE_URL() . 'proyectos');
 		} else {
 			$this->load->view('login_view');

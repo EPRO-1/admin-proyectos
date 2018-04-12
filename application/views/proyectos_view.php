@@ -16,8 +16,8 @@
                 <i class="fas fa-user-circle fa-4x"></i>
             </div>
             <div class="userInfoDet">
-                <span><?= $this->session->userdata('usuario') ?></span>
-                <span>{{ Rol desempe&ntilde;ado }}</span>
+                <span><?= $this->session->userdata('usuario')[0] ?></span>
+                <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
         </div>
@@ -49,7 +49,9 @@
                                 <span>Encargado:</span>
                                 <span>&Aacute;rea:</span>
                                 <span>Tipo:</span>
-                                <span>Extension de:</span>
+                                <?php if ($proyecto['extension_de'] != NULL ): ?>
+                                    <span>Extension de:</span>
+                                <?php endif ?>
                                 <span>Presupuesto:</span>
                                 <span>Descripci&oacute;n:</span>
                                 <span>Fecha inicio:</span>
@@ -59,7 +61,9 @@
                                 <span><?= $proyecto['nombres'] . " " . $proyecto['apellidos'] ?></span>
                                 <span><?= $proyecto['nombreDpto'] ?></span>
                                 <span><?= $proyecto['nombreTipo'] ?></span>
-                                <span>Nombre del proyecto</span>
+                                <?php if ($proyecto['extension_de'] != NULL ): ?>
+                                    <span><?php echo $proyectos[$proyecto['extension_de']-1]['nombre'] ?></span>
+                                <?php endif ?>
                                 <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
                                     <span>No asignado</span>
                                 <?php else: ?>

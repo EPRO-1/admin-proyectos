@@ -16,8 +16,8 @@
                 <i class="fas fa-user-circle fa-4x"></i>
             </div>
             <div class="userInfoDet">
-                <span><?= $this->session->userdata('usuario') ?></span>
-                <span>{{ Rol desempe&ntilde;ado }}</span>
+                <span><?= $this->session->userdata('usuario')[0] ?></span>
+                <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
         </div>
