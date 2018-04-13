@@ -7,6 +7,7 @@ class Equipo extends CI_Controller {
         parent::__construct();
         $this->load->helper('form');
         $this->load->model('usuarios_model');
+        $this->load->model('equipo_model');
 
         if ($this->session->userdata('usuario') !== NULL) {
             // la sesion exista, el acceso es permitido
@@ -18,7 +19,15 @@ class Equipo extends CI_Controller {
     public function index () {
         $level_user = $this->session->userdata('usuario')[1];
         $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+
+        $data['niveles_usuario'] = $this->equipo_model->get_levels();
+
         $this->load->view('equipo_view', $data);
+    }
+
+    public function register_member () {
+        $this->equipo_model->register_member();
+        redirect(BASE_URL() . 'equipo');
     }
 
     public function listado () {

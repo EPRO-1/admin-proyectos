@@ -46,7 +46,7 @@
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
                         <div id="addingMember" class="addMember hidden">
                             <!-- <form id="addUserForm" class="addUser_form" action="equipo.php" method="POST"> -->
-                            <?= form_open('equipo.php', 'class="addUser_form" id="addUserForm"') ?>
+                            <?= form_open('equipo/register_member', 'class="addUser_form" id="addUserForm"') ?>
                                 <div class="options">
                                     <i class="fas fa-user-circle fa-4x"></i>
                                     <input  type="submit" id="send">
@@ -69,12 +69,11 @@
                                     <input type="email" name="memberEmail" placeholder="alguien@ejemplo.com" required/>
                                     <select name="memberLevel" id="memberLevelSelect" required>
                                         <option value="null" disabled selected>-- Seleccione un nivel de usuario --</option>
-                                        <option>Opcion</option>
-                                        <option>Opcion</option>
-                                        <option>Opcion</option>
-                                        <option>Opcion</option>
+                                        <?php foreach ($niveles_usuario as $niv_user): ?>
+                                            <option value="<?= $niv_user['id'] ?>"><?= $niv_user['nivel'] ?></option>
+                                        <?php endforeach ?>
                                     </select>
-                                    <input type="text" name="memberPass" placeholder="Contrase&ntilde;a">
+                                    <input type="password" name="memberPass" placeholder="Contrase&ntilde;a">
                                 </div>
                             </form>
                         </div>
