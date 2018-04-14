@@ -20,8 +20,8 @@
                 <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
+            <hr>
         </div>
-        <hr>
         <div class="options">
             <a href="proyectos">Proyectos</a>
             <a href="equipo">Equipo</a>

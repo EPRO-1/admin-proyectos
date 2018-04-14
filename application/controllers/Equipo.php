@@ -6,6 +6,7 @@ class Equipo extends CI_Controller {
     public function __construct () {
         parent::__construct();
         $this->load->helper('form');
+        $this->load->helper('url');
         $this->load->model('usuarios_model');
         $this->load->model('equipo_model');
 
@@ -39,6 +40,11 @@ class Equipo extends CI_Controller {
 
     public function register_member () {
         $this->equipo_model->register_member();
+        redirect(BASE_URL() . 'equipo');
+    }
+    
+    public function remove_member () {
+        $this->equipo_model->remove_team_member();
         redirect(BASE_URL() . 'equipo');
     }
 

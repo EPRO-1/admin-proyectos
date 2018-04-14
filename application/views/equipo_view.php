@@ -20,8 +20,8 @@
                 <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
+            <hr>
         </div>
-        <hr>
         <div class="options">
             <a href="proyectos">Proyectos</a>
             <a href="equipo">Equipo</a>
@@ -49,15 +49,15 @@
                                 <i class="fas fa-user-circle fa-4x"></i>
                                 <span><?= $member['username'] ?></span>
                             </div>
-                            <div class="details_btn">
+                            <!-- <div class="details_btn">
                                 <a href="#">Detalles</a>
-                            </div>
+                            </div> -->
+                            <span class="editIcon"><i class="fas fa-edit fa-2x"></i></span>
                             <div class="eraseEdit_btns">
-                                <form action="" methos="GET">
-                                    <input type="hidden" value="[id_member]">
-                                    <i class="fas fa-edit fa-lg"></i>
-                                    <input type="submit" name="delete_member" id="deleteMember">
-                                    <label for="deleteMember" class="deleteMemberSubmit"><i class="fas fa-user-times fa-lg"></i></label>
+                                <?= form_open('equipo/remove_member') ?>
+                                    <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
+                                    <input type="submit" name="delete_member" id="deleteMember<?= $member['id_user'] ?>">
+                                    <label for="deleteMember<?= $member['id_user'] ?>" class="deleteMemberSubmit"><i class="fas fa-user-times fa-lg"></i></label>
                                 </form>
                             </div>
                         </div>
@@ -66,16 +66,19 @@
                                 <span>Nombres:</span>
                                 <span>Apellidos:</span>
                                 <span>Email:</span>
-                                <span>Rol:</span>
+                                <span>Nivel:</span>
                             </div>
                             <div class="values">
                                 <span><?= $member['nombres'] ?></span>
                                 <span><?= $member['apellidos'] ?></span>
                                 <span><?= $member['mail'] ?></span>
-                                <span><?= $member['nivel_usuario'] ?></span>
+                                <span><?= $member['nivel'] ?></span>
                             </div>
                             <div class="asignProject_btn">
                                 <a href="#">Asignar a proyecto</a>
+                            </div>
+                            <div class="asignProject_btn">
+                                <a href="#">Detalles</a>
                             </div>
                         </div>
                     </article>
@@ -108,7 +111,7 @@
                                     <input type="text" name="memberUser" placeholder="Nombre de usuario" required/>
                                     <input type="email" name="memberEmail" placeholder="alguien@ejemplo.com" required/>
                                     <select name="memberLevel" id="memberLevelSelect" required>
-                                        <option value="null" disabled selected>-- Seleccione un nivel de usuario --</option>
+                                        <option value="null" disabled selected>-- Seleccione un nivel --</option>
                                         <?php foreach ($niveles_usuario as $niv_user): ?>
                                             <option value="<?= $niv_user['id'] ?>"><?= $niv_user['nivel'] ?></option>
                                         <?php endforeach ?>
@@ -168,7 +171,6 @@
 
         </section>
     </main>
-
 
     <script src="<?= BASE_URL() ?>js/main.js"></script>
 </body>

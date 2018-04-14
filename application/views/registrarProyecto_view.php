@@ -20,8 +20,8 @@
                 <span><?= $nivel_usuario ?></span>
                 <span>Cuenta</span>
             </div>
+            <hr>
         </div>
-        <hr>
         <div class="options">
             <a href="<?= BASE_URL() ?>proyectos">Proyectos</a>
             <a href="<?= BASE_URL() ?>equipo">Equipo</a>
