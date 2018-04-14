@@ -18,8 +18,20 @@ class Equipo extends CI_Controller {
 
     public function index () {
         $level_user = $this->session->userdata('usuario')[1];
-        $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+        $userName = $this->session->userdata('usuario')[0];
 
+        $equipo = $this->equipo_model->get_team_members($userName);
+        // print_r($equipo);
+
+        if ($equipo != false) {
+            $checkEquipo = true;
+            $data['equipo'] = $equipo;
+        } else {
+            $checkEquipo = false;
+        }
+
+        $data['checkEquipo'] = $checkEquipo;
+        $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
         $data['niveles_usuario'] = $this->equipo_model->get_levels();
 
         $this->load->view('equipo_view', $data);

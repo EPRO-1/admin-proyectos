@@ -14,6 +14,8 @@ if (tituloPagigna == 'Equipo') {
         addUserIcon.setAttribute("class", "addUserIcon hidden");
         addUserCard.setAttribute('class', 'addFirstMember active');
         addingMember.setAttribute('class', 'addMember');
+
+        window.scrollTo(0, window.scrollMaxY)
         
     });
 } else if (tituloPagigna == 'Registrar proyecto') {

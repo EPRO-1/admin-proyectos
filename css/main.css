@@ -429,7 +429,7 @@ div.addFirstProject:hover {
 
 .equipo {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
 	/* margin-top: 60px; */
@@ -439,7 +439,8 @@ div.addFirstProject:hover {
 	overflow: auto;
 }
 
-.equipo .noTeam {
+.equipo .noTeam,
+.equipo .addTeam {
 	width: 50%;
 	min-width: 330px;
 	/* height: 200px; */
@@ -449,11 +450,19 @@ div.addFirstProject:hover {
 	font-weight: bold;
 }
 
-.equipo .noTeam .addFirstMember {
+.equipo .addTeam {
+	width: 40%;
+	margin: 30px auto;
+	min-width: 360px;
+}
+
+
+.equipo .noTeam .addFirstMember,
+.equipo .addTeam .addFirstMember {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 250px;
+	height: 300px;
 	border-radius: 20px;
 	border-style: dashed;
 	background: #adccf5;
@@ -461,20 +470,28 @@ div.addFirstProject:hover {
 	margin-top: 20px;
 }
 
+.equipo .addTeam .addFirstMember {
+	margin-top: 0;
+	height: 250px;
+}
+
 .addUserIcon.hidden {
 	display: none;
 }
 
-.equipo .noTeam .addFirstMember.active {
+.equipo .noTeam .addFirstMember.active,
+.equipo .addTeam .addFirstMember.active {
 	border: 4px solid #222A53;
 	cursor: default;
 }
 
-.equipo .noTeam .addFirstMember.active:hover {
+.equipo .noTeam .addFirstMember.active:hover,
+.equipo .addTeam .addFirstMember.active:hover {
 	background: #adccf5;
 }
 
-.equipo .noTeam .addFirstMember:hover {
+.equipo .noTeam .addFirstMember:hover,
+.equipo .addTeam .addFirstMember:hover {
 	background: #5195ec;
 }
 
@@ -591,11 +608,11 @@ div.addFirstProject:hover {
 	min-width: 360px;
 	width: 40%;
 	padding: 20px 0;
-	margin: 20px;	
-	border-radius: 10px;
+	margin: 30px auto;
+	border-radius: 5px;
 
-	box-shadow: 5px 5px 10px #000;
-	background: rgb(174, 217, 236);
+	box-shadow: 0px 0px 15px #000;
+	background: #c7e1ec;
 }
 
 .equipo .teamMember .options {

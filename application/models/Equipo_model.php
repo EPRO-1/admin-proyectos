@@ -22,7 +22,14 @@
             return $this->db->insert('usuario', $data);
         }
 
-        public function get_team_members () {
-            $query = $this->db->get('usuario');
+        public function get_team_members ($username) {
+            $where = array('username !=' => $username);
+            $query = $this->db->get_where('usuario', $where);
+
+            if ($query->num_rows() > 0) {
+                return $query->result_array();
+            } else {
+                return false;
+            }
         }
     } 
