@@ -740,14 +740,16 @@ div.addFirstProject:hover {
 	/* background: #000; */
 }
 
-.equipo .teamMember .info .asignProject_btn {
+.equipo .teamMember .info .asignProject_btn,
+.equipo .teamMember .info .memberDetails_btn {
 	/* width: 100px; */
 	margin-top: 25px;
 	/* background: #ccc; */
 	text-align: center;
 }
 
-.equipo .teamMember .info .asignProject_btn a {
+.equipo .teamMember .info .asignProject_btn a,
+.equipo .teamMember .info .memberDetails_btn a {
 	padding: 5px 10px;
 	background: #051258;
 	color: #fff;
@@ -758,8 +760,29 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
-.equipo .teamMember .info .asignProject_btn a:hover {
+.equipo .teamMember .info .asignProject_btn a:hover,
+.equipo .teamMember .info .memberDetails_btn a:hover {
 	background: #2c44ce;
+	transition: all ease 0.3s;
+}
+
+.equipo .teamMember .info .memberDetails_btn a.hidden {
+	display: none;
+}
+
+.equipo .teamMember .info .memberDetails_btn .asignarProyecto {
+	border: none;
+	padding: 5px 10px;
+	background: #05581e;
+	color: #fff;
+	font-size: 0.8em;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+	cursor: pointer;
+}
+
+.equipo .teamMember .info .memberDetails_btn .asignarProyecto:hover{
+	background: #0eac3d;
 }
 
 .registrarProyecto {

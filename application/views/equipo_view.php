@@ -74,12 +74,15 @@
                                 <span><?= $member['mail'] ?></span>
                                 <span><?= $member['nivel'] ?></span>
                             </div>
-                            <div class="asignProject_btn">
-                                <a href="#">Asignar a proyecto</a>
-                            </div>
-                            <div class="asignProject_btn">
-                                <a href="#">Detalles</a>
-                            </div>
+                            <form action="">
+                                <div class="asignProject_btn">
+                                    <a href="#">Asignar a proyecto</a>
+                                </div>
+                                <div class="memberDetails_btn">
+                                    <!-- <a href="#" class="memberDetails_link">Detalles</a> -->
+                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyecto">
+                                </div>
+                            </form>
                         </div>
                     </article>
                 <?php endforeach ?>

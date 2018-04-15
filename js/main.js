@@ -18,6 +18,17 @@ if (tituloPagigna == 'Equipo') {
         window.scrollTo(0, window.scrollMaxY)
         
     });
+
+    let asignProject_btns = [...document.getElementsByClassName('asignProject_btn')],
+        memberDetails_links = [...document.getElementsByClassName('memberDetails_link')];
+
+    for (let i = 0; i < asignProject_btns.length; i++) {
+        asignProject_btns[i].addEventListener('click', () => {
+            console.log('Boton' + i);
+            memberDetails_links[i].setAttribute('class', 'hidden');
+        });
+    }
+
 } else if (tituloPagigna == 'Registrar proyecto') {
     //..
     let tipoProyectoField = document.getElementById('tipoProyecto'),
