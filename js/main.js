@@ -20,12 +20,14 @@ if (tituloPagigna == 'Equipo') {
     });
 
     let asignProject_btns = [...document.getElementsByClassName('asignProject_btn')],
-        memberDetails_links = [...document.getElementsByClassName('memberDetails_link')];
+        memberDetails_links = [...document.getElementsByClassName('memberDetails_link')],
+        asignarProyectoSubmits = [...document.getElementsByClassName('asignarProyectoSubmit')];
 
     for (let i = 0; i < asignProject_btns.length; i++) {
         asignProject_btns[i].addEventListener('click', () => {
             console.log('Boton' + i);
             memberDetails_links[i].setAttribute('class', 'hidden');
+            asignarProyectoSubmits[i].setAttribute('class', 'asignarProyectoSubmit');
         });
     }
 

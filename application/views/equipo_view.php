@@ -74,13 +74,20 @@
                                 <span><?= $member['mail'] ?></span>
                                 <span><?= $member['nivel'] ?></span>
                             </div>
-                            <form action="">
+                            <?= form_open('equipo', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
                                 <div class="asignProject_btn">
                                     <a href="#">Asignar a proyecto</a>
+                                    <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
                                 </div>
                                 <div class="memberDetails_btn">
-                                    <!-- <a href="#" class="memberDetails_link">Detalles</a> -->
-                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyecto">
+                                    <a href="#" class="memberDetails_link">Detalles</a>
+                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden">
                                 </div>
                             </form>
                         </div>

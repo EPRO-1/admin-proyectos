@@ -740,6 +740,12 @@ div.addFirstProject:hover {
 	/* background: #000; */
 }
 
+.equipo .teamMember .info .asignTeamProject_form {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
 .equipo .teamMember .info .asignProject_btn,
 .equipo .teamMember .info .memberDetails_btn {
 	/* width: 100px; */
@@ -766,11 +772,12 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
-.equipo .teamMember .info .memberDetails_btn a.hidden {
+.equipo .teamMember .info .memberDetails_btn .hidden {
 	display: none;
 }
 
-.equipo .teamMember .info .memberDetails_btn .asignarProyecto {
+.equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmit {
+	/* display: flex; */
 	border: none;
 	padding: 5px 10px;
 	background: #05581e;
@@ -781,7 +788,7 @@ div.addFirstProject:hover {
 	cursor: pointer;
 }
 
-.equipo .teamMember .info .memberDetails_btn .asignarProyecto:hover{
+.equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmit:hover{
 	background: #0eac3d;
 }
 
