@@ -77,17 +77,21 @@
                             <?= form_open('equipo', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
                                 <div class="asignProject_btn">
                                     <a href="#">Asignar a proyecto</a>
-                                    <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                    <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign hidden">
+                                        <?php foreach ($proyectos as $proyecto): ?>
+                                            <option 
+                                                value="<?= $proyecto['id_proyecto'] ?>" 
+                                                title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
+                                                    ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
+                                                <?= $proyecto['nombre'] ?>
+                                            </option>
+                                        <?php endforeach ?>
                                     </select>
                                 </div>
                                 <div class="memberDetails_btn">
                                     <a href="#" class="memberDetails_link">Detalles</a>
                                     <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden">
+                                    <span class="cancelAsign hidden"><i class="fa fa-times-circle"></i></span>
                                 </div>
                             </form>
                         </div>

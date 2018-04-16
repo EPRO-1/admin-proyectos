@@ -9,6 +9,7 @@ class Equipo extends CI_Controller {
         $this->load->helper('url');
         $this->load->model('usuarios_model');
         $this->load->model('equipo_model');
+        $this->load->model('proyectos_model');
 
         if ($this->session->userdata('usuario') !== NULL) {
             // la sesion exista, el acceso es permitido
@@ -34,6 +35,7 @@ class Equipo extends CI_Controller {
         $data['checkEquipo'] = $checkEquipo;
         $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
         $data['niveles_usuario'] = $this->equipo_model->get_levels();
+        $data['proyectos'] = $this->proyectos_model->get_proyectos();
 
         $this->load->view('equipo_view', $data);
     }

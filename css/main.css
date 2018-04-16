@@ -631,7 +631,7 @@ div.addFirstProject:hover {
 
 .equipo .teamMember:hover {
 	/* border: 1px solid #2c44ce; */
-	box-shadow: 0px 0px 20px #0d1e7c;
+	box-shadow: 0px 0px 20px #0d397c;
 	box-sizing: initial;
 }
 
@@ -746,12 +746,24 @@ div.addFirstProject:hover {
 	width: 100%;
 }
 
+.equipo .teamMember .info .asignTeamProject_form .selectProyectToAsign {
+	width: 140px;
+	max-width: 140px;
+	border: none;
+	height: 25px;
+	margin: auto;
+}
+
 .equipo .teamMember .info .asignProject_btn,
 .equipo .teamMember .info .memberDetails_btn {
 	/* width: 100px; */
 	margin-top: 25px;
 	/* background: #ccc; */
 	text-align: center;
+}
+
+.equipo .teamMember .info .asignProject_btn {
+	text-align: left;
 }
 
 .equipo .teamMember .info .asignProject_btn a,
@@ -772,7 +784,8 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
-.equipo .teamMember .info .memberDetails_btn .hidden {
+.equipo .teamMember .info .memberDetails_btn .hidden,
+.equipo .teamMember .info .asignProject_btn .hidden {
 	display: none;
 }
 
@@ -789,7 +802,17 @@ div.addFirstProject:hover {
 }
 
 .equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmit:hover{
-	background: #0eac3d;
+	background: #07852d;
+}
+
+.equipo .teamMember .info .memberDetails_btn .cancelAsign {
+	color: #e64949;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+.equipo .teamMember .info .memberDetails_btn .cancelAsign:hover {
+	color: #f11a1a;
 }
 
 .registrarProyecto {

@@ -20,14 +20,32 @@ if (tituloPagigna == 'Equipo') {
     });
 
     let asignProject_btns = [...document.getElementsByClassName('asignProject_btn')],
+        asignProject_a = [...document.querySelectorAll('.asignProject_btn a')],
+        selectProyectToAsign = [...document.getElementsByClassName('selectProyectToAsign')],
         memberDetails_links = [...document.getElementsByClassName('memberDetails_link')],
-        asignarProyectoSubmits = [...document.getElementsByClassName('asignarProyectoSubmit')];
+        asignarProyectoSubmits = [...document.getElementsByClassName('asignarProyectoSubmit')],
+        cancelAsign_btns = [...document.getElementsByClassName('cancelAsign')],
+        deleteMemberSubmits = [...document.getElementsByClassName('deleteMemberSubmit')];
 
     for (let i = 0; i < asignProject_btns.length; i++) {
         asignProject_btns[i].addEventListener('click', () => {
-            console.log('Boton' + i);
+            // console.log('Boton' + i);
+            asignProject_a[i].innerHTML = '->';
             memberDetails_links[i].setAttribute('class', 'hidden');
+            selectProyectToAsign[i].setAttribute('class', 'selectProyectToAsign');
             asignarProyectoSubmits[i].setAttribute('class', 'asignarProyectoSubmit');
+            cancelAsign_btns[i].setAttribute('class', 'cancelAsign');
+        });
+
+        cancelAsign_btns[i].addEventListener('click', () => {
+            // console.log('lol');
+            location.reload();
+        });
+
+        deleteMemberSubmits[i].addEventListener('click', function confirmarEliminar(e) {
+            if (!confirm('El Miembro de equipo ya no estará disponible')) {
+                e.preventDefault();
+            }
         });
     }
 
