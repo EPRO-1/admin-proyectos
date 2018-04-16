@@ -48,4 +48,25 @@
 
             $this->db->update('usuario', $data, $where);
         }
+
+        public function asign_member_proyect () {
+            $data = array(
+                'id_proyecto' => $this->input->post('selectProyectToAsign'),
+                'id_usuario' => $this->input->post('idMember')
+            );
+
+            // print_r($data);
+            return $this->db->insert('asignar_equipo_proyecto', $data);
+        }
+
+        public function getAsignedProyectsId () {
+            $this->db->select('usuario.id_user, proyecto.id_proyecto');
+            $this->db->from('asignar_equipo_proyecto');
+            $this->db->join('proyecto', 'asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto');
+            $this->db->join('usuario', 'asignar_equipo_proyecto.id_usuario = usuario.id_user');
+
+            $query = $this->db->get();
+            return $query->result_array();
+
+        }
     } 

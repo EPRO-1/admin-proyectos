@@ -74,17 +74,30 @@
                                 <span><?= $member['mail'] ?></span>
                                 <span><?= $member['nivel'] ?></span>
                             </div>
-                            <?= form_open('equipo', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
+                            <?= form_open('equipo/asign_to_project', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
+                                <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
                                 <div class="asignProject_btn">
                                     <a href="#">Asignar a proyecto</a>
                                     <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign hidden">
+                                        <option value="" disabled selected>-- Seleccione un proyecto --</option>
                                         <?php foreach ($proyectos as $proyecto): ?>
-                                            <option 
-                                                value="<?= $proyecto['id_proyecto'] ?>" 
-                                                title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
-                                                    ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
-                                                <?= $proyecto['nombre'] ?>
-                                            </option>
+                                            <?php for ($i = 0; $i < count($idsAsignados); $i++): ?>
+                                                <?php if ($idsAsignados[$i]['id_user'] == $member['id_user'] && $idsAsignados[$i]['id_proyecto'] == $proyecto['id_proyecto']): ?>
+                                                    <option 
+                                                        value="" 
+                                                        title="<?= $member['nombres'] . ' ya est&aacute; asignado a este proyecto'?>"
+                                                        disabled>
+                                                        <?= $proyecto['nombre'] ?>
+                                                    </option>
+                                                <?php else: ?>
+                                                    <option 
+                                                        value="<?= $proyecto['id_proyecto'] ?>" 
+                                                        title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
+                                                            ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
+                                                        <?= $proyecto['nombre'] ?>
+                                                    </option>
+                                                <?php endif ?>
+                                            <?php endfor ?>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
