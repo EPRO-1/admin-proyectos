@@ -306,10 +306,17 @@ header bar .logout {
 	top: 10px;
 	right: 30px;
 	text-decoration: none;
-	padding: 10px 15px;
-	background: rgb(240, 174, 174);
+	padding: 3px;
+	background: #ffffff;
 	color: #f11a1a;
-	border-radius: 10px;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+}
+
+header bar .logout:hover {
+	background: #f11a1a;
+	color: #fff;
+	border-radius: 50%;
 }
 
 header .barHidden {

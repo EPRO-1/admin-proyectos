@@ -33,7 +33,9 @@
         <header>
             <bar>
                 Registrar proyecto
-                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">
+                    <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
+                </a>
             </bar>
         </header>
         <section class="registrarProyecto">

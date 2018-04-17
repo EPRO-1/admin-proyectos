@@ -33,7 +33,9 @@
         <header>
             <bar>
                 Equipo de trabajo
-                <a class="logout" href="<?= BASE_URL() ?>login/logout">X</a>
+                <a class="logout" href="<?= BASE_URL() ?>login/logout">
+                    <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
+                </a>
             </bar>
             <div class="barHidden"></div>
         </header>
@@ -52,7 +54,7 @@
                             <!-- <div class="details_btn">
                                 <a href="#">Detalles</a>
                             </div> -->
-                            <span class="editIcon"><i class="fas fa-edit fa-2x"></i></span>
+                            <!-- <span class="editIcon"><i class="fas fa-edit fa-2x"></i></span> -->
                             <div class="eraseEdit_btns">
                                 <?= form_open('equipo/remove_member') ?>
                                     <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
@@ -112,7 +114,7 @@
                                     </select>
                                 </div>
                                 <div class="memberDetails_btn">
-                                    <a href="#" class="memberDetails_link">Detalles</a>
+                                    <a href="equipo/teamMemberDetails/<?= $member['username'] ?>" class="memberDetails_link">Detalles</a>
                                     <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden" disabled="">
                                     <span class="cancelAsign hidden"><i class="fa fa-times-circle"></i></span>
                                 </div>

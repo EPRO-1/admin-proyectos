@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Proyectos</title>
+    <title>Registrar proyecto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL() ?>css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -32,19 +32,18 @@
     <main>
         <header>
             <bar>
-                Proyecto registrado
+                Detalles de {{ TeamMember }}
                 <a class="logout" href="<?= BASE_URL() ?>login/logout">
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
         </header>
-        <section class="proyectoRegistrado">
-            <span>El proyecto ha sido registrado &nbsp;&nbsp;&nbsp; <i class="fas fa-check-circle fa-2x"></i></span>
-            <div class="options">
-                <a href="<?= BASE_URL() ?>proyectos">Ver proyectos</a>
-            </div>
+
+        <section class="registrarProyecto">
+            Detalles
         </section>
     </main>
 
+    <script src="<?= BASE_URL() ?>js/main.js"></script>
 </body>
 </html>

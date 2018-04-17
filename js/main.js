@@ -43,6 +43,7 @@ if (tituloPagigna == 'Equipo') {
             // No se cambiaba con setAttribute >:v
             asignarProyectoSubmits[i].style.background = '#05581e';
             asignarProyectoSubmits[i].style.cursor = 'pointer';
+            asignarProyectoSubmits[i].style.transition = 'all ease 0.3s';
 
         });
 

@@ -35,6 +35,22 @@ class Register extends CI_Controller {
 					'errors' => array(
 							'matches' => 'Las contrase&ntilde;as no coinciden.',
 					)
+			),
+			array(
+					'field' => 'user_email',
+					'label' => 'email',
+					'rules' => 'trim|required|valid_email|is_unique[usuario.mail]',
+					'errors' => array(
+						'is_unique' => 'El %s ya est&aacute; en uso.',
+					)
+			),
+			array(
+					'field' => 'user_user',
+					'label' => 'usuario',
+					'rules' => 'trim|is_unique[usuario.username]',
+					'errors' => array(
+						'is_unique' => 'El %s ya est&aacute; en uso.',
+					)
 			)
 		);
 		

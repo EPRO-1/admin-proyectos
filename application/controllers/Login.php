@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 		$this->load->helper('url');
 		
 		$username = $this->input->post('user');
-        $password = $this->input->post('pass');
+        $password = md5($this->input->post('pass'));
 		
 		if ($this->login_model->login_validation($username, $password) != false) {
 			$username = $this->login_model->login_validation($username, $password)->row('username');

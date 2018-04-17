@@ -11,7 +11,7 @@ class Register_user_model extends CI_Model {
 
         $data = array (
             'username' => $this->input->post('user_user'),
-            'passcode' => $this->input->post('pass'),
+            'passcode' => md5($this->input->post('pass')),
             'mail' => $this->input->post('user_email'),
             'nombres' => $this->input->post('user_names'),
             'apellidos' => $this->input->post('user_lastnames')
