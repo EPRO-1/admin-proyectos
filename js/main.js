@@ -59,6 +59,37 @@ if (tituloPagigna == 'Equipo') {
         });
     }
 
+} else if (tituloPagigna == 'Detalles :: Equipo') {
+
+    let editInfoBtn = document.getElementById('editInfoBtn');
+
+    editInfoBtn.addEventListener('click', () => {
+        let submitChanges = document.getElementById('sendChanges'),
+            cancelChanges = document.getElementById('cancelChanges'),
+            memberInputs = document.querySelectorAll('.detallesMember .memberData form div input'),
+            nivelUserInput = document.getElementById('nivelUsuario'),
+            statusUserInput = document.getElementById('status'),
+            selectNivelUsuario = document.getElementById('selectNivelUsuario'),
+            selectStatusUsuario = document.getElementById('selectStatusUsuario');
+            
+            editInfoBtn.setAttribute('class', 'hidden');
+            submitChanges.removeAttribute('class');
+            cancelChanges.setAttribute('class', 'cancelChanges');
+            nivelUserInput.setAttribute('class', 'hidden');
+            statusUserInput.setAttribute('class', 'hidden');
+            selectNivelUsuario.removeAttribute('class');
+            selectStatusUsuario.removeAttribute('class');
+
+            for (let i = 0; i < memberInputs.length; i++) {
+                memberInputs[i].removeAttribute('disabled');
+            }
+
+            cancelChanges.addEventListener('click', () => {
+                location.reload();
+            });
+    });
+
+
 } else if (tituloPagigna == 'Registrar proyecto') {
     //..
     let tipoProyectoField = document.getElementById('tipoProyecto'),

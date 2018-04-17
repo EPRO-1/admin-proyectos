@@ -70,7 +70,51 @@
 
         }
 
-        public function getNotAsignedProyectsId () {
+        public function getSpecificTeamMemberData ($username) {
+            $where = array('username' => $username);
+
+            $this->db->select('usuario.*, niveles_usuario.nivel');
+            $this->db->from('usuario');
+            $this->db->join('niveles_usuario', 'usuario.nivel_usuario = niveles_usuario.id');
+            $this->db->where($where);
+
+            // $query = $this->db->get_where('usuario', $where);
+            $query = $this->db->get();
+            return $query->result_array()[0];
+        }
+
+        public function editMemberInfo () {
+            $id_member = $this->input->post('idMember');
+            $user = $this->input->post('username');
+            $email = $this->input->post('email');
+
+            $whereCheck = array(
+                'username' => $user,
+                'mail' => $email
+            );
             
+            $this->db->select('usuario.username, usuario.mail');
+            $this->db->from('usuario');
+            $this->db->where($whereCheck);
+
+            $checkUserAndMail = $this->db->get();
+
+
+            print_r($checkUserAndMail->result_array());
+
+
+
+            // $data = array(
+            //     'username' => $this->input->post('username'),
+            //     'mail' => $this->input->post('email'),
+            //     'nombres' => $this->input->post('nombres'),
+            //     'apellidos' => $this->input->post('apellidos'),
+            //     'nivel_usuario' => $this->input->post('selectNivelUsuario'),
+            //     'activo' => $this->input->post('selectStatusUsuario')
+            // );
+
+            // $where = array('id_user' => $id_member);
+            
+            // $this->db->update('usuario', $data, $where);
         }
     } 

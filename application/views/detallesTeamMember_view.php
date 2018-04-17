@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Registrar proyecto</title>
+    <title>Detalles :: Equipo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL() ?>css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -32,15 +32,66 @@
     <main>
         <header>
             <bar>
-                Detalles de {{ TeamMember }}
+                Detalles de <?= $memberData['username'] ?>
                 <a class="logout" href="<?= BASE_URL() ?>login/logout">
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
         </header>
 
-        <section class="registrarProyecto">
-            Detalles
+        <section class="detallesMember">
+            <div class="memberData">
+                <?= form_open('equipo/editMemberInfo') ?>
+                    <div class="nombres">
+                        <label for="nombres">Nombres:</label>
+                        <input id="nombres" name="nombres" type="text" value="<?= $memberData['nombres'] ?>" disabled>
+                    </div>
+                    <div class="apellidos">
+                        <label for="apellidos">Apellidos:</label>
+                        <input id="apellidos" name="apellidos" type="text" value="<?= $memberData['apellidos'] ?>" disabled>
+                    </div>
+                    <div class="username">
+                        <label for="username">Usuario:</label>
+                        <input id="username" name="username" type="text" value="<?= $memberData['username'] ?>" disabled>
+                    </div>
+                    <div class="email">
+                        <label for="email">Email:</label>
+                        <input id="email" name="email" type="text" value="<?= $memberData['mail'] ?>" disabled>
+                    </div>
+                    <div class="nivel">
+                        <label for="nivelUsuario">Nivel:</label>
+                        <input id="nivelUsuario" name="nivelUsuario" type="text" value="<?= $memberData['nivel'] ?>" disabled>
+                        <select class="hidden" name="selectNivelUsuario" id="selectNivelUsuario">
+                            <?php foreach ($niveles AS $nivel): ?>
+                                <?php if ($nivel['id'] == $memberData['nivel_usuario']): ?>
+                                    <option value="<?= $nivel['id'] ?>" selected><?= $nivel['nivel'] ?></option>
+                                <?php else: ?>
+                                    <option value="<?= $nivel['id'] ?>"><?= $nivel['nivel'] ?></option>
+                                <?php endif ?>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+                    <div class="status">
+                        <label for="status">Estado:</label>
+                        <input id="status" name="status" type="text" value="<?= $status ?>" disabled>
+                        <select class="hidden" name="selectStatusUsuario" id="selectStatusUsuario">
+                            <?php if ($memberData['activo'] == 0): ?>
+                                <option value="0" selected>Inactivo</option>
+                                <option value="1">Activo</option>
+                            <?php elseif ($memberData['activo'] == 1): ?>
+                                <option value="0">Inactivo</option>
+                                <option value="1" selected>Activo</option>
+                            <?php endif ?>
+                        </select>
+                    </div>
+                    <div class="options">
+                        <input type="hidden" name="idMember" value="<?= $memberData['id_user'] ?>">
+                        <input id="sendChanges" class="hidden" type="submit" name="sendChanges" value="Guardar">
+                        <span id="cancelChanges" class="cancelChanges hidden">Cancelar</span>
+                        <span class="change" id="editInfoBtn">Editar</span>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 
