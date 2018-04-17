@@ -59,13 +59,17 @@ class Equipo extends CI_Controller {
             // }
 
             if ($arr[$i]['valor1'] == 1 && $arr[$i]['valor2'] == 4) {
-                echo 'Se encontro en el arreglo' . ($i + 1);
+                // echo 'Se encontro en el arreglo' . ($i + 1);
                 // echo 'TRUE';
             } else {
-                echo 'No encontrado en' . ($i + 1);
+                // echo 'No encontrado en' . ($i + 1);
                 // echo 'FALSE';
             }
+
         }
+
+        $data['proyectoNoListados'] = array();
+        $data['UserYaAsignado'] = array();
 
         $this->load->view('equipo_view', $data);
     }

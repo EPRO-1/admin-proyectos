@@ -79,9 +79,12 @@
                                 <div class="asignProject_btn">
                                     <a href="#">Asignar a proyecto</a>
                                     <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign hidden">
-                                        <option value="" disabled selected>-- Seleccione un proyecto --</option>
+                                        <option value="" disabled selected>----- Proyectos -----</option>
+                                        <!-- Por cada fila en proyectos hacer... -->
                                         <?php foreach ($proyectos as $proyecto): ?>
+                                            <!-- Por cada fila en asignar_equipo_proyecto hacer... -->
                                             <?php for ($i = 0; $i < count($idsAsignados); $i++): ?>
+                                                <!-- Si el valor del id del usuario iterado Y el valor del proyecto iterado se encuentran en la misma fila, hacer... -->
                                                 <?php if ($idsAsignados[$i]['id_user'] == $member['id_user'] && $idsAsignados[$i]['id_proyecto'] == $proyecto['id_proyecto']): ?>
                                                     <option 
                                                         value="" 
@@ -89,21 +92,28 @@
                                                         disabled>
                                                         <?= $proyecto['nombre'] ?>
                                                     </option>
-                                                <?php else: ?>
-                                                    <option 
-                                                        value="<?= $proyecto['id_proyecto'] ?>" 
-                                                        title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
-                                                            ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
-                                                        <?= $proyecto['nombre'] ?>
-                                                    </option>
-                                                <?php endif ?>
-                                            <?php endfor ?>
+                                                    <?php
+                                                        // Agregar el valor del id del usuario y proyecto iterado a los arreglos correspondientes... 
+                                                        array_push($proyectoNoListados, $idsAsignados[$i]['id_proyecto']);
+                                                        array_push($UserYaAsignado, $idsAsignados[$i]['id_user']);
+                                                    ?>
+                                                <?php endif ?> <!-- Termina comprobacion de usuario y proyecto ya asignado -->
+                                            <?php endfor ?> <!-- Termina for de la tabla asignar_equipo_proyecto -->
+                                            <!-- Si el id del proyecto O del usuario iterados NO estan en los arreglos correspondientes, se listan los proyectos... -->
+                                            <?php if (!in_array($proyecto['id_proyecto'], $proyectoNoListados) || !in_array($member['id_user'], $UserYaAsignado)): ?>
+                                                <option 
+                                                    value="<?= $proyecto['id_proyecto'] ?>" 
+                                                    title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
+                                                        ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
+                                                    <?= $proyecto['nombre'] ?>
+                                                </option>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
                                 <div class="memberDetails_btn">
                                     <a href="#" class="memberDetails_link">Detalles</a>
-                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden">
+                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden" disabled="">
                                     <span class="cancelAsign hidden"><i class="fa fa-times-circle"></i></span>
                                 </div>
                             </form>
@@ -115,7 +125,6 @@
                     <div id="addUserCard" class="addFirstMember">
                         <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
                         <div id="addingMember" class="addMember hidden">
-                            <!-- <form id="addUserForm" class="addUser_form" action="equipo.php" method="POST"> -->
                             <?= form_open('equipo/register_member', 'class="addUser_form" id="addUserForm"') ?>
                                 <div class="options">
                                     <i class="fas fa-user-circle fa-4x"></i>

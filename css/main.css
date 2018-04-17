@@ -793,6 +793,17 @@ div.addFirstProject:hover {
 	/* display: flex; */
 	border: none;
 	padding: 5px 10px;
+	background: #919090;
+	color: #fff;
+	font-size: 0.8em;
+	border-radius: 5px;
+	transition: all ease 0.3s;
+	cursor: not-allowed;
+}
+
+.equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmitActive {
+	border: none;
+	padding: 5px 10px;
 	background: #05581e;
 	color: #fff;
 	font-size: 0.8em;
@@ -801,7 +812,7 @@ div.addFirstProject:hover {
 	cursor: pointer;
 }
 
-.equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmit:hover{
+.equipo .teamMember .info .memberDetails_btn .asignarProyectoSubmitActive:hover{
 	background: #07852d;
 }
 

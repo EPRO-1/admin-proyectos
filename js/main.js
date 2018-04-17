@@ -36,6 +36,15 @@ if (tituloPagigna == 'Equipo') {
             asignarProyectoSubmits[i].setAttribute('class', 'asignarProyectoSubmit');
             cancelAsign_btns[i].setAttribute('class', 'cancelAsign');
         });
+        
+        selectProyectToAsign[i].addEventListener('change', () => {
+            asignarProyectoSubmits[i].removeAttribute('disabled');
+            
+            // No se cambiaba con setAttribute >:v
+            asignarProyectoSubmits[i].style.background = '#05581e';
+            asignarProyectoSubmits[i].style.cursor = 'pointer';
+
+        });
 
         cancelAsign_btns[i].addEventListener('click', () => {
             // console.log('lol');

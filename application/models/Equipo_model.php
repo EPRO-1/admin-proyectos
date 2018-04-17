@@ -69,4 +69,8 @@
             return $query->result_array();
 
         }
+
+        public function getNotAsignedProyectsId () {
+            
+        }
     } 
