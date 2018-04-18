@@ -87,21 +87,70 @@
             $id_member = $this->input->post('idMember');
             $user = $this->input->post('username');
             $email = $this->input->post('email');
-
-            $whereCheck = array(
-                'username' => $user,
-                'mail' => $email
-            );
-            
-            $this->db->select('usuario.username, usuario.mail');
+            $errors = '';
+           
+            $whereCheck = array('id_user' => $id_member);
+            $this->db->select('username, mail');
             $this->db->from('usuario');
             $this->db->where($whereCheck);
+            $queryResult = $this->db->get();
+            $rowsResult = $queryResult->num_rows();
+            
+            if ($rowsResult > 0) {
+                $currentUsername = $queryResult->row('username');
+                $currentEmail = $queryResult->row('mail');
 
-            $checkUserAndMail = $this->db->get();
+                if ($currentUsername == $user) {
+                    // echo "No se actualizo el usuario";
+                    $userChecked = $currentUsername;
+                } else {
+                    // echo " Se actualizo el usuario";
 
+                    $this->db->select('username');
+                    $this->db->from('usuario');
+                    $this->db->where('username', $user);
+                    $queryUser = $this->db->get();
+                    $rowUser = $queryUser->num_rows();
 
-            print_r($checkUserAndMail->result_array());
+                    if ($rowUser > 0) {
+                        // echo ' El usuario ya esta en uso';
+                        $errors .= '<li>El usuario ya est&aacute; en uso</li>';
+                    } else {
+                        // echo ' Nuevo usuario es correcto';
+                        $userChecked = $user;
+                    }
+                }
 
+                if ($currentEmail == $email) {
+                    // echo " No se actualizo el email";
+                    $emailChecked = $currentEmail;
+                } else {
+                    // echo " Se actualizo el email";
+
+                    $this->db->select('mail');
+                    $this->db->from('usuario');
+                    $this->db->where('mail', $email);
+                    $queryEmail = $this->db->get();
+                    $rowEmail = $queryEmail->num_rows();
+
+                    if ($rowEmail > 0) {
+                        // echo 'El correo ya esta en uso';
+                        $errors .= '<li>El correo ya est&aacute; en uso</li>';
+                    } else {
+                        // echo 'Nuevo correo es correcto';
+                        $emailChecked = $email;
+                    }
+                }
+
+                if (empty($errors)) {
+                    echo 'usuario: ' . $userChecked . ' Correcto <br/>';
+                    echo 'email: ' . $emailChecked . ' Correcto <br/>';
+                } else {
+                    echo $errors;
+                }
+
+            }
+ 
 
 
             // $data = array(
@@ -116,5 +165,6 @@
             // $where = array('id_user' => $id_member);
             
             // $this->db->update('usuario', $data, $where);
+
         }
     } 
