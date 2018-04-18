@@ -475,6 +475,19 @@ div.addFirstProject:hover {
 	min-width: 360px;
 }
 
+.equipo .erroresRegistro {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	border-radius: 5px;
+	background: #f0afaf;
+}
+
+.equipo .erroresRegistro p {
+	width: 100%;
+	font-size: 0.9em;
+	font-style: italic;
+}
 
 .equipo .noTeam .addFirstMember,
 .equipo .addTeam .addFirstMember {
@@ -731,6 +744,7 @@ div.addFirstProject:hover {
 
 .equipo .teamMember .info .atts span,
 .equipo .teamMember .info .values span {
+	font-size: 0.9em;
 	width: 100%;
 	border-bottom: 2px dotted #7b9ccf;
 }

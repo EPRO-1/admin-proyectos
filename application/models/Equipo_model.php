@@ -13,7 +13,7 @@
         public function register_member () {
             $data = array (
                 'username' => $this->input->post('memberUser'),
-                'passcode' => $this->input->post('memberPass'),
+                'passcode' => md5($this->input->post('memberPass')),
                 'mail' => $this->input->post('memberEmail'),
                 'nombres' => $this->input->post('memberName'),
                 'apellidos' => $this->input->post('memberLastName'),

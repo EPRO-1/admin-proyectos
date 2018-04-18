@@ -161,6 +161,11 @@
                     </div>
                     <span id="headerEquipo" class="headerEquipo" style="display: none"></span>
                 </article>
+                <?php if (isset($erroresRegistro)): ?>
+                    <div class="erroresRegistro">
+                        <?= $erroresRegistro ?>
+                    </div>
+                <?php endif ?>
 
             <?php else: ?>
                 <!-- No hay equipo -->

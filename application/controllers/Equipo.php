@@ -21,12 +21,7 @@ class Equipo extends CI_Controller {
     public function index () {
         $level_user = $this->session->userdata('usuario')[1];
         $userName = $this->session->userdata('usuario')[0];
-
         $equipo = $this->equipo_model->get_team_members($userName);
-        // print_r($equipo);
-
-        // $idsUserProyectAsigned = $this->equipo_model->getAsignedProyectsId();
-        // print_r($idsUserProyectAsigned);
 
         $data['idsAsignados'] = $this->equipo_model->getAsignedProyectsId();
 
@@ -48,8 +43,57 @@ class Equipo extends CI_Controller {
     }
 
     public function register_member () {
-        $this->equipo_model->register_member();
-        redirect(BASE_URL() . 'equipo');
+        $this->load->library('form_validation');
+
+        $config = array(
+			array(
+					'field' => 'memberUser',
+					'label' => 'usuario',
+					'rules' => 'trim|is_unique[usuario.username]',
+					'errors' => array(
+						'is_unique' => 'El %s ya est&aacute; en uso.',
+					)
+			),
+			array(
+					'field' => 'memberEmail',
+					'label' => 'email',
+					'rules' => 'trim|valid_email|is_unique[usuario.mail]',
+					'errors' => array(
+						'is_unique' => 'El %s ya est&aacute; en uso.',
+					)
+			)
+        );
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() == FALSE) {
+            
+            $level_user = $this->session->userdata('usuario')[1];
+            $userName = $this->session->userdata('usuario')[0];
+            $equipo = $this->equipo_model->get_team_members($userName);
+    
+            $data['idsAsignados'] = $this->equipo_model->getAsignedProyectsId();
+    
+            if ($equipo != false) {
+                $checkEquipo = true;
+                $data['equipo'] = $equipo;
+            } else {
+                $checkEquipo = false;
+            }
+    
+            $data['checkEquipo'] = $checkEquipo;
+            $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+            $data['niveles_usuario'] = $this->equipo_model->get_levels();
+            $data['proyectos'] = $this->proyectos_model->get_proyectos();
+            $data['proyectoNoListados'] = array();
+            $data['UserYaAsignado'] = array();
+            $data['erroresRegistro'] = validation_errors();
+    
+            $this->load->view('equipo_view', $data);
+
+		} else {
+            $this->equipo_model->register_member();
+			redirect(BASE_URL().'equipo');
+		}
     }
     
     public function remove_member () {
