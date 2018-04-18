@@ -143,10 +143,23 @@
                 }
 
                 if (empty($errors)) {
-                    echo 'usuario: ' . $userChecked . ' Correcto <br/>';
-                    echo 'email: ' . $emailChecked . ' Correcto <br/>';
+                    $data = array(
+                        'username' => $userChecked,
+                        'mail' => $emailChecked,
+                        'nombres' => $this->input->post('nombres'),
+                        'apellidos' => $this->input->post('apellidos'),
+                        'nivel_usuario' => $this->input->post('selectNivelUsuario'),
+                        'activo' => $this->input->post('selectStatusUsuario')
+                    );
+                    $where = array('id_user' => $id_member);
+                    $this->db->update('usuario', $data, $where);
+
+                    $arr = array('ok' => true, 'newUserName' => $userChecked);
+                    return $arr;
+
                 } else {
-                    echo $errors;
+                    $arr = array('ok' => false, 'errores' => $errors);
+                    return $arr;
                 }
 
             }
@@ -165,6 +178,5 @@
             // $where = array('id_user' => $id_member);
             
             // $this->db->update('usuario', $data, $where);
-
         }
     } 

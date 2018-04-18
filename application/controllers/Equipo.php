@@ -80,7 +80,29 @@ class Equipo extends CI_Controller {
         $this->load->view('detallesTeamMember_view', $data);
     }
 
-    public function editMemberInfo () {
-        $this->equipo_model->editMemberInfo();
+    public function editMemberInfo ($username) {
+
+        if (!$this->equipo_model->editMemberInfo()['ok']) {
+
+            $level_user = $this->session->userdata('usuario')[1];
+            $userName = $this->session->userdata('usuario')[0];
+            $numStatus = $this->equipo_model->getSpecificTeamMemberData($username)['activo'];
+
+            $data['status'] = ($numStatus == 1) ? 'Activo' : 'Inactivo';
+            $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+            $data['username'] = $username;
+            $data['memberData'] = $this->equipo_model->getSpecificTeamMemberData($username);
+            $data['niveles'] = $this->equipo_model->get_levels();
+            $data['errores'] = $this->equipo_model->editMemberInfo()['errores'];
+
+            $this->load->view('detallesTeamMember_view', $data);
+
+            // print_r($this->equipo_model->editMemberInfo()['errores']);
+            
+        } else {
+            $this->equipo_model->editMemberInfo();
+            $newUserName = $this->equipo_model->editMemberInfo()['newUserName'];
+            redirect(BASE_URL() . 'equipo/teamMemberDetails/' . $newUserName);
+        }
     }
 }

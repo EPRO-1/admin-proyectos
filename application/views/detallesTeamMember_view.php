@@ -41,7 +41,7 @@
 
         <section class="detallesMember">
             <div class="memberData">
-                <?= form_open('equipo/editMemberInfo') ?>
+                <?= form_open('equipo/editMemberInfo/' . $memberData['username']) ?>
                     <div class="nombres">
                         <label for="nombres">Nombres:</label>
                         <input id="nombres" name="nombres" type="text" value="<?= $memberData['nombres'] ?>" disabled>
@@ -91,6 +91,11 @@
                         <span class="change" id="editInfoBtn">Editar</span>
                     </div>
                 </form>
+                <?php if (isset($errores)): ?>
+                    <div class="editMemberErrors">
+                        <?= $errores ?>
+                    </div>
+                <?php endif ?>
             </div>
         </section>
     </main>
