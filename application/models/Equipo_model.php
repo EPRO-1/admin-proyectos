@@ -167,11 +167,12 @@
         }
 
         public function getProjectsAsignedToMember ($username) {
-            $this->db->select('usuario.nombres, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion');
+            $this->db->select('actual.nombres, actual.id_user, encargado.nombres AS encargado, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion');
             $this->db->from('asignar_equipo_proyecto');
             $this->db->join('proyecto', 'asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto');
-            $this->db->join('usuario', 'asignar_equipo_proyecto.id_usuario = usuario.id_user');
-            $this->db->where('usuario.username', $username);
+            $this->db->join('usuario actual', 'asignar_equipo_proyecto.id_usuario = actual.id_user');
+            $this->db->join('usuario encargado', 'proyecto.encargado = encargado.id_user');
+            $this->db->where('actual.username', $username);
 
             /*
             SELECT actual.nombres, encargado.nombres AS encargado, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion FROM asignar_equipo_proyecto

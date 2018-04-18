@@ -100,12 +100,21 @@
             </div>
 
             <div class="memberProjects">
-                <span>Asignado a:</span>
+                <span class="title">Asignado a:</span>
                 <div class="projects">
                     <?php if ($proyectosAsignados != false): ?>
+                        <div class="columnNames">
+                            <span class="proyecto">Proyecto</span>
+                            <span class="encargado">Encargado</span>
+                            <span class="fechaAsignado">Fecha asignaci&oacute;n</span>
+                            <span class="option">Descartar</span>
+                        </div>
                         <?php foreach ($proyectosAsignados as $proyecto): ?>
                             <div class="asignado">
-                                <?= $proyecto['nombre'] ?>
+                                <span><?= $proyecto['nombre'] ?></span>
+                                <span><?= $proyecto['encargado'] ?></span>
+                                <span class="fechaAsignado"><?= $proyecto['fecha_asignacion'] ?></span>
+                                <span class="option"><i class="fa fa-times-circle"></i></span>
                             </div>
                         <?php endforeach ?>
                     <?php else: ?>
