@@ -37,6 +37,7 @@
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
+            <div class="barHidden"></div>
         </header>
 
         <section class="detallesMember">
@@ -96,6 +97,23 @@
                         <?= $errores ?>
                     </div>
                 <?php endif ?>
+            </div>
+
+            <div class="memberProjects">
+                <span>Asignado a:</span>
+                <div class="projects">
+                    <?php if ($proyectosAsignados != false): ?>
+                        <?php foreach ($proyectosAsignados as $proyecto): ?>
+                            <div class="asignado">
+                                <?= $proyecto['nombre'] ?>
+                            </div>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="noAsignado">
+                            No se ha asignado a ningun proyecto
+                        </div>
+                    <?php endif ?>
+                </div>
             </div>
         </section>
     </main>

@@ -164,19 +164,30 @@
 
             }
  
+        }
 
+        public function getProjectsAsignedToMember ($username) {
+            $this->db->select('usuario.nombres, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion');
+            $this->db->from('asignar_equipo_proyecto');
+            $this->db->join('proyecto', 'asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto');
+            $this->db->join('usuario', 'asignar_equipo_proyecto.id_usuario = usuario.id_user');
+            $this->db->where('usuario.username', $username);
 
-            // $data = array(
-            //     'username' => $this->input->post('username'),
-            //     'mail' => $this->input->post('email'),
-            //     'nombres' => $this->input->post('nombres'),
-            //     'apellidos' => $this->input->post('apellidos'),
-            //     'nivel_usuario' => $this->input->post('selectNivelUsuario'),
-            //     'activo' => $this->input->post('selectStatusUsuario')
-            // );
+            /*
+            SELECT actual.nombres, encargado.nombres AS encargado, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion FROM asignar_equipo_proyecto
+            JOIN proyecto ON asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto
+            JOIN usuario actual ON asignar_equipo_proyecto.id_usuario = actual.id_user
+            JOIN usuario encargado ON proyecto.encargado = encargado.id_user
+            WHERE actual.username = 'admin'
+            */
 
-            // $where = array('id_user' => $id_member);
-            
-            // $this->db->update('usuario', $data, $where);
+            $query = $this->db->get();
+
+            if ($query->num_rows() > 0) {
+                return $query->result_array();
+            } else {
+                return false;
+            }
+
         }
     } 
