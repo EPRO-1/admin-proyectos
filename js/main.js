@@ -61,7 +61,8 @@ if (tituloPagigna == 'Equipo') {
 
 } else if (tituloPagigna == 'Detalles :: Equipo') {
 
-    let editInfoBtn = document.getElementById('editInfoBtn');
+    let editInfoBtn = document.getElementById('editInfoBtn'),
+        deleteAsignationSubmits = [...document.getElementsByClassName('deleteAsignationLabel')];
 
     editInfoBtn.addEventListener('click', () => {
         let submitChanges = document.getElementById('sendChanges'),
@@ -88,6 +89,15 @@ if (tituloPagigna == 'Equipo') {
                 location.reload();
             });
     });
+
+    for (let j = 0; j < deleteAsignationSubmits.length; j++) {
+        deleteAsignationSubmits[j].addEventListener('click', function confirmarDesasignacion (e) {
+            if (!confirm('Se eliminara la asignación')) {
+                e.preventDefault();
+            }
+        });
+    }
+
 
 
 } else if (tituloPagigna == 'Registrar proyecto') {

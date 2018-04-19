@@ -114,7 +114,13 @@
                                 <span><?= $proyecto['nombre'] ?></span>
                                 <span><?= $proyecto['encargado'] ?></span>
                                 <span class="fechaAsignado"><?= $proyecto['fecha_asignacion'] ?></span>
-                                <span class="option"><i class="fa fa-times-circle"></i></span>
+                                <span class="option">
+                                    <?= form_open('equipo/deleteAsignation/' . $memberData['username']) ?>
+                                        <input type="hidden" name="idAsignacion" value="<?= $proyecto['id_asignacion'] ?>">
+                                        <label for="descartar" class="deleteAsignationLabel"><i class="fa fa-times-circle"></i></label>
+                                        <input type="submit" id="descartar" name="descartar">
+                                    </form>
+                                </span>
                             </div>
                         <?php endforeach ?>
                     <?php else: ?>

@@ -1045,6 +1045,7 @@ div.addFirstProject:hover {
 	width: 25%;
 	min-width: 100px;
 	padding: 5px;
+	padding-left: 10px;
 	font-size: 0.9em;
 	/* border-right: 2px solid #000; */
 }
@@ -1057,9 +1058,26 @@ div.addFirstProject:hover {
 .detallesMember .memberProjects .projects .columnNames span.option,
 .detallesMember .memberProjects .projects .asignado span.option {
 	min-width: 50px;
-	padding-right: 5px;
+	padding-right: 10px;
 	text-align: right;
 	border-right: none;
+}
+
+.detallesMember .memberProjects .projects .asignado span.option {
+	padding-right: 30px;
+}
+
+.detallesMember .memberProjects .projects .asignado span.option svg {
+	transition: all ease 0.3s;
+}
+
+.detallesMember .memberProjects .projects .asignado span.option svg:hover {
+	color: #ee0b0b;
+	cursor: pointer;
+}
+
+.detallesMember .memberProjects .projects .asignado span.option input[type="submit"] {
+	display: none;
 }
 
 .detallesMember .memberProjects .projects .asignado {
@@ -1070,17 +1088,19 @@ div.addFirstProject:hover {
 }
 
 .detallesMember .memberProjects .projects .asignado:nth-child(even) {
-	background: #88abc9;
+	background: #70a0ca;
+	transition: all ease 0.3s;
 }
 
 
 .detallesMember .memberProjects .projects .asignado:nth-child(odd) {
-	background: #87bdec;
+	background: #95c4ec;
+	transition: all ease 0.3s;
 }
 
 .detallesMember .memberProjects .projects .asignado:nth-child(even):hover,
 .detallesMember .memberProjects .projects .asignado:nth-child(odd):hover {
-	background: #a2b2c0;
+	background: #9fa4a8;
 	cursor: default;
 }
 

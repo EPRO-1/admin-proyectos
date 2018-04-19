@@ -150,4 +150,9 @@ class Equipo extends CI_Controller {
             redirect(BASE_URL() . 'equipo/teamMemberDetails/' . $newUserName);
         }
     }
+
+    public function deleteAsignation ($username) {
+        $this->equipo_model->deleteAsignation();
+        redirect(BASE_URL() . 'equipo/teamMemberDetails/' . $username);
+    }
 }

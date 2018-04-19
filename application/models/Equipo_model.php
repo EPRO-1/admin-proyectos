@@ -167,20 +167,19 @@
         }
 
         public function getProjectsAsignedToMember ($username) {
-            $this->db->select('actual.nombres, actual.id_user, encargado.nombres AS encargado, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion');
+            $this->db->select('
+                actual.nombres,
+                actual.id_user,
+                encargado.nombres AS encargado,
+                proyecto.nombre,
+                asignar_equipo_proyecto.fecha_asignacion,
+                asignar_equipo_proyecto.id_asignacion
+            ');
             $this->db->from('asignar_equipo_proyecto');
             $this->db->join('proyecto', 'asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto');
             $this->db->join('usuario actual', 'asignar_equipo_proyecto.id_usuario = actual.id_user');
             $this->db->join('usuario encargado', 'proyecto.encargado = encargado.id_user');
             $this->db->where('actual.username', $username);
-
-            /*
-            SELECT actual.nombres, encargado.nombres AS encargado, proyecto.nombre, asignar_equipo_proyecto.fecha_asignacion FROM asignar_equipo_proyecto
-            JOIN proyecto ON asignar_equipo_proyecto.id_proyecto = proyecto.id_proyecto
-            JOIN usuario actual ON asignar_equipo_proyecto.id_usuario = actual.id_user
-            JOIN usuario encargado ON proyecto.encargado = encargado.id_user
-            WHERE actual.username = 'admin'
-            */
 
             $query = $this->db->get();
 
@@ -190,5 +189,11 @@
                 return false;
             }
 
+        }
+
+        public function deleteAsignation () {
+            $idAsignacion = $this->input->post('idAsignacion');
+
+            $this->db->delete('asignar_equipo_proyecto', array('id_asignacion' => $idAsignacion));
         }
     } 
