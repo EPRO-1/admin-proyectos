@@ -66,7 +66,13 @@
                         <div class="projectField">
                             <span class="icon"><i class="fa fa-tags"></i></span>
                             <label for="">Extensi&oacute;n de:</label>
-                            <div class="value"><?= $projectData['extension_de'] ?></div>
+                            <div class="value">
+                                <?php foreach ($proyectos as $proy): ?>
+                                    <?php if ($proy['id_proyecto'] == $projectData['extension_de']): ?>
+                                        <?php echo $proy['nombre'] ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </div>
                         </div>
                     <?php endif ?>
                     <div class="projectField">

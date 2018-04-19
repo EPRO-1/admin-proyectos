@@ -62,6 +62,7 @@ class Proyectos extends CI_Controller {
         $idProy = $idProyecto;
         
         $data['projectData'] = $this->proyectos_model->getSpecificProjectData($idProy);
+        $data['proyectos'] = $this->proyectos_model->get_proyectos();
         
         $equipoAsignado = $this->proyectos_model->getAsignedTeam($idProy);
 
