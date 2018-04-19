@@ -118,8 +118,8 @@
                                 <span class="option">
                                     <?= form_open('equipo/deleteAsignation/' . $memberData['username']) ?>
                                         <input type="hidden" name="idAsignacion" value="<?= $proyecto['id_asignacion'] ?>">
-                                        <label for="descartar" class="deleteAsignationLabel"><i class="fa fa-times-circle"></i></label>
-                                        <input type="submit" id="descartar" name="descartar">
+                                        <label for="descartar<?= $proyecto['id_asignacion'] ?>" class="deleteAsignationLabel"><i class="fa fa-times-circle"></i></label>
+                                        <input type="submit" id="descartar<?= $proyecto['id_asignacion'] ?>" name="descartar">
                                     </form>
                                 </span>
                             </div>

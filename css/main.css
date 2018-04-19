@@ -338,6 +338,180 @@ section.proyectos {
 	margin-top: 60px;
 }
 
+section.proyectos .projectData {
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	width: 80%;
+	min-width: 820px;
+	/* min-height: 500px; */
+	background: #7ebccfbe;
+	padding: 10px;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px;
+}
+
+section.proyectos .projectData .title {
+	width: 100%;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+section.proyectos .projectData .info {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+}
+
+section.proyectos .projectData .projectField {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	/* height: 40px; */
+	margin-bottom: 20px;
+	padding: 5px;
+	cursor: default;
+	border-bottom: 2px dotted #051258;
+	transition: all ease 0.3s;
+}
+
+section.proyectos .projectData .projectField:hover {
+	background: #ccc;
+	border-radius: 5px 5px 0 0;
+}
+
+section.proyectos .projectData .projectField .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 40px;
+	height: 40px;
+	background: #051258;
+	color: #fff;
+	border-radius: 10px;
+	margin-right: 10px;
+}
+
+section.proyectos .projectData .projectField label {
+	width: 150px;
+	/* background: #fff; */
+	margin-right: 10px;
+}
+
+section.proyectos .projectData .projectField .value {
+	width: 100%;
+	text-align: right;
+	font-style: italic;
+}
+
+section.proyectos .projectData .team {
+	display:flex;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	/* min-height: 200px; */
+	/* background: #ccc; */
+}
+
+section.proyectos .projectData .team span.noEquipo {
+	font-size: 0.9em;
+	font-style: italic;
+	margin:auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+section.proyectos .projectData .team .columnsTeam,
+section.proyectos .projectData .team .asignedMember {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	/* background: #000; */
+	background: #3789cc;
+}
+
+section.proyectos .projectData .team .asignedMember {
+	font-size: 0.8em;
+	cursor: default;
+	background: #ccc;
+	transition: all ease 0.3s;
+}
+
+section.proyectos .projectData .team .asignedMember:nth-child(odd) {
+	background: #bebebe;
+}
+
+section.proyectos .projectData .team .asignedMember:hover {
+	background: #969595;
+}
+
+section.proyectos .projectData .team .columnsTeam div,
+section.proyectos .projectData .team .asignedMember div {
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+section.proyectos .projectData .team .asignedMember div {
+	/* background: #ccc; */
+}
+
+section.proyectos .projectData .team .columnsTeam div.icon,
+section.proyectos .projectData .team .asignedMember div.icon {
+	min-width: 50px;
+}
+
+section.proyectos .projectData .team .columnsTeam div.icon svg,
+section.proyectos .projectData .team .asignedMember div.icon svg {
+	margin: auto;
+}
+
+section.proyectos .projectData .team .columnsTeam div.username,
+section.proyectos .projectData .team .asignedMember div.username {
+	min-width: 100px;
+}
+
+section.proyectos .projectData .team .columnsTeam div.nombre,
+section.proyectos .projectData .team .columnsTeam div.email,
+section.proyectos .projectData .team .columnsTeam div.fecha,
+section.proyectos .projectData .team .asignedMember div.nombre,
+section.proyectos .projectData .team .asignedMember div.email,
+section.proyectos .projectData .team .asignedMember div.fecha {
+	min-width: 200px;
+}
+
+section.proyectos .projectData .team .columnsTeam div.accion,
+section.proyectos .projectData .team .asignedMember div.accion {
+	text-align: right;
+	width: 100%;
+	min-width: 50px;
+	/* background: #000; */
+}
+
+section.proyectos .projectData .team .asignedMember div.accion form {
+	width: 100%;
+	text-align: center;
+}
+
+section.proyectos .projectData .team .asignedMember div.accion form label {
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+section.proyectos .projectData .team .asignedMember div.accion form label:hover {
+	color: #f11a1a;
+}
+
+section.proyectos .projectData .team .columnsTeam div.accion svg,
+section.proyectos .projectData .team .asignedMember div.accion label {
+	margin: auto;
+}
+
+section.proyectos .projectData .team .asignedMember div.accion input[type="submit"] {
+	display: none;
+}
+
 article.noProjects {
 	display: flex;
 	justify-content: center;

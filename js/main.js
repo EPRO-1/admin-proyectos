@@ -98,7 +98,19 @@ if (tituloPagigna == 'Equipo') {
         });
     }
 
+} else if (tituloPagigna == 'Detalles :: Proyecto') {
+    //..
+    let desasignarSubmits = [...document.getElementsByClassName('desasignarEquipo')];
 
+    for (let i = 0; i < desasignarSubmits.length; i++) {
+        desasignarSubmits[i].addEventListener('click', function confirmDesasignar (e) {
+            if (!confirm('Se desasignara del proyecto')) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    
 
 } else if (tituloPagigna == 'Registrar proyecto') {
     //..

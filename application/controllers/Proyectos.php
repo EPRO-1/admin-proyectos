@@ -8,6 +8,7 @@ class Proyectos extends CI_Controller {
         $this->load->model('proyectos_model');
         $this->load->model('usuarios_model');
         $this->load->helper('url');
+        $this->load->helper('form');
         
         if ($this->session->userdata('usuario') !== NULL) {
             // la sesion existe, el acceso es permitido
@@ -61,9 +62,20 @@ class Proyectos extends CI_Controller {
         $idProy = $idProyecto;
         
         $data['projectData'] = $this->proyectos_model->getSpecificProjectData($idProy);
+        
+        $equipoAsignado = $this->proyectos_model->getAsignedTeam($idProy);
+
+        if ($equipoAsignado != false) {
+            $data['equipoAsignado'] = $equipoAsignado;
+        }
 
         $this->load->view('detallesProyecto_view', $data);
 
+    }
+
+    public function deleteAsignation ($nombreProyecto, $idProyecto) {
+        $this->proyectos_model->deleteAsignation();
+        redirect(BASE_URL() . 'proyectos/projectDetails/' . $nombreProyecto . '/' . $idProyecto);
     }
 
     public function listado () {

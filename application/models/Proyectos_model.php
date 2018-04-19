@@ -3,6 +3,7 @@ class Proyectos_model extends CI_Model {
 
     public function __construct () {
         $this->load->database();
+        $this->load->helper('url');
     }
 
     public function get_tipos_proyecto () {
@@ -80,7 +81,30 @@ class Proyectos_model extends CI_Model {
         return $query[0];
     }
 
-    public function getTeamAsigned () {
+    public function getAsignedTeam ($idProyecto) {
         // Obtener los usuarios que estan asignados al proyecto actual
+        $this->db->select('
+            usuario.username, usuario.nombres, usuario.apellidos, usuario.mail,
+            asignar_equipo_proyecto.fecha_asignacion, asignar_equipo_proyecto.id_asignacion
+        ');
+        $this->db->from('usuario');
+        $this->db->join('asignar_equipo_proyecto', 'asignar_equipo_proyecto.id_usuario = usuario.id_user');
+        $this->db->join('proyecto', 'proyecto.id_proyecto = asignar_equipo_proyecto.id_proyecto');
+        $this->db->where(array('proyecto.id_proyecto'  => $idProyecto));
+
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+
+    }
+
+    public function deleteAsignation () {
+        $idAsignacion = $this->input->post('idAsignacion');
+
+        $this->db->delete('asignar_equipo_proyecto', array('id_asignacion' => $idAsignacion));
     }
 }

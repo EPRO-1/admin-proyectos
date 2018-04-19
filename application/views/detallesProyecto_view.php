@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Detalles :: proyecto</title>
+    <title>Detalles :: Proyecto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="<?= BASE_URL() ?>css/main.css" />
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -39,9 +39,102 @@
             </bar>
         </header>
         <section class="proyectos">
-            <?php print_r($projectData) ?>
+            <div class="projectData">
+                <span class="title">Informaci&oacute;n:</span>
+                <div class="info">
+                    <div class="projectField">
+                        <span class="icon"><i class="fa fa-tags"></i></span>
+                        <label for="">Nombre:</label>
+                        <div class="value"><?= $projectData['nombre'] ?></div>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fa fa-user"></i></span>
+                        <label for="">Encargado:</label>
+                        <div class="value"><?= $projectData['nombresEncargado'] . ' ' . $projectData['apellidosEncargado'] ?></div>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fa fa-building"></i></span>
+                        <label for="">&Aacute;rea:</label>
+                        <div class="value"><?= $projectData['departamento'] ?></div>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fa fa-archive"></i></span>
+                        <label for="">Tipo:</label>
+                        <div class="value"><?= $projectData['tipo'] ?></div>
+                    </div>
+                    <?php if ($projectData['extension_de'] != NULL): ?>
+                        <div class="projectField">
+                            <span class="icon"><i class="fa fa-tags"></i></span>
+                            <label for="">Extensi&oacute;n de:</label>
+                            <div class="value"><?= $projectData['extension_de'] ?></div>
+                        </div>
+                    <?php endif ?>
+                    <div class="projectField">
+                        <span class="icon"><i class="fa fa-money-bill-alt"></i></span>
+                        <label for="">Presupuesto:</label>
+                        <?php if ($projectData['presupuesto_inicial'] != NULL): ?>
+                            <div class="value"><?= $projectData['presupuesto_inicial'] ?></div>
+                        <?php else: ?>
+                            <div class="value">No asignado</div>
+                        <?php endif ?>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fas fa-align-center"></i></span>
+                        <label for="">Descripci&oacute;n:</label>
+                        <div class="value"><?= $projectData['descripcion'] ?></div>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                        <label for="">Fecha inicio:</label>
+                        <div class="value"><?= $projectData['fecha_inicio_1'] ?></div>
+                    </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                        <label for="">Fecha final:</label>
+                        <div class="value"><?= $projectData['fecha_final_1'] ?></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projectData">
+                <span class="title">Equipo asignado:</span>
+                <?php if (isset($equipoAsignado)): ?>
+                    <div class="team">
+                        <div class="columnsTeam">
+                            <div class="icon"><i class="fa fa-user-circle fa-2x"></i></div>
+                            <div class="username">Usuario</div>
+                            <div class="nombre">Nombre</div>
+                            <div class="email">Email</div>
+                            <div class="fecha">Fecha de asignaci&oacute;n</div>
+                            <div class="accion"><i class="fa fa-times-circle"></i></div>
+                        </div>
+                        <?php foreach ($equipoAsignado as $equipo): ?>
+                            <div class="asignedMember">
+                                <div class="icon"><i class="fa fa-user-circle fa-2x"></i></div>
+                                <div class="username"><?= $equipo['username'] ?></div>
+                                <div class="nombre"><?= $equipo['nombres'] ?></div>
+                                <div class="email"><?= $equipo['mail'] ?></div>
+                                <div class="fecha"><?= $equipo['fecha_asignacion'] ?></div>
+                                <div class="accion">
+                                    <?= form_open('proyectos/deleteAsignation/' . $projectData['nombre'] . '/' . $projectData['id_proyecto']) ?>
+                                        <input type="hidden" name="idAsignacion" value="<?= $equipo['id_asignacion'] ?>">
+                                        <label for="desasignar<?= $equipo['id_asignacion'] ?>" class="desasignarEquipo"><i class="fa fa-times-circle"></i></label>
+                                        <input type="submit" name="desasignar" id="desasignar<?= $equipo['id_asignacion'] ?>">
+                                    </form>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                <?php else:?>
+                    <div class="team">
+                        <span class="noEquipo">No hay equipo asignado</span>
+                    </div>
+                <?php endif ?>
+            </div>
+            <footer>Detalles</footer>
         </section>
     </main>
 
+    <script src="<?= BASE_URL() ?>js/main.js"></script>
 </body>
 </html>
