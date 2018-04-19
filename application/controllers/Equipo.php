@@ -120,7 +120,7 @@ class Equipo extends CI_Controller {
         $data['username'] = $username;
         $data['memberData'] = $this->equipo_model->getSpecificTeamMemberData($username);
         $data['niveles'] = $this->equipo_model->get_levels();
-        $data['proyectosAsignados'] = $this->equipo_model->getProjectsAsignedToMember($username);
+        $data['proyectosAsignados'] = $this->equipo_model->getProjectsAsignedToMember($username);   
 
         $this->load->view('detallesTeamMember_view', $data);
     }
@@ -139,6 +139,7 @@ class Equipo extends CI_Controller {
             $data['memberData'] = $this->equipo_model->getSpecificTeamMemberData($username);
             $data['niveles'] = $this->equipo_model->get_levels();
             $data['errores'] = $this->equipo_model->editMemberInfo()['errores'];
+            $data['proyectosAsignados'] = $this->equipo_model->getProjectsAsignedToMember($username);
 
             $this->load->view('detallesTeamMember_view', $data);
 

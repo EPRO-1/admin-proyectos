@@ -55,6 +55,17 @@ class Proyectos extends CI_Controller {
         $this->load->view('proyectoRegistrado_view', $data);
     }
 
+    public function projectDetails ($nombreProyecto, $idProyecto) {
+        $level_user = $this->session->userdata('usuario')[1];
+        $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+        $idProy = $idProyecto;
+        
+        $data['projectData'] = $this->proyectos_model->getSpecificProjectData($idProy);
+
+        $this->load->view('detallesProyecto_view', $data);
+
+    }
+
     public function listado () {
         $level_user = $this->session->userdata('usuario')[1];
         $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');

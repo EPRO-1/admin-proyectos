@@ -351,6 +351,7 @@ article.project {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 
 	width: 90%;
 	/* height: 220px; */
@@ -394,7 +395,7 @@ article.project .projectInfo .infoAtt {
 article.project .projectInfo .infoAtt span,
 article.project .projectInfo .infoValue span {
 	margin-bottom: 5px;
-	color: rgb(5, 18, 88);
+	color: #051258;
 	border-bottom: 2px dotted #979696;
 	margin-bottom: 10px;
 }
@@ -413,18 +414,29 @@ article.project .projectInfo .infoValue {
 	background: #fff;
 }
 
-.projectDetails_btn {
-	width: 100px;
-	padding: 5px;
-	margin-left: calc(100% - 100px);
-	background: rgb(5, 18, 88);
-	border: none;
-	color: #fff;
-	cursor: pointer;
+article.project .projectDetails {
+	display: flex;
+	width: 100%;
+	margin-top: 10px;
 }
 
-.projectDetails_btn:hover {
-	background: rgb(2, 8, 41);
+article.project .projectDetails .projectDetails_btn {
+	width: 100px;
+	padding: 10px 5px;
+	margin-left: calc(100% - 100px);
+	border: none;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 1em;
+	cursor: pointer;
+	background: #2c5b97;
+	text-decoration: none;
+	text-align: center;
+	transition: all ease 0.3s;
+}
+
+article.project .projectDetails .projectDetails_btn:hover {
+	background: #051258;
 }
 
 div.addFirstProject {
@@ -859,8 +871,7 @@ div.addFirstProject:hover {
 	border-radius: 10px;
 	box-shadow: 5px 5px 20px #000;
 	padding: 20px;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin: 50px 0;
 }
 
 .detallesMember .hidden {
@@ -897,6 +908,7 @@ div.addFirstProject:hover {
 
 .detallesMember .memberData form {
 	width: 100%;
+	margin-top: 20px;
 }
 
 .detallesMember .memberData div {
@@ -910,7 +922,7 @@ div.addFirstProject:hover {
 	display: inline-block;
 	min-width: 150px;
 	height: 30px;
-	border-bottom: 2px dotted #084479;
+	/* border-bottom: 2px dotted #084479; */
 }
 
 .detallesMember .memberData input {
@@ -919,7 +931,7 @@ div.addFirstProject:hover {
 	height: 30px;
 	padding: 0 10px;
 	/* background: #000; */
-	width: 170px;
+	width: 300px;
 	transition: all ease 0.3s;
 }
 
@@ -946,7 +958,7 @@ div.addFirstProject:hover {
 	height: 30px;
 	padding: 0 10px;
 	/* background: #000; */
-	width: 170px;
+	width: 300px;
 	transition: all ease 0.3s;
 
 	z-index: 9;
@@ -1017,7 +1029,7 @@ div.addFirstProject:hover {
 	border-bottom: 5px solid #1d408d;
 }
 
-.detallesMember .memberProjects .title {
+.detallesMember  .title {
 	font-weight: bold;
 }
 

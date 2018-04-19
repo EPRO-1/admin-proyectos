@@ -92,7 +92,7 @@ if (tituloPagigna == 'Equipo') {
 
     for (let j = 0; j < deleteAsignationSubmits.length; j++) {
         deleteAsignationSubmits[j].addEventListener('click', function confirmarDesasignacion (e) {
-            if (!confirm('Se eliminara la asignación')) {
+            if (!confirm('Se eliminará la asignación')) {
                 e.preventDefault();
             }
         });

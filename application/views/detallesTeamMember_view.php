@@ -42,6 +42,7 @@
 
         <section class="detallesMember">
             <div class="memberData">
+                <span class="title">Informaci&oacute;n:</span>
                 <?= form_open('equipo/editMemberInfo/' . $memberData['username']) ?>
                     <div class="nombres">
                         <label for="nombres">Nombres:</label>
@@ -131,6 +132,8 @@
                 </div>
             </div>
         </section>
+
+        <footer>Detalles</footer>
     </main>
 
     <script src="<?= BASE_URL() ?>js/main.js"></script>

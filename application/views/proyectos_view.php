@@ -69,23 +69,25 @@
                                 <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
                                     <span>No asignado</span>
                                 <?php else: ?>
-                                <span><?= $proyecto['presupuesto_inicial'] ?></span>
+                                    <span><?= $proyecto['presupuesto_inicial'] ?></span>
                                 <?php endif ?>
                                 <span><?= $proyecto['descripcion'] ?></span>
                                 <span><?= $proyecto['fecha_inicio_1'] ?></span>
                                 <span><?= $proyecto['fecha_final_1'] ?></span>
-                                <!-- <button class="projectDetails_btn">Detalles</button> -->
                             </div>
+                        </div>
+                        <div class="projectDetails">
+                            <a href="proyectos/projectDetails/<?= $proyecto['nombre'] . '/' . $proyecto['id_proyecto'] ?>" class="projectDetails_btn">Detalles</a>
                         </div>
                     </article>
                 <?php endforeach ?>
 
                 <article class="noProjects">
-                        <a href="<?= BASE_URL() ?>proyectos/registrar">
-                            <div class="addFirstProject">
-                                <i class="fas fa-plus-circle fa-7x"></i>
-                            </div>
-                        </a>
+                    <a href="<?= BASE_URL() ?>proyectos/registrar">
+                        <div class="addFirstProject">
+                            <i class="fas fa-plus-circle fa-7x"></i>
+                        </div>
+                    </a>
                 </article>    
             <?php else: ?>            
                 <article class="noProjects">
