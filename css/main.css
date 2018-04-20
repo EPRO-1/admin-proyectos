@@ -1449,6 +1449,86 @@ div.addFirstProject:hover {
 	color: #051258
 }
 
+.actividades {
+	display:flex;
+	width: 80%;
+	min-height: 500px;
+	/* background: #084479; */
+}
+
+.actividades .noActs {
+	display: flex;
+	justify-content: center;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	width: 50%;
+	min-height: 300px;
+	margin: auto;
+	background: #a4d7ee;
+}
+
+.actividades .noActs .title {
+	width: 100%;
+	font-weight: bold;
+	padding: 5px;
+	background: #084479;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.actividades .noActs form {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+
+.actividades .noActs form .field {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	/* height: 40px; */
+	padding: 10px;
+	border-bottom: 2px solid #084479;
+	margin-bottom: 20px;
+	transition: all ease 0.3s;
+}
+
+.actividades .noActs form .field:nth-last-child() {
+	background: #000;
+}
+
+.actividades .noActs form .field:hover {
+	background: #ccc;
+}
+
+.actividades .noActs form .field label {
+	width: 30%;
+	min-width: 100px;
+}
+
+.actividades .noActs form .field input,
+.actividades .noActs form .field textarea {
+	height: 40px;
+	width: 300px;
+	min-width: 150px;
+	border: none;
+	border-radius: 10px;
+	padding: 0 10px;
+}
+
+.actividades .noActs form .field textarea {
+	max-width: 300px;
+	min-width: 300px;
+	min-height: 40px;
+	max-height: 200px;
+	font-size: 0.9em;
+	padding-top: 10px;
+}
+
 footer {
 	position: relative;
 	bottom: 0;
