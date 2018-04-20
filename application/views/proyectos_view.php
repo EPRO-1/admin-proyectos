@@ -26,7 +26,6 @@
             <a href="proyectos">Proyectos</a>
             <a href="equipo">Equipo</a>
             <a href="<?= BASE_URL() ?>actividades">Actividades</a>
-            <a href="#">Contacto</a>
         </div>
     </aside>
     <main>

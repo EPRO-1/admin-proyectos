@@ -7,6 +7,7 @@ class Proyectos extends CI_Controller {
         parent::__construct();
         $this->load->model('proyectos_model');
         $this->load->model('usuarios_model');
+        $this->load->model('actividades_model');
         $this->load->helper('url');
         $this->load->helper('form');
         
@@ -68,6 +69,12 @@ class Proyectos extends CI_Controller {
 
         if ($equipoAsignado != false) {
             $data['equipoAsignado'] = $equipoAsignado;
+        }
+
+        $actsProy = $this->actividades_model->getActByProject($idProy);
+
+        if ($actsProy != false) {
+            $data['actsProyecto'] = $actsProy;
         }
 
         $this->load->view('detallesProyecto_view', $data);

@@ -26,7 +26,6 @@
             <a href="<?= BASE_URL() ?>proyectos">Proyectos</a>
             <a href="<?= BASE_URL() ?>equipo">Equipo</a>
             <a href="<?= BASE_URL() ?>actividades">Actividades</a>
-            <a href="#">Contacto</a>
         </div>
     </aside>
     <main>
@@ -100,6 +99,7 @@
                         <div class="value"><?= $projectData['fecha_final_1'] ?></div>
                     </div>
                 </div>
+                <div class="iconInfo"><i class="fas fa-info-circle"></i></div>
             </div>
 
             <div class="projectData">
@@ -137,6 +137,58 @@
                     </div>
                 <?php endif ?>
             </div>
+
+            <div class="projectData">
+                <span class="title">Actividades:</span>
+                <?php if (isset($actsProyecto)): ?>
+                    <?php $totalCost = 0.0 ?>
+                    <?php foreach($actsProyecto as $act): ?>
+                        <div class="actProy">
+                            <div class="title">
+                                <div class="icon"><i class="fas fa-tasks"></i></div>
+                                <div class="nombre"><?= $act['nombre'] ?></div>
+                            </div>
+                            <div class="infoAct">
+                                <div class="field">
+                                    <div class="label">Detalles:</div>
+                                    <div class="value"><?= $act['detalle'] ?></div>
+                                </div>
+                                <div class="field">
+                                    <div class="label">Costo:</div>
+                                    <div class="value"><?= '$' . $act['costo'] ?></div>
+                                </div>
+                                <div class="field">
+                                    <div class="label">Fecha ejecuci&oacute;n:</div>
+                                    <div class="value"><?= $act['fecha_ejecucion'] ?></div>
+                                </div>
+                                <div class="field">
+                                    <div class="label">Fecha finalizaci&oacute;n:</div>
+                                    <div class="value"><?= $act['fecha_finalizacion'] ?></div>
+                                </div>
+                                <div class="field">
+                                    <div class="label">Autor:</div>
+                                    <div class="value"><?= $act['nombresAutor'] . ' ' . $act['apeAutor'] . ' (' . $act['autor'] . ')' ?></div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php 
+                            $totalCost += $act['costo']
+                        ?>
+                    <?php endforeach ?>
+                    <div class="totalCostAct">
+                        <div class="icon">
+                            <i class="fas fa-money-bill-alt fa-2x"></i>
+                        </div>
+                        <span>El costo total de las actividades es:</span>
+                        <span><?= '$' . $totalCost ?></span>
+                    </div>
+                <?php else:?>
+                    <div class="team">
+                        <span class="noEquipo">No hay actividades asignadas</span>
+                    </div>
+                <?php endif ?>
+            </div>
+
             <footer>Detalles</footer>
         </section>
     </main>

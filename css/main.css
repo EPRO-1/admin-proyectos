@@ -279,7 +279,7 @@ main {
 
 	/* min-width: 620px; */
 	width: 80%;
-	height: 100%;
+	/* height: 100%; */
 	margin-left: 20%;
 }
 
@@ -340,6 +340,7 @@ section.proyectos {
 
 section.proyectos .projectData {
 	display: flex;
+	justify-content: space-between;
 	align-items: flex-start;
 	flex-wrap: wrap;
 	width: 80%;
@@ -362,6 +363,18 @@ section.proyectos .projectData .info {
 	display: flex;
 	flex-wrap: wrap;
 	width: 60%;
+}
+
+section.proyectos .projectData .iconInfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+	height: 300px;
+	margin: auto;
+	/* background: #000; */
+	font-size: 15em;
+	color: #084479;
 }
 
 section.proyectos .projectData .projectField {
@@ -510,6 +523,105 @@ section.proyectos .projectData .team .asignedMember div.accion label {
 
 section.proyectos .projectData .team .asignedMember div.accion input[type="submit"] {
 	display: none;
+}
+
+.projectData .actProy {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 100px;
+	background: #59a4e2;
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+.projectData .actProy .title {
+	display: flex;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.projectData .actProy .title .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	color: #fff;
+	width: 50px;
+	height: 50px;
+	background: #063157;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+.projectData .actProy .title .nombre {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-transform: capitalize;
+}
+
+.projectData .actProy .infoAct {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 100px;
+	background: #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.projectData .actProy .infoAct .field {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	width: 100%;
+	border-bottom: 2px dotted #051258;
+	margin-bottom: 10px;
+	padding: 5px;
+	cursor: default;
+	transition: all ease 0.3s;
+}
+
+.projectData .actProy .infoAct .field:hover {
+	border-bottom: 2px solid #051258;
+	background: #86c1e7;
+	border-radius: 5px 5px 0 0;
+}
+
+.projectData .actProy .infoAct .field .label {
+	width: 150px;
+}
+
+.projectData .actProy .infoAct .field .value {
+	text-align: right;
+}
+
+.projectData .totalCostAct {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	background: #084479;
+	color: #fff;
+	padding-right: 10px;
+}
+
+.projectData .totalCostAct .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	background: #000;
 }
 
 article.noProjects {
@@ -1451,9 +1563,11 @@ div.addFirstProject:hover {
 
 .actividades {
 	display:flex;
+	flex-wrap: wrap;
 	width: 80%;
 	min-height: 500px;
 	/* background: #084479; */
+	margin-top: 100px;
 }
 
 .actividades .noActs {
@@ -1461,10 +1575,128 @@ div.addFirstProject:hover {
 	justify-content: center;
 	align-content: flex-start;
 	flex-wrap: wrap;
-	width: 50%;
+	width: 60%;
 	min-height: 300px;
 	margin: auto;
 	background: #a4d7ee;
+}
+
+.actividades .act {
+	display: flex;
+	justify-content: space-between;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	width: 100%;
+	min-height: 300px;
+	margin: auto;
+	margin-bottom: 40px;
+	background: #8dc1e4;
+	box-shadow: 3px 3px 10px;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.actividades .act .info {
+	display: flex;
+	flex-wrap: wrap;
+	width: 60%;
+	min-height: 200px;
+	/* background: #ccc; */
+}
+
+.actividades .act .info div.field {
+	display: flex;
+	width: 100%;
+	min-height: 40px;
+	/* background: #000; */
+	margin-bottom: 10px;
+	border-bottom: 2px solid #051258;
+	transition: all ease 0.3s;
+}
+
+.actividades .act .info div.detalle .valor {
+	/* min-height: 40px; */
+	height: auto;
+}
+
+.actividades .act .info div.field:hover {
+	background: #ccc;
+	border-radius: 0 5px 5px 0;
+}
+
+.actividades .act .info div .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	min-width: 40px;
+	height: 40px;
+	background: #051258;
+	border-radius: 5px;
+	margin-right: 10px;
+	color: #fff;
+	font-size: 1.5em;
+}
+
+.actividades .act .info div .label {
+	display: flex;
+	align-items: center;
+	width: 150px;
+	min-width: 150px;
+	height: 40px;
+	margin-right: 10px;
+	text-align-last: left;
+	/* background: #000; */
+}
+
+.actividades .act .info div .valor {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+	min-width: 150px;
+	height: 40px;
+	margin-right: 10px;
+	text-align: right;
+	/* background: #000; */
+}
+
+.actividades .act .img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30%;
+	min-height: 200px;
+	/* background: #000; */
+	font-size: 10em;
+	color: #084479;
+}
+
+.actividades .addAct {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	/* background: #000; */
+}
+
+.actividades .addAct a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 100px;
+	border-radius: 10px;
+	background: #0d397c;
+	color: #fff;
+	font-size: 3.5em;
+	margin-top: 20px;
+	transition: all ease 0.3s;
+}
+
+.actividades .addAct a:hover {
+	background: #031938;
+	color: #fff;
+	font-size: 4em;
 }
 
 .actividades .noActs .title {
@@ -1474,7 +1706,7 @@ div.addFirstProject:hover {
 	background: #084479;
 	color: #fff;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .actividades .noActs form {
@@ -1493,12 +1725,8 @@ div.addFirstProject:hover {
 	/* height: 40px; */
 	padding: 10px;
 	border-bottom: 2px solid #084479;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	transition: all ease 0.3s;
-}
-
-.actividades .noActs form .field:nth-last-child() {
-	background: #000;
 }
 
 .actividades .noActs form .field:hover {
@@ -1511,7 +1739,8 @@ div.addFirstProject:hover {
 }
 
 .actividades .noActs form .field input,
-.actividades .noActs form .field textarea {
+.actividades .noActs form .field textarea,
+.actividades .noActs form .field select {
 	height: 40px;
 	width: 300px;
 	min-width: 150px;
@@ -1527,6 +1756,22 @@ div.addFirstProject:hover {
 	max-height: 200px;
 	font-size: 0.9em;
 	padding-top: 10px;
+}
+
+.actividades .noActs form .field.submit {
+	justify-content: center;
+}
+
+.actividades .noActs form .field.submit input {
+	background: #084479;
+	color: #fff;
+	font-size: 1em;
+	transition: all ease 0.3s;
+	cursor: pointer;
+}
+
+.actividades .noActs form .field.submit input:hover {
+	background: #063157;
 }
 
 footer {
