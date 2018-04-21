@@ -744,6 +744,11 @@ div.addFirstProject:hover {
 	color: rgb(106, 153, 207);
 }
 
+.regProy {
+	margin-top: 50px;
+	height: 100px;
+}
+
 .equipo {
 	display: flex;
 	justify-content: space-between;
