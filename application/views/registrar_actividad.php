@@ -48,7 +48,7 @@
                     </div>
                     <div class="field">
                         <label for="costoAct">Costo ($00,00):</label>
-                        <input type="number" name="costoAct" id="costoAct" placeholder="10.00" step="0.010" min="0" required>
+                        <input type="number" name="costoAct" id="costoAct" placeholder="10,00" step="0.010" min="0" required>
                     </div>
                     <div class="field">
                         <label for="proyAct">Proyecto:</label>

@@ -131,4 +131,13 @@ class Proyectos_model extends CI_Model {
 
         $this->db->delete('asignar_equipo_proyecto', array('id_asignacion' => $idAsignacion));
     }
+
+    public function asignBudget () {
+        $idProy = $this->input->post('idProy');
+        $presupuesto = $this->input->post('budget');
+        $where = array('id_proyecto' => $idProy);
+        $data = array('presupuesto_inicial' => $presupuesto);
+
+        $this->db->update('proyecto', $data, $where);
+    }
 }

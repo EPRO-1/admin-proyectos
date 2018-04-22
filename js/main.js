@@ -100,7 +100,11 @@ if (tituloPagigna == 'Equipo') {
 
 } else if (tituloPagigna == 'Detalles :: Proyecto') {
     //..
-    let desasignarSubmits = [...document.getElementsByClassName('desasignarEquipo')];
+    let desasignarSubmits = [...document.getElementsByClassName('desasignarEquipo')],
+        asignarPresupuesto = document.getElementById('asignBudget'),
+        asignarPresupuestoForm = document.getElementById('asignBudget_form'),
+        presupuestoInput = document.getElementById('budgetInput'),
+        enviarPresupuesto = document.getElementById('sendBudgetLbl');
 
     for (let i = 0; i < desasignarSubmits.length; i++) {
         desasignarSubmits[i].addEventListener('click', function confirmDesasignar (e) {
@@ -110,6 +114,14 @@ if (tituloPagigna == 'Equipo') {
         });
     }
 
+    asignarPresupuesto.addEventListener('click', () => {
+        asignarPresupuesto.setAttribute('class', 'value hidden');
+        asignarPresupuestoForm.setAttribute('class', 'value');
+    });
+
+    presupuestoInput.addEventListener('keyup', () => {
+        enviarPresupuesto.removeAttribute('class');
+    });
     
 
 } else if (tituloPagigna == 'Registrar proyecto') {

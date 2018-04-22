@@ -115,7 +115,7 @@
                                 <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
                                     <span>No asignado</span>
                                 <?php else: ?>
-                                    <span><?= $proyecto['presupuesto_inicial'] ?></span>
+                                    <span><?= '$' . substr($proyecto['presupuesto_inicial'], 0, -2) ?></span>
                                 <?php endif ?>
                                 <span><?= $proyecto['descripcion'] ?></span>
                                 <span><?= $proyecto['fecha_inicio_1'] ?></span>

@@ -106,6 +106,15 @@ class Proyectos extends CI_Controller {
         }
     }
 
+    public function asignarPresupuesto () {
+        $nombreProy = $this->input->post('nombreProy');
+        $idProy = $this->input->post('idProy');
+
+        $this->proyectos_model->asignBudget();
+        
+        redirect(BASE_URL() . 'proyectos/projectDetails/' . $nombreProy . '/' . $idProy);
+    }
+
     public function listado () {
         $level_user = $this->session->userdata('usuario')[1];
         $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');

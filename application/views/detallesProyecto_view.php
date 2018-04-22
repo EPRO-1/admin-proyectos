@@ -79,9 +79,17 @@
                         <span class="icon"><i class="fa fa-money-bill-alt"></i></span>
                         <label for="">Presupuesto:</label>
                         <?php if ($projectData['presupuesto_inicial'] != NULL): ?>
-                            <div class="value"><?= $projectData['presupuesto_inicial'] ?></div>
+                            <div class="value"><?= '$' . substr($projectData['presupuesto_inicial'], 0, -2) ?></div>
                         <?php else: ?>
-                            <div class="value">No asignado</div>
+                            <div class="value" id="asignBudget">No asignado <i class="fa fa-edit"></i></div>
+                            <?= form_open('proyectos/asignarPresupuesto', 'class="value hidden" id="asignBudget_form"') ?>
+                                <input type="hidden" name="nombreProy" value="<?= $projectData['nombre'] ?>">
+                                <input type="hidden" name="idProy" value="<?= $projectData['id_proyecto'] ?>">
+                                <input type="number" name="budget" id="budgetInput" placeholder="1000,00" step="0.010" min="0">
+                                <label for="sendBudget" id="sendBudgetLbl" class="hidden"><i class="fa fa-check-circle fa-lg"></i></label>
+                                <span class="cancelAsign" onclick="location.reload()"><i class="fa fa-times-circle fa-lg"></i></span>
+                                <input type="submit" name="sendBudget" id="sendBudget">
+                            </form>
                         <?php endif ?>
                     </div>
                     <div class="projectField">
@@ -176,6 +184,13 @@
                             $totalCost += $act['costo']
                         ?>
                     <?php endforeach ?>
+
+                    <div class="addAct">
+                        <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                    </div>
+
                     <div class="totalCostAct">
                         <div class="icon">
                             <i class="fas fa-money-bill-alt fa-2x"></i>
@@ -183,9 +198,35 @@
                         <span>El costo total de las actividades es:</span>
                         <span><?= '$' . $totalCost ?></span>
                     </div>
+                    
+
+                    <?php if ($projectData['presupuesto_inicial'] != NULL): ?>
+                        <div class="compararPresupuesto">
+                            <?php if ($totalCost <= $projectData['presupuesto_inicial']): ?>
+                                <div class="inBudget">
+                                    <span class="icon"><i class="fa fa-check-circle"></i></span>
+                                    <span>&nbsp;Se est&aacute; dentro del presupuesto</span>
+                                </div>
+                                <span>($<?= $projectData['presupuesto_inicial'] - $totalCost ?> restantes)</span>
+                            <?php else: ?>
+                                <div class="outBudget">
+                                    <span class="icon"><i class="fa fa-exclamation-triangle"></i></span>
+                                        <span>&nbsp;Se est&aacute; fuera del presupuesto</span>
+                                    </div>
+                                    <span>($<?= substr(($projectData['presupuesto_inicial'] - $totalCost), 1) ?> sobrepasados)</span>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                    <?php endif ?>
                 <?php else:?>
                     <div class="team">
                         <span class="noEquipo">No hay actividades asignadas</span>
+                    </div>
+
+                    <div class="addAct">
+                        <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
                     </div>
                 <?php endif ?>
             </div>

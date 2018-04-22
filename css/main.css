@@ -450,6 +450,58 @@ section.proyectos .projectData .projectField .value {
 	font-style: italic;
 }
 
+section.proyectos .projectData .projectField #asignBudget {
+	cursor: pointer;
+}
+
+section.proyectos .projectData .projectField .value.hidden {
+	display: none;
+}
+
+section.proyectos .projectData .projectField form.value.hidden {
+	display: none;
+}
+
+section.proyectos .projectData .projectField form.value label.hidden {
+	display: none;
+}
+
+section.proyectos .projectData .projectField form.value label svg {
+	color: #4db66c;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+section.proyectos .projectData .projectField form.value label svg:hover {
+	color: #16a340;
+}
+
+section.proyectos .projectData .projectField form.value .cancelAsign {
+	color: #e64949;
+	cursor: pointer;
+	transition: all ease 0.3s;
+}
+
+section.proyectos .projectData .projectField form.value .cancelAsign:hover {
+	color: #b31c1c;
+}
+
+section.proyectos .projectData .projectField form.value input[type="number"] {
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	padding: 0 10px;
+	margin-right: 10px;
+}
+
+section.proyectos .projectData .projectField form.value input[type="number"]:focus {
+	border: 2px solid #073763;
+}
+
+section.proyectos .projectData .projectField form.value input[type='submit'] {
+	display: none;
+}
+
 section.proyectos .projectData .team {
 	display:flex;
 	align-content: flex-start;
@@ -654,6 +706,63 @@ section.proyectos .projectData .team .asignedMember div.accion input[type="submi
 	height: 50px;
 	border-radius: 5px;
 	background: #000;
+}
+
+.projectData .compararPresupuesto {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	background: #084479;
+	color: #fff;
+	padding-right: 10px;
+	margin-top: 20px;
+}
+
+.projectData .compararPresupuesto .inBudget {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 70%;
+	height: 100%;
+	background: #07852d;
+	border-radius: 5px;
+	padding-right: 65px;
+}
+
+.projectData .compararPresupuesto .inBudget span.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	background: #05581e;
+}
+
+.projectData .compararPresupuesto .outBudget {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 70%;
+	height: 100%;
+	background: #b63e3e;
+	border-radius: 5px;
+	padding-right: 75px;
+}
+
+.projectData .compararPresupuesto .outBudget span.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
+	width: 50px;
+	height: 50px;
+	border-radius: 5px;
+	background: #580505;
 }
 
 article.noProjects {
@@ -1709,14 +1818,17 @@ div.addFirstProject:hover {
 	color: #084479;
 }
 
-.actividades .addAct {
+.actividades .addAct,
+.proyectos .addAct {
 	display: flex;
 	justify-content: center;
 	width: 100%;
+	margin-bottom: 20px;
 	/* background: #000; */
 }
 
-.actividades .addAct a {
+.actividades .addAct a,
+.proyectos .addAct a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1730,7 +1842,8 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
-.actividades .addAct a:hover {
+.actividades .addAct a:hover,
+.proyectos .addAct a:hover {
 	background: #031938;
 	color: #fff;
 	font-size: 4em;
