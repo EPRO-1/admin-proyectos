@@ -37,6 +37,16 @@
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
+            <div class="filter">
+                <span>Viendo:</span>
+                <?= form_open() ?>
+                    <select name="filterProy" id="filterProy" onchange="this.form.submit()">
+                        <option value="all">Todos</option>
+                        <option value="last5">&Uacute;ltimos 5</option>
+                        <option value="last10">&Uacute;ltimos 10</option>
+                    </select>
+                </form>
+            </div>
         </header>
         <section class="proyectos">
 
