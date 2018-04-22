@@ -37,16 +37,48 @@
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
-            <div class="filter">
-                <span>Viendo:</span>
-                <?= form_open() ?>
-                    <select name="filterProy" id="filterProy" onchange="this.form.submit()">
-                        <option value="all">Todos</option>
-                        <option value="last5">&Uacute;ltimos 5</option>
-                        <option value="last10">&Uacute;ltimos 10</option>
-                    </select>
-                </form>
-            </div>
+            <?php if ($check_projects): ?>
+                <div class="filter">
+                    <span>Viendo:</span>
+                    <?= form_open('proyectos/filtrados') ?>
+                        <select name="filterProy" id="filterProy" onchange="this.form.submit()">
+                            <?php if (!isset($currentFilter)): ?>
+                                <option value="0">Todos</option>
+                                <option value="3">&Uacute;ltimos 3</option>
+                                <option value="5">&Uacute;ltimos 5</option>
+                                <option value="7">&Uacute;ltimos 7</option>
+                                <option value="10">&Uacute;ltimos 10</option>
+                            <?php endif ?>
+
+                            <?php if ($currentFilter == 3): ?>
+                                <option value="0">Todos</option>
+                                <option value="3" selected>&Uacute;ltimos 3</option>
+                                <option value="5">&Uacute;ltimos 5</option>
+                                <option value="7">&Uacute;ltimos 7</option>
+                                <option value="10">&Uacute;ltimos 10</option>
+                            <?php elseif ($currentFilter == 5): ?>
+                                <option value="0">Todos</option>
+                                <option value="3">&Uacute;ltimos 3</option>
+                                <option value="5" selected>&Uacute;ltimos 5</option>
+                                <option value="7">&Uacute;ltimos 7</option>
+                                <option value="10">&Uacute;ltimos 10</option>
+                            <?php elseif ($currentFilter == 7): ?>
+                                <option value="0">Todos</option>
+                                <option value="3">&Uacute;ltimos 3</option>
+                                <option value="5">&Uacute;ltimos 5</option>
+                                <option value="7" selected>&Uacute;ltimos 7</option>
+                                <option value="10">&Uacute;ltimos 10</option>
+                            <?php elseif ($currentFilter == 10): ?>
+                                <option value="0">Todos</option>
+                                <option value="3">&Uacute;ltimos 3</option>
+                                <option value="5">&Uacute;ltimos 5</option>
+                                <option value="7">&Uacute;ltimos 7</option>
+                                <option value="10" selected>&Uacute;ltimos 10</option>
+                            <?php endif ?>
+                        </select>
+                    </form>
+                </div>
+            <?php endif ?>
         </header>
         <section class="proyectos">
 
@@ -74,7 +106,11 @@
                                 <span><?= $proyecto['nombreDpto'] ?></span>
                                 <span><?= $proyecto['nombreTipo'] ?></span>
                                 <?php if ($proyecto['extension_de'] != NULL ): ?>
-                                    <span><?php echo $proyectos[$proyecto['extension_de']-1]['nombre'] ?></span>
+                                    <?php foreach ($allProjects as $proy): ?>
+                                        <?php if ($proy['id_proyecto'] == $proyecto['extension_de']): ?>
+                                            <span><?= $proy['nombre'] ?></span>
+                                        <?php endif ?>
+                                    <?php endforeach ?>                                    
                                 <?php endif ?>
                                 <?php if($proyecto['presupuesto_inicial'] == NULL): ?>
                                     <span>No asignado</span>
@@ -87,7 +123,7 @@
                             </div>
                         </div>
                         <div class="projectDetails">
-                            <a href="proyectos/projectDetails/<?= $proyecto['nombre'] . '/' . $proyecto['id_proyecto'] ?>" class="projectDetails_btn">Detalles</a>
+                            <a href="<?= BASE_URL() ?>proyectos/projectDetails/<?= $proyecto['nombre'] . '/' . $proyecto['id_proyecto'] ?>" class="projectDetails_btn">Detalles</a>
                         </div>
                     </article>
                 <?php endforeach ?>

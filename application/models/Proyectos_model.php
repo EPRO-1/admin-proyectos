@@ -22,19 +22,43 @@ class Proyectos_model extends CI_Model {
     }
 
     public function get_proyectos () {
-        $query = $this->db->query(
-            'select proyecto.*, tipo_proyecto.nombre as nombreTipo, usuario.nombres, apellidos, departamentos.nombre as nombreDpto
-            from proyecto, tipo_proyecto, usuario, departamentos
-            where proyecto.tipo_proyecto = tipo_proyecto.id_tipo
-                and proyecto.encargado = usuario.id_user
-                and proyecto.id_depto = departamentos.id_depto'
-        );
+        $this->db->select('
+            proyecto.*, 
+            tipo_proyecto.nombre AS nombreTipo, 
+            usuario.nombres, usuario.apellidos,
+            departamentos.nombre AS nombreDpto
+        ');
+        $this->db->from('proyecto');
+        $this->db->join('tipo_proyecto', 'tipo_proyecto.id_tipo = proyecto.tipo_proyecto');
+        $this->db->join('usuario', 'usuario.id_user = proyecto.encargado');
+        $this->db->join('departamentos', 'departamentos.id_depto = proyecto.id_depto');
+        $this->db->order_by('proyecto.id_proyecto', 'DESC');
+
+        $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
             return $query->result_array();
         } else {
             return false;
         }
+    }
+
+    public function getFilteredProjects ($filterNumber) {
+        $this->db->select('
+            proyecto.*, 
+            tipo_proyecto.nombre AS nombreTipo, 
+            usuario.nombres, usuario.apellidos,
+            departamentos.nombre AS nombreDpto
+        ');
+        $this->db->from('proyecto');
+        $this->db->join('tipo_proyecto', 'tipo_proyecto.id_tipo = proyecto.tipo_proyecto');
+        $this->db->join('usuario', 'usuario.id_user = proyecto.encargado');
+        $this->db->join('departamentos', 'departamentos.id_depto = proyecto.id_depto');
+        $this->db->order_by('proyecto.id_proyecto', 'DESC');
+        $this->db->limit($filterNumber);
+
+        $query = $this->db->get()->result_array();
+        return $query;
     }
 
     public function register_project () {

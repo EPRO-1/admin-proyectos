@@ -24,6 +24,7 @@ class Proyectos extends CI_Controller {
         $proyectos = $this->proyectos_model->get_proyectos();
         if ($proyectos != false) {
             $data['check_projects'] = true;
+            $data['allProjects'] = $this->proyectos_model->get_proyectos();
             $data['proyectos'] = $this->proyectos_model->get_proyectos();
 
             $this->load->view('proyectos_view', $data);
@@ -84,6 +85,25 @@ class Proyectos extends CI_Controller {
     public function deleteAsignation ($nombreProyecto, $idProyecto) {
         $this->proyectos_model->deleteAsignation();
         redirect(BASE_URL() . 'proyectos/projectDetails/' . $nombreProyecto . '/' . $idProyecto);
+    }
+
+    public function filtrados () {
+        $filterNumber = $this->input->post('filterProy');
+        
+        if ($filterNumber != 0) {
+            $level_user = $this->session->userdata('usuario')[1];
+            $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+
+            $data['currentFilter'] = $filterNumber;
+            $data['check_projects'] = true;
+            $data['allProjects'] = $this->proyectos_model->get_proyectos();
+            $data['proyectos'] = $this->proyectos_model->getFilteredProjects($filterNumber);
+            // print_r($proys);
+            
+            $this->load->view('proyectos_view', $data);
+        } else {
+            redirect(BASE_URL() . 'proyectos');
+        }
     }
 
     public function listado () {
