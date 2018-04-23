@@ -29,6 +29,27 @@
             }
         }
 
+        public function getFilteredActivities ($filterNumber) {
+            $this->db->select('
+                usuario.username as autor, usuario.nombres as nombresAutor, usuario.apellidos as apeAutor,
+                proyecto.nombre as proyecto,
+                actividades.*
+            ');
+            $this->db->from('actividades');
+            $this->db->join('usuario', 'actividades.id_autor = usuario.id_user');
+            $this->db->join('proyecto', 'actividades.id_proyecto = proyecto.id_proyecto');
+            $this->db->order_by('id_act', 'DESC');
+            $this->db->limit($filterNumber);
+
+            $query = $this->db->get();
+            
+            if ($query->num_rows() > 0) {
+                return $query->result_array();
+            } else {
+                return false;
+            }
+        }
+
         public function registerAct () {
             $data = array(
                 'id_proyecto' => $this->input->post('proyAct'),

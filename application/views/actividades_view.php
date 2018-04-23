@@ -36,6 +36,46 @@
                     <i class="fa fa-times-circle fa-2x" title="Cerrar Sesi&oacute;n"></i>
                 </a>
             </bar>
+            <div class="filter">
+                <span>Viendo:</span>
+                <?= form_open('actividades/filtradas') ?>
+                    <select name="filterAct" id="filterAct" onchange="this.form.submit()">
+                        <?php if (!isset($currentFilter)): ?>
+                            <option value="0">Todas</option>
+                            <option value="3">&Uacute;ltimas 3</option>
+                            <option value="5">&Uacute;ltimas 5</option>
+                            <option value="7">&Uacute;ltimas 7</option>
+                            <option value="10">&Uacute;ltimas 10</option>
+                        <?php endif ?>
+    
+                        <?php if ($currentFilter == 3): ?>
+                            <option value="0">Todas</option>
+                            <option value="3" selected>&Uacute;ltimas 3</option>
+                            <option value="5">&Uacute;ltimas 5</option>
+                            <option value="7">&Uacute;ltimas 7</option>
+                            <option value="10">&Uacute;ltimas 10</option>
+                        <?php elseif ($currentFilter == 5): ?>
+                            <option value="0">Todas</option>
+                            <option value="3">&Uacute;ltimas 3</option>
+                            <option value="5" selected>&Uacute;ltimas 5</option>
+                            <option value="7">&Uacute;ltimas 7</option>
+                            <option value="10">&Uacute;ltimas 10</option>
+                        <?php elseif ($currentFilter == 7): ?>
+                            <option value="0">Todas</option>
+                            <option value="3">&Uacute;ltimas 3</option>
+                            <option value="5">&Uacute;ltimas 5</option>
+                            <option value="7" selected>&Uacute;ltimas 7</option>
+                            <option value="10">&Uacute;ltimas 10</option>
+                        <?php elseif ($currentFilter == 10): ?>
+                            <option value="0">Todas</option>
+                            <option value="3">&Uacute;ltimas 3</option>
+                            <option value="5">&Uacute;ltimas 5</option>
+                            <option value="7">&Uacute;ltimas 7</option>
+                            <option value="10" selected>&Uacute;ltimas 10</option>
+                        <?php endif ?>
+                    </select>
+                </form>
+            </div>
         </header>
         <section class="actividades">
             <?php if (isset($actividades)): ?>

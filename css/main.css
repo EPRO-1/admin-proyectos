@@ -841,6 +841,24 @@ article.project .projectInfo .infoValue {
 	background: #fff;
 }
 
+span.fechaFin a {
+	width: 100px;
+	text-align: center;
+	padding: 5px 10px;
+	border-radius: 5px;
+	background: #a1a1a1;
+	text-decoration: none;
+	font-style: italic;
+	font-size: 0.9em;
+	color: #000;
+	transition: all ease 0.3s;
+}
+
+span.fechaFin a:hover {
+	background: #ca6e22;
+	color: #fff;
+}
+
 article.project .projectDetails {
 	display: flex;
 	width: 100%;

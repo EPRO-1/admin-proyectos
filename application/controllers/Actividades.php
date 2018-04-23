@@ -47,6 +47,31 @@ class Actividades extends CI_Controller {
         $this->load->view('registrar_actividad', $data);
     }
 
+    public function filtradas () {
+        $filterNumber = $this->input->post('filterAct');
+        
+        if ($filterNumber != 0) {
+            $level_user = $this->session->userdata('usuario')[1];
+            $userName = $this->session->userdata('usuario')[0];
+    
+            $data['userdata'] = $this->equipo_model->getSpecificTeamMemberData($userName);
+            $data['nivel_usuario'] = $this->usuarios_model->get_user_levels($level_user)->row('nivel');
+            $data['currentFilter'] = $filterNumber;
+    
+            $actividades = $this->actividades_model->getFilteredActivities($filterNumber);
+            if ($actividades != false) {
+                $data['actividades'] = $actividades;
+            } 
+    
+            $data['proyectos'] = $this->proyectos_model->get_proyectos();
+    
+            $this->load->view('actividades_view', $data);
+        
+        } else {
+            redirect(BASE_URL() . 'actividades');
+        }
+    }
+
     public function registerAct () {
         $this->actividades_model->registerAct();
         redirect(BASE_URL() . 'actividades');

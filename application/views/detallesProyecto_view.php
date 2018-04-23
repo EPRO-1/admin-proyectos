@@ -129,7 +129,7 @@
                         <div class="value">
                             <?php if(!$projectData["fecha_final_2"]) {
                                 if ($this->session->userdata('usuario')[1] == 4) {
-                                    echo '<span>';
+                                    echo '<span class="fechaFin">';
                                     echo  '<a href="'.BASE_URL().'proyectos/estado/'.$projectData["id_proyecto"].'/2" class="finalizar" value="Finalizar">Finalizar</a>';
                                     echo ' </span>';
                                 } else {
