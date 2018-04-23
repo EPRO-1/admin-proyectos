@@ -112,6 +112,36 @@
                         <label for="">Fecha final:</label>
                         <div class="value"><?= $projectData['fecha_final_1'] ?></div>
                     </div>
+                    <div class="projectField">
+                        <span class="icon"><i class="fas fa-flag-checkered"></i></span>
+                        <label for="">
+                            <?php if(!$projectData["fecha_final_2"]){
+                                if ($this->session->userdata('usuario')[1] == 4) {
+                                    echo "<span>¿Finalizar?</span>";
+                                } else {
+                                    echo  "<span>Finalización:</span>";
+                                }
+                            } else {
+                                echo  "<span>Finalización:</span>";
+                            }
+                            ?>
+                        </label>
+                        <div class="value">
+                            <?php if(!$projectData["fecha_final_2"]) {
+                                if ($this->session->userdata('usuario')[1] == 4) {
+                                    echo '<span>';
+                                    echo  '<a href="'.BASE_URL().'proyectos/estado/'.$projectData["id_proyecto"].'/2" class="finalizar" value="Finalizar">Finalizar</a>';
+                                    echo ' </span>';
+                                } else {
+                                    echo '<span>';
+                                    echo 'No finalizado';
+                                    echo '</span>';
+                                }
+                            } else {
+                                echo  "<span>".$projectData["fecha_final_2"]."</span>";
+                            }?>
+                        </div>
+                    </div>
                 </div>
                 <div class="iconInfo"><i class="fas fa-info-circle"></i></div>
             </div>

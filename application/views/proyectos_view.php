@@ -99,6 +99,17 @@
                                 <span>Descripci&oacute;n:</span>
                                 <span>Fecha inicio:</span>
                                 <span>Fecha final:</span>
+                                <?php
+                                if(!$proyecto["fecha_final_2"]){
+                                    if ($this->session->userdata('usuario')[1] == 4) {
+                                        echo "<span>¿Finalizar?</span>";
+                                    } else {
+                                        echo  "<span>Finalización:</span>";
+                                    }
+                                } else {
+                                    echo  "<span>Finalización:</span>";
+                                }
+                                ?>
                             </div>
                             <div class="infoValue">
                                 <span><?= $proyecto['nombres'] . " " . $proyecto['apellidos'] ?></span>
@@ -119,6 +130,20 @@
                                 <span><?= $proyecto['descripcion'] ?></span>
                                 <span><?= $proyecto['fecha_inicio_1'] ?></span>
                                 <span><?= $proyecto['fecha_final_1'] ?></span>
+                                <?php 
+                                if(!$proyecto["fecha_final_2"]) {
+                                    if ($this->session->userdata('usuario')[1] == 4) {
+                                        echo '<span>';
+                                        echo  '<a href="'.BASE_URL().'proyectos/estado/'.$proyecto["id_proyecto"].'/2" class="finalizar" value="Finalizar">Finalizar</a>';
+                                        echo ' </span>';
+                                    } else {
+                                        echo '<span>';
+                                        echo 'No finalizado';
+                                        echo '</span>';
+                                    }
+                                } else {
+                                    echo  "<span>".$proyecto["fecha_final_2"]."</span>";
+                                }?>
                             </div>
                         </div>
                         <?php if ($this->session->userdata('usuario')[1] != 1): ?>

@@ -92,7 +92,8 @@ class Proyectos_model extends CI_Model {
             proyecto.presupuesto_inicial,
             proyecto.estado,
             proyecto.fecha_inicio_1,
-            proyecto.fecha_final_1
+            proyecto.fecha_final_1,
+            proyecto.fecha_final_2
         ');
         $this->db->from('proyecto');
         $this->db->join('usuario', 'proyecto.encargado = usuario.id_user');

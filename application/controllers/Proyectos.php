@@ -82,6 +82,15 @@ class Proyectos extends CI_Controller {
 
     }
 
+    public function estado($id,$estado){
+        $this->db->set("estado",$estado);
+        $this->db->set("fecha_final_2",date("Y/m/d"));
+        $this->db->where("id_proyecto",$id);
+        $this->db->update("proyecto");
+    
+        redirect(BASE_URL('proyectos'),'refresh');
+    }
+
     public function deleteAsignation ($nombreProyecto, $idProyecto) {
         $this->proyectos_model->deleteAsignation();
         redirect(BASE_URL() . 'proyectos/projectDetails/' . $nombreProyecto . '/' . $idProyecto);
