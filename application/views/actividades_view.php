@@ -19,7 +19,6 @@
             <div class="userInfoDet">
                 <span><?= $this->session->userdata('usuario')[0] ?></span>
                 <span><?= $nivel_usuario ?></span>
-                <span>Cuenta</span>
             </div>
             <hr>
         </div>
@@ -84,49 +83,55 @@
                         </div>
                     </div>
                 <?php endforeach ?>
-                <div class="addAct">
-                    <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
-                        <i class="fa fa-plus-circle"></i>
-                    </a>
-                </div>
+
+                <?php if ($this->session->userdata('usuario')[1] != 1 && $this->session->userdata('usuario')[1] != 3): ?>
+                    <div class="addAct">
+                        <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
+                            <i class="fa fa-plus-circle"></i>
+                        </a>
+                    </div>
+                <?php endif ?>
+
             <?php else: ?>
                 <div class="noActs">
                     <span class="title">No hay actividades - Registrar primera</span>
-                    <?= form_open('actividades/registerAct') ?>
-                        <input type="hidden" name="userAct" value="<?= $userdata['id_user'] ?>">
-                        <div class="field">
-                            <label for="nombreAct">Nombre:</label>
-                            <input type="text" name="nombreAct" id="nombreAct" placeholder="Nombre de la actividad" required>
-                        </div>
-                        <div class="field">
-                            <label for="costoAct">Costo ($00,00):</label>
-                            <input type="number" name="costoAct" id="costoAct" placeholder="10.00" step="0.010" min="0" required>
-                        </div>
-                        <div class="field">
-                            <label for="proyAct">Proyecto:</label>
-                            <select name="proyAct" id="proyAct" required>
-                                <option value="NULL" selected disabled>-- Seleccione un proyecto --</option>
-                                <?php foreach ($proyectos as $proyecto): ?>
-                                    <option value="<?= $proyecto['id_proyecto'] ?>"><?= $proyecto['nombre'] ?></option>
-                                <?php endforeach ?>
-                            </select>
-                        </div>
-                        <div class="field">
-                            <label for="detalleAct">Detalle:</label>
-                            <textarea name="detalleAct" id="detalleAct" placeholder="Detalles de la actividad" required></textarea>
-                        </div>
-                        <div class="field">
-                            <label for="inicioAct">Fecha ejecuci&oacute;n:</label>
-                            <input type="date" name="inicioAct" id="inicioAct" required>
-                        </div>
-                        <div class="field">
-                            <label for="finAct">Fecha finalizaci&oacute;n</label>
-                            <input type="date" name="finAct" id="finAct" required>
-                        </div>
-                        <div class="field submit">
-                            <input type="submit" name="registerAct" id="registerAct" value="Registrar">
-                        </div>
-                    </form>
+                    <?php if ($this->session->userdata('usuario')[1] != 1 && $this->session->userdata('usuario')[1] != 3): ?>
+                        <?= form_open('actividades/registerAct') ?>
+                            <input type="hidden" name="userAct" value="<?= $userdata['id_user'] ?>">
+                            <div class="field">
+                                <label for="nombreAct">Nombre:</label>
+                                <input type="text" name="nombreAct" id="nombreAct" placeholder="Nombre de la actividad" required>
+                            </div>
+                            <div class="field">
+                                <label for="costoAct">Costo ($00,00):</label>
+                                <input type="number" name="costoAct" id="costoAct" placeholder="10.00" step="0.010" min="0" required>
+                            </div>
+                            <div class="field">
+                                <label for="proyAct">Proyecto:</label>
+                                <select name="proyAct" id="proyAct" required>
+                                    <option value="NULL" selected disabled>-- Seleccione un proyecto --</option>
+                                    <?php foreach ($proyectos as $proyecto): ?>
+                                        <option value="<?= $proyecto['id_proyecto'] ?>"><?= $proyecto['nombre'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="detalleAct">Detalle:</label>
+                                <textarea name="detalleAct" id="detalleAct" placeholder="Detalles de la actividad" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="inicioAct">Fecha ejecuci&oacute;n:</label>
+                                <input type="date" name="inicioAct" id="inicioAct" required>
+                            </div>
+                            <div class="field">
+                                <label for="finAct">Fecha finalizaci&oacute;n</label>
+                                <input type="date" name="finAct" id="finAct" required>
+                            </div>
+                            <div class="field submit">
+                                <input type="submit" name="registerAct" id="registerAct" value="Registrar">
+                            </div>
+                        </form>
+                    <?php endif ?>
                 </div>
             <?php endif ?>
         </section>

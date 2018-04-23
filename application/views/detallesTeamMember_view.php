@@ -19,7 +19,6 @@
             <div class="userInfoDet">
                 <span><?= $this->session->userdata('usuario')[0] ?></span>
                 <span><?= $nivel_usuario ?></span>
-                <span>Cuenta</span>
             </div>
             <hr>
         </div>
@@ -86,12 +85,14 @@
                             <?php endif ?>
                         </select>
                     </div>
-                    <div class="options">
-                        <input type="hidden" name="idMember" value="<?= $memberData['id_user'] ?>">
-                        <input id="sendChanges" class="hidden" type="submit" name="sendChanges" value="Guardar">
-                        <span id="cancelChanges" class="cancelChanges hidden">Cancelar</span>
-                        <span class="change" id="editInfoBtn">Editar</span>
-                    </div>
+                    <?php if ($this->session->userdata('usuario')[1] == 4): ?>
+                        <div class="options">
+                            <input type="hidden" name="idMember" value="<?= $memberData['id_user'] ?>">
+                            <input id="sendChanges" class="hidden" type="submit" name="sendChanges" value="Guardar">
+                            <span id="cancelChanges" class="cancelChanges hidden">Cancelar</span>
+                            <span class="change" id="editInfoBtn">Editar</span>
+                        </div>
+                    <?php endif ?>
                 </form>
                 <?php if (isset($errores)): ?>
                     <div class="editMemberErrors">

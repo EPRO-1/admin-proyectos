@@ -19,13 +19,12 @@
             <div class="userInfoDet">
                 <span><?= $this->session->userdata('usuario')[0] ?></span>
                 <span><?= $nivel_usuario ?></span>
-                <span>Cuenta</span>
             </div>
             <hr>
         </div>
         <div class="options">
-            <a href="proyectos">Proyectos</a>
-            <a href="equipo">Equipo</a>
+            <a href="<?= BASE_URL() ?>proyectos">Proyectos</a>
+            <a href="<?= BASE_URL() ?>equipo">Equipo</a>
             <a href="<?= BASE_URL() ?>actividades">Actividades</a>
         </div>
     </aside>
@@ -122,19 +121,23 @@
                                 <span><?= $proyecto['fecha_final_1'] ?></span>
                             </div>
                         </div>
-                        <div class="projectDetails">
-                            <a href="<?= BASE_URL() ?>proyectos/projectDetails/<?= $proyecto['nombre'] . '/' . $proyecto['id_proyecto'] ?>" class="projectDetails_btn">Detalles</a>
-                        </div>
+                        <?php if ($this->session->userdata('usuario')[1] != 1): ?>
+                            <div class="projectDetails">
+                                <a href="<?= BASE_URL() ?>proyectos/projectDetails/<?= $proyecto['nombre'] . '/' . $proyecto['id_proyecto'] ?>" class="projectDetails_btn">Detalles</a>
+                            </div>
+                        <?php endif ?>
                     </article>
                 <?php endforeach ?>
 
-                <article class="noProjects">
-                    <a href="<?= BASE_URL() ?>proyectos/registrar">
-                        <div class="addFirstProject">
-                            <i class="fas fa-plus-circle fa-7x"></i>
-                        </div>
-                    </a>
-                </article>    
+                <?php if ($this->session->userdata('usuario')[1] != 1 && $this->session->userdata('usuario')[1] != 3): ?>
+                    <article class="noProjects">
+                        <a href="<?= BASE_URL() ?>proyectos/registrar">
+                            <div class="addFirstProject">
+                                <i class="fas fa-plus-circle fa-7x"></i>
+                            </div>
+                        </a>
+                    </article>    
+                <?php endif ?>
             <?php else: ?>            
                 <article class="noProjects">
                         <span>No hay proyectos</span>

@@ -19,7 +19,6 @@
             <div class="userInfoDet">
                 <span><?= $this->session->userdata('usuario')[0] ?></span>
                 <span><?= $nivel_usuario ?></span>
-                <span>Cuenta</span>
             </div>
             <hr>
         </div>
@@ -81,15 +80,21 @@
                         <?php if ($projectData['presupuesto_inicial'] != NULL): ?>
                             <div class="value"><?= '$' . substr($projectData['presupuesto_inicial'], 0, -2) ?></div>
                         <?php else: ?>
-                            <div class="value" id="asignBudget">No asignado <i class="fa fa-edit"></i></div>
-                            <?= form_open('proyectos/asignarPresupuesto', 'class="value hidden" id="asignBudget_form"') ?>
-                                <input type="hidden" name="nombreProy" value="<?= $projectData['nombre'] ?>">
-                                <input type="hidden" name="idProy" value="<?= $projectData['id_proyecto'] ?>">
-                                <input type="number" name="budget" id="budgetInput" placeholder="1000,00" step="0.010" min="0">
-                                <label for="sendBudget" id="sendBudgetLbl" class="hidden"><i class="fa fa-check-circle fa-lg"></i></label>
-                                <span class="cancelAsign" onclick="location.reload()"><i class="fa fa-times-circle fa-lg"></i></span>
-                                <input type="submit" name="sendBudget" id="sendBudget">
-                            </form>
+
+                            <?php if ($this->session->userdata('usuario')[1] == 3 ||  $this->session->userdata('usuario')[1] == 4): ?>
+                                <div class="value" id="asignBudget">No asignado <i class="fa fa-edit"></i></div>
+                                <?= form_open('proyectos/asignarPresupuesto', 'class="value hidden" id="asignBudget_form"') ?>
+                                    <input type="hidden" name="nombreProy" value="<?= $projectData['nombre'] ?>">
+                                    <input type="hidden" name="idProy" value="<?= $projectData['id_proyecto'] ?>">
+                                    <input type="number" name="budget" id="budgetInput" placeholder="1000,00" step="0.010" min="0">
+                                    <label for="sendBudget" id="sendBudgetLbl" class="hidden"><i class="fa fa-check-circle fa-lg"></i></label>
+                                    <span class="cancelAsign" onclick="location.reload()"><i class="fa fa-times-circle fa-lg"></i></span>
+                                    <input type="submit" name="sendBudget" id="sendBudget">
+                                </form>
+                            <?php else: ?>
+                                <div class="value">No asignado</div>
+                            <?php endif ?>
+
                         <?php endif ?>
                     </div>
                     <div class="projectField">
@@ -121,7 +126,9 @@
                             <div class="nombre">Nombre</div>
                             <div class="email">Email</div>
                             <div class="fecha">Fecha de asignaci&oacute;n</div>
-                            <div class="accion"><i class="fa fa-times-circle"></i></div>
+                            <?php if ($this->session->userdata('usuario')[1] == 2 || $this->session->userdata('usuario')[1] == 4): ?>
+                                <div class="accion"><i class="fa fa-times-circle"></i></div>
+                            <?php endif ?>
                         </div>
                         <?php foreach ($equipoAsignado as $equipo): ?>
                             <div class="asignedMember">
@@ -130,13 +137,15 @@
                                 <div class="nombre"><?= $equipo['nombres'] ?></div>
                                 <div class="email"><?= $equipo['mail'] ?></div>
                                 <div class="fecha"><?= $equipo['fecha_asignacion'] ?></div>
-                                <div class="accion">
-                                    <?= form_open('proyectos/deleteAsignation/' . $projectData['nombre'] . '/' . $projectData['id_proyecto']) ?>
-                                        <input type="hidden" name="idAsignacion" value="<?= $equipo['id_asignacion'] ?>">
-                                        <label for="desasignar<?= $equipo['id_asignacion'] ?>" class="desasignarEquipo"><i class="fa fa-times-circle"></i></label>
-                                        <input type="submit" name="desasignar" id="desasignar<?= $equipo['id_asignacion'] ?>">
-                                    </form>
-                                </div>
+                                <?php if ($this->session->userdata('usuario')[1] == 2 || $this->session->userdata('usuario')[1] == 4): ?>
+                                    <div class="accion">
+                                        <?= form_open('proyectos/deleteAsignation/' . $projectData['nombre'] . '/' . $projectData['id_proyecto']) ?>
+                                            <input type="hidden" name="idAsignacion" value="<?= $equipo['id_asignacion'] ?>">
+                                            <label for="desasignar<?= $equipo['id_asignacion'] ?>" class="desasignarEquipo"><i class="fa fa-times-circle"></i></label>
+                                            <input type="submit" name="desasignar" id="desasignar<?= $equipo['id_asignacion'] ?>">
+                                        </form>
+                                    </div>
+                                <?php endif ?>
                             </div>
                         <?php endforeach ?>
                     </div>
@@ -185,11 +194,13 @@
                         ?>
                     <?php endforeach ?>
 
-                    <div class="addAct">
-                        <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
-                    </div>
+                    <?php if ($this->session->userdata('usuario')[1] == 2 || $this->session->userdata('usuario')[1] == 4): ?>
+                        <div class="addAct">
+                            <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                        </div>
+                    <?php endif ?>
 
                     <div class="totalCostAct">
                         <div class="icon">
@@ -223,11 +234,14 @@
                         <span class="noEquipo">No hay actividades asignadas</span>
                     </div>
 
-                    <div class="addAct">
-                        <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
-                            <i class="fa fa-plus-circle"></i>
-                        </a>
-                    </div>
+                    <?php if ($this->session->userdata('usuario')[1] == 2 || $this->session->userdata('usuario')[1] == 4): ?>
+                        <div class="addAct">
+                            <a href="<?= BASE_URL() . 'actividades/registerActivitieForm' ?>">
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                        </div>
+                    <?php endif ?>
+                    
                 <?php endif ?>
             </div>
 

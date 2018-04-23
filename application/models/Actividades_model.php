@@ -16,6 +16,7 @@
             $this->db->from('actividades');
             $this->db->join('usuario', 'actividades.id_autor = usuario.id_user');
             $this->db->join('proyecto', 'actividades.id_proyecto = proyecto.id_proyecto');
+            $this->db->order_by('id_act', 'DESC');
 
             $query = $this->db->get();
 

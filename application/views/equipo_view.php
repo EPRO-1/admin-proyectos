@@ -19,7 +19,6 @@
             <div class="userInfoDet">
                 <span><?= $this->session->userdata('usuario')[0] ?></span>
                 <span><?= $nivel_usuario ?></span>
-                <span>Cuenta</span>
             </div>
             <hr>
         </div>
@@ -56,11 +55,13 @@
                             </div> -->
                             <!-- <span class="editIcon"><i class="fas fa-edit fa-2x"></i></span> -->
                             <div class="eraseEdit_btns">
-                                <?= form_open('equipo/remove_member') ?>
-                                    <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
-                                    <input type="submit" name="delete_member" id="deleteMember<?= $member['id_user'] ?>">
-                                    <label for="deleteMember<?= $member['id_user'] ?>" class="deleteMemberSubmit"><i class="fas fa-user-times fa-lg"></i></label>
-                                </form>
+                                <?php if ($this->session->userdata('usuario')[1] == 4): ?>
+                                    <?= form_open('equipo/remove_member') ?>
+                                        <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
+                                        <input type="submit" name="delete_member" id="deleteMember<?= $member['id_user'] ?>">
+                                        <label for="deleteMember<?= $member['id_user'] ?>" class="deleteMemberSubmit"><i class="fas fa-user-times fa-lg"></i></label>
+                                    </form>
+                                <?php endif ?>
                             </div>
                         </div>
                         <div class="info">
@@ -76,95 +77,99 @@
                                 <span><?= $member['mail'] ?></span>
                                 <span><?= $member['nivel'] ?></span>
                             </div>
-                            <?= form_open('equipo/asign_to_project', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
-                                <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
-                                <div class="asignProject_btn">
-                                    <a href="#">Asignar a proyecto</a>
-                                    <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign hidden">
-                                        <option value="" disabled selected>----- Proyectos -----</option>
-                                        <!-- Por cada fila en proyectos hacer... -->
-                                        <?php foreach ($proyectos as $proyecto): ?>
-                                            <!-- Por cada fila en asignar_equipo_proyecto hacer... -->
-                                            <?php for ($i = 0; $i < count($idsAsignados); $i++): ?>
-                                                <!-- Si el valor del id del usuario iterado Y el valor del proyecto iterado se encuentran en la misma fila, hacer... -->
-                                                <?php if ($idsAsignados[$i]['id_user'] == $member['id_user'] && $idsAsignados[$i]['id_proyecto'] == $proyecto['id_proyecto']): ?>
+                            <?php if ($this->session->userdata('usuario')[1] == 4 || $this->session->userdata('usuario')[1] == 2): ?>
+                                <?= form_open('equipo/asign_to_project', 'class="asignTeamProject_form" id="asignTeamProject_form"') ?>
+                                    <input type="hidden" name="idMember" value="<?= $member['id_user'] ?>">
+                                    <div class="asignProject_btn">
+                                        <a href="#">Asignar a proyecto</a>
+                                        <select name="selectProyectToAsign" id="selectProyectToAsign" class="selectProyectToAsign hidden">
+                                            <option value="" disabled selected>----- Proyectos -----</option>
+                                            <!-- Por cada fila en proyectos hacer... -->
+                                            <?php foreach ($proyectos as $proyecto): ?>
+                                                <!-- Por cada fila en asignar_equipo_proyecto hacer... -->
+                                                <?php for ($i = 0; $i < count($idsAsignados); $i++): ?>
+                                                    <!-- Si el valor del id del usuario iterado Y el valor del proyecto iterado se encuentran en la misma fila, hacer... -->
+                                                    <?php if ($idsAsignados[$i]['id_user'] == $member['id_user'] && $idsAsignados[$i]['id_proyecto'] == $proyecto['id_proyecto']): ?>
+                                                        <option 
+                                                            value="" 
+                                                            title="<?= $member['nombres'] . ' ya est&aacute; asignado a este proyecto'?>"
+                                                            disabled>
+                                                            <?= $proyecto['nombre'] ?>
+                                                        </option>
+                                                        <?php
+                                                            // Agregar el valor del id del usuario y proyecto iterado a los arreglos correspondientes... 
+                                                            array_push($proyectoNoListados, $idsAsignados[$i]['id_proyecto']);
+                                                            array_push($UserYaAsignado, $idsAsignados[$i]['id_user']);
+                                                        ?>
+                                                    <?php endif ?> <!-- Termina comprobacion de usuario y proyecto ya asignado -->
+                                                <?php endfor ?> <!-- Termina for de la tabla asignar_equipo_proyecto -->
+                                                <!-- Si el id del proyecto O del usuario iterados NO estan en los arreglos correspondientes, se listan los proyectos... -->
+                                                <?php if (!in_array($proyecto['id_proyecto'], $proyectoNoListados) || !in_array($member['id_user'], $UserYaAsignado)): ?>
                                                     <option 
-                                                        value="" 
-                                                        title="<?= $member['nombres'] . ' ya est&aacute; asignado a este proyecto'?>"
-                                                        disabled>
+                                                        value="<?= $proyecto['id_proyecto'] ?>" 
+                                                        title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
+                                                            ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
                                                         <?= $proyecto['nombre'] ?>
                                                     </option>
-                                                    <?php
-                                                        // Agregar el valor del id del usuario y proyecto iterado a los arreglos correspondientes... 
-                                                        array_push($proyectoNoListados, $idsAsignados[$i]['id_proyecto']);
-                                                        array_push($UserYaAsignado, $idsAsignados[$i]['id_user']);
-                                                    ?>
-                                                <?php endif ?> <!-- Termina comprobacion de usuario y proyecto ya asignado -->
-                                            <?php endfor ?> <!-- Termina for de la tabla asignar_equipo_proyecto -->
-                                            <!-- Si el id del proyecto O del usuario iterados NO estan en los arreglos correspondientes, se listan los proyectos... -->
-                                            <?php if (!in_array($proyecto['id_proyecto'], $proyectoNoListados) || !in_array($member['id_user'], $UserYaAsignado)): ?>
-                                                <option 
-                                                    value="<?= $proyecto['id_proyecto'] ?>" 
-                                                    title="Encargado: <?= $proyecto['nombres'] . ' ' . $proyecto['apellidos'] . 
-                                                        ' - Departamento: ' . $proyecto['nombreDpto'] ?>">
-                                                    <?= $proyecto['nombre'] ?>
-                                                </option>
-                                            <?php endif ?>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
-                                <div class="memberDetails_btn">
-                                    <a href="equipo/teamMemberDetails/<?= $member['username'] ?>" class="memberDetails_link">Detalles</a>
-                                    <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden" disabled="">
-                                    <span class="cancelAsign hidden"><i class="fa fa-times-circle"></i></span>
-                                </div>
-                            </form>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                    <div class="memberDetails_btn">
+                                        <a href="equipo/teamMemberDetails/<?= $member['username'] ?>" class="memberDetails_link">Detalles</a>
+                                        <input type="submit" name="asignar" value="Asignar" class="asignarProyectoSubmit hidden" disabled="">
+                                        <span class="cancelAsign hidden"><i class="fa fa-times-circle"></i></span>
+                                    </div>
+                                </form>
+                            <?php endif ?>
                         </div>
                     </article>
                 <?php endforeach ?>
 
-                <article class="addTeam">
-                    <div id="addUserCard" class="addFirstMember">
-                        <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
-                        <div id="addingMember" class="addMember hidden">
-                            <?= form_open('equipo/register_member', 'class="addUser_form" id="addUserForm"') ?>
-                                <div class="options">
-                                    <i class="fas fa-user-circle fa-4x"></i>
-                                    <input  type="submit" id="send">
-                                    <label for="send"><i class="fas fa-check-circle fa-3x"></i></label>
-                                    <i id="cancelAddUser" onclick="location.reload()" class="fas fa-times-circle fa-2x"></i>
-                                </div>
-                                <div class="labels">
-                                    <label for="memberName">Nombre: </label>
-                                    <label for="memberSkill">Usuario:</label>
-                                    <label for="memberEmail">Email:</label>
-                                    <label for="memberPhone">Nivel:</label>
-                                    <label for="memberPass">Contrase&ntilde;a:</label>
-                                </div>
-                                <div class="inputs">
-                                    <div class="nombre">
-                                        <input type="text" name="memberName" placeholder="Nombres" required/>
-                                        <input type="text" name="memberLastName" placeholder="Apellidos" required/>
+                <?php if ($this->session->userdata('usuario')[1] == 4): ?>
+                    <article class="addTeam">
+                        <div id="addUserCard" class="addFirstMember">
+                            <i id="newUserIcon" class="fas fa-user-plus fa-7x"></i>
+                            <div id="addingMember" class="addMember hidden">
+                                <?= form_open('equipo/register_member', 'class="addUser_form" id="addUserForm"') ?>
+                                    <div class="options">
+                                        <i class="fas fa-user-circle fa-4x"></i>
+                                        <input  type="submit" id="send">
+                                        <label for="send"><i class="fas fa-check-circle fa-3x"></i></label>
+                                        <i id="cancelAddUser" onclick="location.reload()" class="fas fa-times-circle fa-2x"></i>
                                     </div>
-                                    <input type="text" name="memberUser" placeholder="Nombre de usuario" required/>
-                                    <input type="email" name="memberEmail" placeholder="alguien@ejemplo.com" required/>
-                                    <select name="memberLevel" id="memberLevelSelect" required>
-                                        <option value="null" disabled selected>-- Seleccione un nivel --</option>
-                                        <?php foreach ($niveles_usuario as $niv_user): ?>
-                                            <option value="<?= $niv_user['id'] ?>"><?= $niv_user['nivel'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                    <input type="password" name="memberPass" placeholder="Contrase&ntilde;a">
-                                </div>
-                            </form>
+                                    <div class="labels">
+                                        <label for="memberName">Nombre: </label>
+                                        <label for="memberSkill">Usuario:</label>
+                                        <label for="memberEmail">Email:</label>
+                                        <label for="memberPhone">Nivel:</label>
+                                        <label for="memberPass">Contrase&ntilde;a:</label>
+                                    </div>
+                                    <div class="inputs">
+                                        <div class="nombre">
+                                            <input type="text" name="memberName" placeholder="Nombres" required/>
+                                            <input type="text" name="memberLastName" placeholder="Apellidos" required/>
+                                        </div>
+                                        <input type="text" name="memberUser" placeholder="Nombre de usuario" required/>
+                                        <input type="email" name="memberEmail" placeholder="alguien@ejemplo.com" required/>
+                                        <select name="memberLevel" id="memberLevelSelect" required>
+                                            <option value="null" disabled selected>-- Seleccione un nivel --</option>
+                                            <?php foreach ($niveles_usuario as $niv_user): ?>
+                                                <option value="<?= $niv_user['id'] ?>"><?= $niv_user['nivel'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                        <input type="password" name="memberPass" placeholder="Contrase&ntilde;a">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <span id="headerEquipo" class="headerEquipo" style="display: none"></span>
-                </article>
-                <?php if (isset($erroresRegistro)): ?>
-                    <div class="erroresRegistro">
-                        <?= $erroresRegistro ?>
-                    </div>
+                        <span id="headerEquipo" class="headerEquipo" style="display: none"></span>
+                    </article>
+                    <?php if (isset($erroresRegistro)): ?>
+                        <div class="erroresRegistro">
+                            <?= $erroresRegistro ?>
+                        </div>
+                    <?php endif ?>
                 <?php endif ?>
 
             <?php else: ?>
