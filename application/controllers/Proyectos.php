@@ -27,10 +27,10 @@ class Proyectos extends CI_Controller {
             $data['allProjects'] = $this->proyectos_model->get_proyectos();
             $data['proyectos'] = $this->proyectos_model->get_proyectos();
 
-            $this->load->view('proyectos_view', $data);
         } else {
             $data['check_projects'] = false;
         }
+        $this->load->view('proyectos_view', $data);
     }
     
     public function registrar () {
