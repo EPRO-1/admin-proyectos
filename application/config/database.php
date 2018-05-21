@@ -94,7 +94,7 @@ $db['default'] = array(
 	'failover' => array(
 		// EDWANO-PC conn
 		array(
-			'hostname' => 'localhost\SQLEXPRESS01',
+			'hostname' => 'localhost\SQLEXPRESS',
 			'username' => 'root',
 			'password' => '',
 			'database' => 'BDProyectos',

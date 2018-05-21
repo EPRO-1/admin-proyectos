@@ -1861,6 +1861,21 @@ div.addFirstProject:hover {
 	transition: all ease 0.3s;
 }
 
+a.report {
+	padding: 15px;
+	background: #7ac0d3;
+	border-radius: 5px;
+	text-decoration: none;
+	color: #000;
+	margin-bottom: 20px;
+	transition: all ease 0.3s;
+}
+
+a.report:hover {
+	background: #bb0706;
+	color: #fff;
+}
+
 .actividades .addAct a:hover,
 .proyectos .addAct a:hover {
 	background: #031938;

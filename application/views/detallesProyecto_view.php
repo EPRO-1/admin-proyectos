@@ -274,9 +274,14 @@
                     
                 <?php endif ?>
             </div>
-
-            <footer>Detalles</footer>
+            
+            <footer></footer>
         </section>
+        <a  class="report" 
+            href="<?= BASE_URL() ?>reportes/proyectPdf<?= '/' . $projectData['nombre'] . '/' . $projectData['id_proyecto'] ?>">
+                Generar PDF 
+                <i class="fa fa-file-pdf fa-lg"></i>
+        </a>
     </main>
 
     <script src="<?= BASE_URL() ?>js/main.js"></script>

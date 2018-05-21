@@ -109,7 +109,7 @@ class Proyectos_model extends CI_Model {
     public function getAsignedTeam ($idProyecto) {
         // Obtener los usuarios que estan asignados al proyecto actual
         $this->db->select('
-            usuario.username, usuario.nombres, usuario.apellidos, usuario.mail,
+            usuario.id_user, usuario.username, usuario.nombres, usuario.apellidos, usuario.mail,
             asignar_equipo_proyecto.fecha_asignacion, asignar_equipo_proyecto.id_asignacion
         ');
         $this->db->from('usuario');
