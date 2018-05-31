@@ -277,7 +277,8 @@
             
             <footer></footer>
         </section>
-        <a  class="report" 
+        <a  class="report"
+            target="blank"
             href="<?= BASE_URL() ?>reportes/proyectPdf<?= '/' . $projectData['nombre'] . '/' . $projectData['id_proyecto'] ?>">
                 Generar PDF 
                 <i class="fa fa-file-pdf fa-lg"></i>
