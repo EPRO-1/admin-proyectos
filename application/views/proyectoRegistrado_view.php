@@ -27,6 +27,7 @@
             <a href="<?= BASE_URL() ?>proyectos">Proyectos</a>
             <a href="<?= BASE_URL() ?>equipo">Equipo</a>
             <a href="<?= BASE_URL() ?>actividades">Actividades</a>
+            <a href="<?= BASE_URL() ?>reports">Reportes</a>
         </div>
     </aside>
     <main>

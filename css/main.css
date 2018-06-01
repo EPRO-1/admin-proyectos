@@ -1968,3 +1968,25 @@ footer {
 	text-align: right;
 	color: #787777;
 }
+
+.report-links li {
+	/* list-style: none; */
+	padding: 5px;
+	background: #084479;
+	border-radius: 5px;
+	box-shadow: 0 3px 2px 2px #000;
+	margin-bottom: 20px;
+	transition: all ease 0.3s;
+}
+
+.report-links li a {
+	color: #fff;
+	text-decoration: none;
+	width: 100%;
+	text-align: left;
+}
+
+.report-links li:hover {
+	background: #032c50;
+	box-shadow: 0 3px 2px 3px #000;
+}
